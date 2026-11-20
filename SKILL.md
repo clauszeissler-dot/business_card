@@ -147,7 +147,7 @@ Das Skript erzeugt:
     run wallet.py google --profile profile.json --brand brand/brand.json --issuer-id <ID> --service-account <sa.json> --valid-days 3
     ```
     Neue Issuer-Konten laufen im Demo-Modus: Speichern geht nur für eingetragene Testkonten, der Pass trägt „[TEST ONLY]“.
-- **Online-Dienst** (in Arbeit) für die Nutzung aus den Apps: Anmeldung mit LinkedIn und Signatur auf dem Server. Bis er live ist, ehrlich sagen, dass Wallet-Pässe nur lokal entstehen.
+- **Online-Dienst** für die Nutzung aus den Apps (Claude, ChatGPT): Die Person meldet sich dort mit LinkedIn an, ergänzt Profil-URL und Position und speichert den Pass in Apple oder Google Wallet; optional postet sie die Karte. Den Link vorbelegen: `<Dienst-URL>/#c=<base64url(JSON)>` mit den Feldern `linkedin_url`, `headline`, `company`, `location`, `website`, `primary`, `valid_days`. Keine Geheimnisse in den Link. Ist der Dienst noch nicht eingerichtet (`/api/health` meldet `configured: false`), ehrlich sagen, dass Wallet-Pässe nur lokal entstehen.
 - Ein Wallet-Pass ist nicht die gestaltete Karte. Apple und Google erlauben nur feste Vorlagen: Name, Position, Farben, Logo und QR-Code. Pässe laufen nach `--valid-days` wirklich ab.
 
 ### 8. Übergabe

@@ -141,3 +141,21 @@ E-NNN gehört zu A-NNN. Änderungen als datierter Nachtrag.
 - Live seit: noch nicht live
 - Beleg: test_render.py, test_build_zip.py
 - Offen: Test in beiden Apps durch Claus.
+
+## E-015 – LinkedIn-Anmeldung und Teilen
+- Problem: Profildaten offiziell übernehmen und Karte posten – für alle Skill-Nutzer.
+- Lösung: OpenID Connect (openid, profile, email) und Share on LinkedIn (w_member_social) im Dienst; Bildupload über /v2/assets + /v2/ugcPosts; Posten nur nach ausdrücklicher Bestätigung.
+- Verworfen: Anmeldung im Skill selbst (Client-Secret im Chat), Profil-/Headline-Abruf (nicht in Self-Serve-Produkten).
+- Entscheidung: Claus 2026-11-20 (öffentlich für alle), Umsetzung Claude.
+- Live seit: noch nicht live
+- Beleg: test_service.py
+- Offen: Echttest nach Einrichtung der LinkedIn-Produkte.
+
+## E-016 – Öffentlicher Dienst auf Vercel
+- Problem: Wallet-Signatur und LinkedIn-Login brauchen Server-Geheimnisse; Nutzung aus Claude-/ChatGPT-App.
+- Lösung: Zustandsloser Python-Dienst (`api/index.py`, `service/`), Sitzung AES-GCM im Cookie, Origin-Prüfung, CSP, Name nur aus LinkedIn; Geheimnisse nur als Vercel-Umgebungsvariablen, Übertragung per `tools/push_vercel_env.py` ohne Ausgabe; Datenschutzhinweise als Entwurf, Impressum verlinkt.
+- Verworfen: Netlify (keine Python-Funktionen), Datenbank/Speicherung (Datenschutz), Hetzner (mehr Betrieb).
+- Entscheidung: Claus 2026-11-20 („selbstständig über Vercel oder Netlify“, öffentlich), Umsetzung Claude.
+- Live seit: noch nicht live
+- Beleg: test_service.py
+- Offen: Vercel-Login/Projekt, Secrets, Redirect-URL bei LinkedIn, Rate-Limit-Regel, Prüfung Vercel-Tarif (Hobby schließt gewerbliche Nutzung aus), rechtliche Prüfung der Datenschutzhinweise.

@@ -1,0 +1,16 @@
+.venv
+.git
+tests
+examples
+dist
+docs
+tools
+evals
+pruefung
+Dokumentation (BSI+DSGVO)
+*.md
+!public/**
+.pytest_cache
+__pycache__
+uv.lock
+pyproject.toml

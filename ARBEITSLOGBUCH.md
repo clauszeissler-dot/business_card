@@ -31,3 +31,11 @@ Ziel: [ZIEL.md](ZIEL.md) · Anforderungen: [AENDERUNGEN.md](AENDERUNGEN.md) · A
 - Red/Green: neue Tests zuerst rot (Importfehler/fehlende Funktionen), dann grün; resvg-Fehler „invalid size“ bei mm-Einheiten → dpi=96 gesetzt.
 - Entscheidung Claus: Dienst öffentlich für alle (A-015, A-016); LinkedIn-Login nur über Server (Client-Secret).
 - Offen: A-015/A-016 Dienst; Echttests Wallet und Apps.
+
+## 2026-11-20 – Phase 2: Online-Dienst vorbereitet
+
+- Anforderungs-IDs: A-015, A-016
+- Ergebnis: service/ + api/index.py + public/ (Oberfläche, Datenschutz), vercel.json mit CSP; 22 Dienst-Tests (OAuth-State, Sitzung, Origin, fremde Namen, Größenlimit, Share-Flow) + Env-Übertragung ohne Wertausgabe; insgesamt 229 Tests grün.
+- Blocker: Vercel-MCP 403 beim Projektanlegen; CLI nicht angemeldet; temporäre Deploys ohne Login nicht möglich → Import-Seite in Ego Lite geöffnet, Claus klickt „Deploy“.
+- Vorbereitet: ~/Desktop/business-card-secrets (secrets.env mit SESSION_SECRET, ANLEITUNG.md, Erzeugung vercel-import.env); außerhalb des Repos.
+- Offen: Deploy-Nachweis am Zielort, Echttests Login/Apple/Google/Share, Vercel-Tarif, Rate-Limit-Regel.

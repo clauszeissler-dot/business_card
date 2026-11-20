@@ -51,3 +51,18 @@ Nachweise: tests/test_security.py (Missbrauch), tests/test_extract_ci.py (Kontro
 ## Meldungen
 
 Sicherheitsprobleme bitte als vertrauliche Meldung über die Repository-Plattform melden, nicht als öffentliches Issue.
+
+## Online-Dienst (`service/`, Vercel) – Threat Model
+
+| Bedrohung | Gegenmaßnahme | Test |
+| --- | --- | --- |
+| Fremder erzeugt einen von KI AffAIrs signierten Pass unter fremdem Namen | Name und E-Mail kommen nur aus der LinkedIn-Anmeldung; Formularfelder `name`/`email` werden ignoriert | `test_service.py::test_card_input_requires_session_and_ignores_foreign_name` |
+| Login-CSRF / OAuth-State-Fälschung | zufälliger State, verschlüsselt im Cookie (AES-GCM), 10 Min. gültig, zeitkonstanter Vergleich | `test_callback_rejects_wrong_state` |
+| Cross-Site-POST mit Sitzungscookie | `SameSite=Lax` plus Origin-Prüfung gegen `PUBLIC_BASE_URL` | `test_http_post_from_foreign_origin_is_rejected` |
+| Sitzungsdiebstahl/-fälschung | Cookie `HttpOnly; Secure`, AES-GCM mit Schlüssel aus `SESSION_SECRET`, 1 h Laufzeit | `test_seal_roundtrip_and_tamper`, `test_other_secret_cannot_read_session` |
+| Ungewolltes Posten | Posten nur mit ausdrücklicher Bestätigung (`confirm: true`) und Text | `test_share_needs_confirmation_and_text` |
+| Ressourcenverbrauch | Body max. 64 KB, Funktionslaufzeit max. 15 s | `test_http_oversized_body` |
+| Informationsabfluss in Fehlern | generische Fehlermeldungen, keine Personendaten in Logs | `test_http_internal_errors_do_not_leak` |
+| Clickjacking/XSS | CSP ohne Inline-Skripte, `frame-ancestors 'none'`, nosniff | `vercel.json` |
+
+Restgrenzen: Kein serverseitiges Rate-Limit (zustandslos) – Vercel-Firewall-Regel für `/api/*` einrichten. Missbrauch der Apple-Signatur bleibt an ein echtes LinkedIn-Konto gebunden, aber nicht an eine geprüfte Identität (LinkedIn-OIDC prüft keine Identität).
