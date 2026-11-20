@@ -1,0 +1,27 @@
+:root{--bg:#F5F7FA;--card:#FFFFFF;--fg:#0F172A;--muted:#475569;--line:#CBD5E1;--accent:#0F766E;--accent-fg:#FFFFFF;--error:#B91C1C;--focus:#2563EB}
+@media (prefers-color-scheme: dark){:root{--bg:#0B1220;--card:#111A2E;--fg:#F1F5F9;--muted:#A3B1C6;--line:#2A3A55;--accent:#2DD4BF;--accent-fg:#06201C;--error:#FCA5A5;--focus:#93C5FD}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:720px;margin:0 auto;padding:32px 16px 48px}
+h1{font-size:1.75rem;margin:0 0 8px}h2{font-size:1.1rem;margin:28px 0 12px}
+.lead{color:var(--muted);margin:0 0 24px}.muted{color:var(--muted)}.small{font-size:.85rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+label{display:block;margin:0 0 14px;font-weight:600}
+input,textarea{display:block;width:100%;margin-top:6px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--fg);font:inherit;font-weight:400}
+input[type=color]{height:44px;padding:4px}
+small{display:block;font-weight:400;color:var(--muted);margin-top:4px}
+.req{font-weight:400;color:var(--muted)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+.check{display:flex;gap:10px;align-items:center;font-weight:400}.check input{width:auto;margin:0}
+.button{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--fg);font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
+.button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.button.ghost{margin-left:auto}
+.button svg,summary svg{flex:none}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.me{display:flex;align-items:center;gap:12px}.me img{border-radius:50%}
+details{margin-top:24px;border-top:1px solid var(--line);padding-top:16px}
+summary{cursor:pointer;font-weight:600;display:flex;gap:8px;align-items:center}
+#status{min-height:1.5em;margin:16px 0 0}#status.error{color:var(--error)}
+footer{margin-top:32px;color:var(--muted);font-size:.9rem}footer a{color:inherit}

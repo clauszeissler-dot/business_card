@@ -8,7 +8,7 @@ eigene Notizen gehören in `BSI-CRA/` oder `DSGVO/`.
 | Dokument | Inhalt | Standard |
 | --- | --- | --- |
 | [SBOM/sbom.cdx.json](SBOM/sbom.cdx.json) | Software-Stückliste (aktuell) | CycloneDX 1.7, BSI TR-03183-2 v2.1.0 |
-| [CBOM/cbom.cdx.json](CBOM/cbom.cdx.json) | Krypto-Stückliste (1 Verfahren) | CycloneDX 1.7 (CBOM) |
+| [CBOM/cbom.cdx.json](CBOM/cbom.cdx.json) | Krypto-Stückliste (4 Verfahren) | CycloneDX 1.7 (CBOM) |
 | [Lebenszyklus/cle.json](Lebenszyklus/cle.json) | Releases, Support-Ende (ab erstem Release) | OWASP CLE 1.0 / ECMA-428 |
 | [Pruefbericht.md](Pruefbericht.md) | Pflichtfeld-Prüfung, Lücken, schwache Kryptografie | – |
 | [BSI-CRA/CRA-Checkliste.md](BSI-CRA/CRA-Checkliste.md) | Pflichten nach CRA, von Hand gepflegt | Verordnung (EU) 2024/2847 |

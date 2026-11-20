@@ -1,7 +1,7 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:ab2871bf-1a29-dfad-49ef-3e644c6978d4",
+  "serialNumber": "urn:uuid:911c9ea6-7f19-c3e6-b74a-296f15dee765",
   "version": 1,
   "metadata": {
     "tools": {
@@ -56,9 +56,90 @@
         "value": "statische Mustererkennung im Quelltext (ohne Tests, Abhängigkeiten und Build-Ordner)"
       }
     ],
-    "timestamp": "2026-11-20T13:05:44Z"
+    "timestamp": "2026-11-20T13:22:11Z"
   },
   "components": [
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto:aes-gcm",
+      "name": "AES-GCM",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae",
+          "algorithmFamily": "AES",
+          "cryptoFunctions": [
+            "encrypt",
+            "decrypt"
+          ],
+          "mode": "gcm"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "service/core.py",
+            "line": 72,
+            "symbol": "AESGCM"
+          },
+          {
+            "location": "service/core.py",
+            "line": 75,
+            "symbol": "AESGCM"
+          },
+          {
+            "location": "service/core.py",
+            "line": 81,
+            "symbol": "AESGCM"
+          },
+          {
+            "location": "service/core.py",
+            "line": 85,
+            "symbol": "AESGCM"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "kiaffairs:crypto:bewertung",
+          "value": "ok"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto:csprng",
+      "name": "CSPRNG",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg",
+          "cryptoFunctions": [
+            "generate"
+          ]
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "service/core.py",
+            "line": 74,
+            "symbol": "secrets.token_bytes("
+          },
+          {
+            "location": "service/core.py",
+            "line": 116,
+            "symbol": "secrets.token_urlsafe("
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "kiaffairs:crypto:bewertung",
+          "value": "info"
+        }
+      ]
+    },
     {
       "type": "cryptographic-asset",
       "bom-ref": "crypto:sha-1",
@@ -89,17 +170,60 @@
           "value": "schwach"
         }
       ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto:sha-256",
+      "name": "SHA-256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "algorithmFamily": "SHA-2",
+          "cryptoFunctions": [
+            "digest"
+          ]
+        },
+        "oid": "2.16.840.1.101.3.4.2.1"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "service/core.py",
+            "line": 68,
+            "symbol": "hashlib.sha256("
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "kiaffairs:crypto:bewertung",
+          "value": "ok"
+        }
+      ]
     }
   ],
   "dependencies": [
     {
       "ref": "pkg:pypi/business-card@1.1.0",
       "dependsOn": [
-        "crypto:sha-1"
+        "crypto:aes-gcm",
+        "crypto:csprng",
+        "crypto:sha-1",
+        "crypto:sha-256"
       ]
     },
     {
+      "ref": "crypto:aes-gcm"
+    },
+    {
+      "ref": "crypto:csprng"
+    },
+    {
       "ref": "crypto:sha-1"
+    },
+    {
+      "ref": "crypto:sha-256"
     }
   ]
 }
