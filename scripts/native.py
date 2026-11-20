@@ -58,7 +58,7 @@ T = {
         "match": ("Die gedruckte bzw. digitale Karte aus diesem Skill nutzt Layout **{l}**, Muster **{p}** und Farbschema "
                   "**{t}**. Ihr QR-Code führt direkt zu {u} – so passen Papier, Bild und App zusammen."),
         "sources": "Quellen: LinkedIn-Hilfe {help} · LinkedIn-Newsroom vom 15.10.2026 {news}",
-        "disclaimer": "Hinweis: Dieses Projekt ist nicht mit LinkedIn verbunden. LinkedIn ist eine Marke der LinkedIn Corporation.",
+        "disclaimer": "Hinweis: Dieses Projekt ist nicht mit LinkedIn verbunden. LinkedIn® ist eine eingetragene Marke der LinkedIn Corporation bzw. ihrer verbundenen Unternehmen.",
         "fonts": {"sans": "eine schlichte, serifenlose Schrift (Sans)",
                   "serif": "eine Schrift mit Serifen (Serif) – wirkt klassisch und hochwertig",
                   "mono": "eine technische Schrift mit gleicher Zeichenbreite (Mono), falls angeboten – sonst Sans",
@@ -119,7 +119,7 @@ T = {
         "match": ("The printed or digital card from this skill uses layout **{l}**, pattern **{p}** and colour theme "
                   "**{t}**. Its QR code links straight to {u} – so paper, image and app work together."),
         "sources": "Sources: LinkedIn Help {help} · LinkedIn Newsroom, 15 Oct 2026 {news}",
-        "disclaimer": "Note: This project is not affiliated with LinkedIn. LinkedIn is a trademark of LinkedIn Corporation.",
+        "disclaimer": "Note: This project is not affiliated with LinkedIn. LinkedIn® is a registered trademark of LinkedIn Corporation or its affiliates.",
         "fonts": {"sans": "a clean sans-serif font (Sans)",
                   "serif": "a serif font (Serif) – classic and premium",
                   "mono": "a technical monospaced font (Mono) if available – otherwise Sans",

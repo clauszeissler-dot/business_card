@@ -86,3 +86,8 @@ E-NNN gehört zu A-NNN. Änderungen als datierter Nachtrag.
 - Live seit: noch nicht live (Push wartet auf Auftrag)
 - Beleg: lokaler Commit
 - Offen: Ziel (GitHub vs. Forgejo), Push, Social Preview, Repo-Beschreibung/Topics.
+
+### Nachtrag E-009 – 2026-11-20
+- Markenrichtlinien (brand.linkedin.com/policies, /business-books-and-media-usage) gelesen: Marke nur beschreibend, mit ®, kein Logo, kein Anschein von Sponsoring; Domains/Handles mit „LinkedIn“ verboten, Repo-Namen nicht geregelt.
+- Umgesetzt: offizieller Attributionshinweis in README DE/EN und App-Anleitung.
+- Offen (Entscheidung Claus): Repo-Name ohne führendes „linkedin“, Vorschlag `business-card-skill`.

@@ -61,6 +61,6 @@ Then ask your agent:
 
 Run the tests with `uv run pytest`. Security notes are in [SECURITY.md](SECURITY.md). Licence: [MIT](LICENSE). Third-party notices: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-*This project is not affiliated with or endorsed by LinkedIn. LinkedIn is a trademark of LinkedIn Corporation.*
+*LinkedIn® is a registered trademark of LinkedIn Corporation or its affiliates. Its use here only describes what the tool is for and does not signify any affiliation with or endorsement by LinkedIn Corporation or its affiliates.*
 
 A project by **Claus Zeißler · KI AffAIrs**.

@@ -80,6 +80,6 @@ Die ausführliche Anleitung steht in [docs/anleitung.md](docs/anleitung.md).
 - Skill-Anweisungen für Agenten: [SKILL.md](SKILL.md) · Fakten zur LinkedIn-Karte: [references/linkedin-native-card.md](references/linkedin-native-card.md)
 - Lizenz: [MIT](LICENSE). Icons: [Lucide](https://lucide.dev) (ISC). QR: [segno](https://github.com/heuer/segno) (BSD-3). Siehe [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-*Dieses Projekt ist nicht mit LinkedIn verbunden und wird nicht von LinkedIn unterstützt. LinkedIn ist eine Marke der LinkedIn Corporation.*
+*LinkedIn® ist eine eingetragene Marke der LinkedIn Corporation bzw. ihrer verbundenen Unternehmen. Die Nennung beschreibt nur, wofür das Werkzeug gedacht ist, und bedeutet keine Verbindung zu LinkedIn und keine Unterstützung durch LinkedIn.*
 
 Ein Projekt von **Claus Zeißler · KI AffAIrs**.
