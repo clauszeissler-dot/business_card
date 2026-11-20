@@ -25,5 +25,6 @@ Stand: 2026-11-20
 ## Aktueller Zielabgleich
 
 - Arbeitsbeginn: 2026-11-20 (Recherche abgeschlossen)
-- Zum sichtbaren Ergebnis fehlt: Social Preview
-- Kürzester nächster Schritt: Social Preview in GitHub setzen (Claus, Web-Oberfläche)
+- Zum sichtbaren Ergebnis fehlt: Social Preview; Vercel-Deploy mit vollständigen Secrets; Echttests Login/Apple/Google/Share
+- Kürzester nächster Schritt: Claus trägt LinkedIn Client ID/Secret in ~/Desktop/business-card-secrets/secrets.env ein (danach Apple, Google, `push_vercel_env.py --write-env`, Deploy)
+- Nächster konkreter Schritt: nach Meldung „Deploy fertig“ /api/health prüfen, Echttests in Ego Lite, Rate-Limit-Regel

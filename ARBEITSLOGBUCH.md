@@ -39,3 +39,10 @@ Ziel: [ZIEL.md](ZIEL.md) · Anforderungen: [AENDERUNGEN.md](AENDERUNGEN.md) · A
 - Blocker: Vercel-MCP 403 beim Projektanlegen; CLI nicht angemeldet; temporäre Deploys ohne Login nicht möglich → Import-Seite in Ego Lite geöffnet, Claus klickt „Deploy“.
 - Vorbereitet: ~/Desktop/business-card-secrets (secrets.env mit SESSION_SECRET, ANLEITUNG.md, Erzeugung vercel-import.env); außerhalb des Repos.
 - Offen: Deploy-Nachweis am Zielort, Echttests Login/Apple/Google/Share, Vercel-Tarif, Rate-Limit-Regel.
+
+## 2026-11-20 Sitzungsende
+
+- Anforderungs-IDs: A-013, A-014, A-015, A-016
+- Ergebnis: Abschlussabgleich; Claus hat `push_vercel_env.py --write-env` ausgeführt, 8 Werte fehlen noch (LinkedIn, Apple, Google) → vercel-import.env noch nicht verwenden.
+- Prüfung: `arbeitsstandard.py verify .` grün (Evals 13/13, Tests grün).
+- Offen: Secrets eintragen, Deploy, Echttests, Rate-Limit, Vercel-Tarif.

@@ -27,8 +27,8 @@ offen → in Arbeit → umgesetzt → geprüft (nur mit Beleg und E-NNN).
 
 ## Letzter Abschlussabgleich
 
-- Stand: 2026-11-20
-- Abgeglichene IDs: A-001 bis A-009
-- Geprüft erfüllt: A-001 bis A-007
-- Nicht erfüllt: A-008 (LLM-Eval offen), A-009 (Social Preview manuell setzen)
+- Stand: 2026-11-20 (Sitzungsende)
+- Abgeglichene IDs: A-001 bis A-016
+- Geprüft erfüllt: A-001 bis A-007, A-010 bis A-012
+- Nicht erfüllt: A-008 (LLM-Eval offen), A-009 (Social Preview manuell), A-013 (Echttest mit echtem Apple-Zertifikat/Google-Issuer), A-014 (Test in Claude-/ChatGPT-App), A-015 (LinkedIn-Produkte + Secrets fehlen), A-016 (Deploy durch Claus ausstehend, Secrets unvollständig)
 - Neue Wünsche seit dem letzten Abgleich vollständig erfasst: ja
