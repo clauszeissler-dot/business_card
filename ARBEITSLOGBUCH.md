@@ -17,3 +17,9 @@ Ziel: [ZIEL.md](ZIEL.md) · Anforderungen: [AENDERUNGEN.md](AENDERUNGEN.md) · A
 - Kurskorrektur: Realtests zeigten HTTP 400 (Nicht-ASCII-User-Agent) und schwaches Farbranking → Regressionstests ergänzt.
 - Versionsbezug: erster lokaler Commit
 - Offen: Push nach Auftrag, LLM-Eval, PDF-Heuristik an echtem LinkedIn-PDF.
+
+## 2026-11-20 – Veröffentlichung
+
+- Anforderungs-IDs: A-009
+- Ergebnis: Push nach https://github.com/clauszeissler-dot/business_card (Auftrag Claus); Skill-Name business-card; Beschreibung und Topics gesetzt; frischer Klon: 182 Tests grün, Evals offline 10/10.
+- Offen: Social Preview (hero.png) in GitHub-Einstellungen hochladen; LLM-Eval; echtes Profil-PDF testen.

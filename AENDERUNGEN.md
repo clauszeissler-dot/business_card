@@ -12,7 +12,7 @@ Zweck: [ZIEL.md](ZIEL.md) · Lösungen: [ENTSCHEIDUNGEN.md](ENTSCHEIDUNGEN.md) �
 | A-006 | 2026-11-20 Claus, Chat | Website-CI auslesen | Farben, Schriften, Logo aus Fixture; SSRF-Fälle abgelehnt | geprüft | S5 | test_extract_ci.py inkl. SSRF-Missbrauch; Realtest sparkasse.de, stripe.com, bosch.de, dm.de |
 | A-007 | 2026-11-20 Claus, Chat | Business Card im CI-Stil erstellen | SVG/PNG/PDF vorne+hinten, QR dekodiert zur Profil-URL | geprüft | S3 | QR-Decode je Layout (OpenCV) = Profil-URL; PDF/PNG erzeugt; evals/run_offline.py 13/13 |
 | A-008 | 2026-11-20 Claus, Chat | Als Skill nutzbar | SKILL.md, Evals, Einbindung unter ~/.claude/skills | umgesetzt | S6 | SKILL.md, evals.json, Symlink ~/.claude/skills; Agenten-Eval (LLM) noch nicht gelaufen |
-| A-009 | 2026-11-20 Claus, Chat | Repo zum Teilen über LinkedIn, „möglichst perfekt“ | README DE+EN, Banner, Lizenz, Beispielbilder, CRA-Doku, lokaler Commit | umgesetzt | S7 | README DE/EN, Banner, Hero, MIT, CRA-Doku (gelb: Hashes/Lizenzen der Abhängigkeiten); Push wartet auf Auftrag |
+| A-009 | 2026-11-20 Claus, Chat | Repo zum Teilen über LinkedIn, „möglichst perfekt“ | README DE+EN, Banner, Lizenz, Beispielbilder, CRA-Doku, lokaler Commit | umgesetzt | S7 | Live: github.com/clauszeissler-dot/business_card (main 70e333b), frischer Klon 182 Tests grün; Social Preview offen (nur Web-Oberfläche) |
 
 ## Statusregeln
 
@@ -23,5 +23,5 @@ offen → in Arbeit → umgesetzt → geprüft (nur mit Beleg und E-NNN).
 - Stand: 2026-11-20
 - Abgeglichene IDs: A-001 bis A-009
 - Geprüft erfüllt: A-001 bis A-007
-- Nicht erfüllt: A-008 (LLM-Eval offen), A-009 (Push/Social Preview offen, wartet auf Auftrag)
+- Nicht erfüllt: A-008 (LLM-Eval offen), A-009 (Social Preview manuell setzen)
 - Neue Wünsche seit dem letzten Abgleich vollständig erfasst: ja

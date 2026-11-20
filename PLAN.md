@@ -21,5 +21,5 @@ Stand: 2026-11-20
 ## Aktueller Zielabgleich
 
 - Arbeitsbeginn: 2026-11-20 (Recherche abgeschlossen)
-- Zum sichtbaren Ergebnis fehlt: Push (Auftrag nötig)
-- Kürzester nächster Schritt: Push nach github.com/clauszeissler-dot/business_card, danach Metadaten und Social Preview
+- Zum sichtbaren Ergebnis fehlt: Social Preview
+- Kürzester nächster Schritt: Social Preview in GitHub setzen (Claus, Web-Oberfläche)
