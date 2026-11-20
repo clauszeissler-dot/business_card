@@ -9,7 +9,7 @@ description: >-
   LinkedIn-Profil“, „business card from my LinkedIn profile“, „match our brand“.
 license: MIT
 metadata:
-  version: 1.0.0
+  version: 1.1.0
   facts-as-of: "2026-11-20"
 ---
 
@@ -19,17 +19,25 @@ Der Skill liefert **zwei Ergebnisse, die zusammenpassen**:
 
 1. **Eigene Karte**, gerendert im CI der Website: Vorder- und Rückseite mit QR-Code zum LinkedIn-Profil, für Druck (85 × 55 mm, 3 mm Beschnitt), Scheckkartenformat oder als Teilen-Bild.
 2. **Einstellungsanleitung für die native LinkedIn Business Card** (`linkedin-native-card.md`): Was die Person in der App bei *Info, Layout, Font, Colors, Pattern, Stickers and Doodle* wählt.
+3. **Fürs Handy:** Sperrbildschirm-Bild mit großem QR-Code und „gültig bis“, vCard (Kontakt mit einem Tipp speichern), Kalender-Erinnerung zum Zurückstellen, optional Apple- und Google-Wallet-Pass.
 
 Ehrliche Grenze, immer so kommunizieren: LinkedIn bietet für die Business Card **keine API und keine Web-Version** (Stand 20.11.2026, nur Mobile-App, Englisch). Der Skill kann die native Karte nicht selbst ausfüllen. Faktenlage: [references/linkedin-native-card.md](references/linkedin-native-card.md).
 
 ## Vorbereitung
 
-`SKILL_DIR` ist der Ordner dieser Datei. Die Skripte brauchen Python ≥ 3.11 und `segno` (QR-Code). Für PNG und PDF ist zusätzlich `rsvg-convert` nötig (`brew install librsvg`); fehlt es, entsteht nur SVG.
+`SKILL_DIR` ist der Ordner dieser Datei. Die Skripte brauchen Python ≥ 3.11 und die Pakete aus `requirements.txt` (segno, resvg-py, cryptography, pillow). PNG entsteht immer über resvg mit den mitgelieferten Schriften (Inter, Sora, Source Serif 4). Ein Vektor-PDF entsteht, wenn `rsvg-convert` vorhanden ist, sonst ein Raster-PDF mit 600 dpi.
 
 ```bash
-uv run --project "$SKILL_DIR" python "$SKILL_DIR/scripts/make_card.py" --list   # bevorzugt
-# ohne uv: python3 -m pip install segno==1.6.6 && python3 "$SKILL_DIR/scripts/make_card.py" --list
+uv run --project "$SKILL_DIR" python "$SKILL_DIR/scripts/make_card.py" --list   # bevorzugt (Claude Code, Codex)
+# ohne uv: python3 -m pip install -r "$SKILL_DIR/requirements.txt" && python3 "$SKILL_DIR/scripts/make_card.py" --list
 ```
+
+### In der Claude-App oder in ChatGPT
+
+- Zuerst `pip install -r requirements.txt` im Skill-Ordner ausführen; die Sandbox lädt Pakete von PyPI.
+- **Websites sind in der Sandbox oft nicht erreichbar.** Scheitert `extract_ci.py`, die Seite mit dem eigenen Web-Werkzeug lesen und daraus `brand.json` schreiben. Das Schema steht in [references/inputs.md](references/inputs.md). Logo-Dateien lässt du die Person hochladen.
+- Ergebnisdateien (PNG, PDF, `.vcf`, `.ics`) als Download anbieten.
+- **Niemals Zertifikate, Passwörter oder Dienstkontoschlüssel im Chat annehmen.** Wallet-Pässe entstehen dort nicht; stattdessen auf den Online-Dienst bzw. die lokale Signatur verweisen (Schritt 7).
 
 Unten steht `run X` kurz für `uv run --project "$SKILL_DIR" python -I "$SKILL_DIR/scripts/X"`.
 
@@ -46,6 +54,7 @@ Nur fragen, was fehlt:
 - Website oder CI-Angaben
 - welche Kontaktdaten auf die Karte dürfen (E-Mail, Telefon, Website)
 - Zweck: Druck, digital oder beides
+- fürs Handy: Sperrbildschirm wie lange (Tage) und für welches Event, vCard, Wallet
 
 Ohne Website: nach Primärfarbe und Logo fragen; ohne Angaben neutral starten.
 
@@ -109,7 +118,39 @@ Den QR-Code optional dekodieren, z. B. per Handy oder OpenCV.
 
 Erst wenn alles passt, die Formate erzeugen, die die Person braucht: Druck `--format eu` bzw. `us`, digital `wallet` bzw. `share`. Jeweils in einen eigenen Ausgabeordner rendern.
 
-### 6. Übergabe
+### 6. Fürs Handy: Sperrbildschirm, vCard, Erinnerung
+
+```bash
+run extras.py --profile profile.json --brand brand/brand.json --out handy/ --valid-days 3 --event "Messe Essen" --theme dark
+```
+
+Das Skript erzeugt:
+- `lockscreen-iphone.png`, `lockscreen-iphone-max.png` und `lockscreen-android.png`. Der Bereich der Uhr oben und der Bereich der Tasten unten bleiben frei.
+- eine `.vcf`-Datei.
+- `erinnerung.ics` am Ablauftag (nur mit `--valid-days`).
+- `sperrbildschirm.md` mit der Einrichtung.
+
+`--valid-days 3` heißt: heute plus zwei weitere Tage. Ein Sperrbildschirm-Bild läuft nicht von selbst ab; das Datum steht darauf, und die Kalender-Erinnerung meldet sich am letzten Tag.
+
+**Begegnungsfotos (Sticker-Rückseite, wie bei LinkedIn):** In `profile.json` unter `stickers` bis zu drei Einträge anlegen, jeweils `{"image": "foto.jpg", "caption": "Messe Essen"}`. Danach `make_card.py … --back stickers`.
+
+### 7. Wallet-Pässe (Apple und Google)
+
+- **Lokal signieren** (Claude Code, eigener Rechner). Die Geheimnisse liegen nur in Dateien bzw. Umgebungsvariablen, nie im Chat.
+  - **Apple** (Apple Developer Program, Pass Type ID mit Zertifikat als `.p12` und WWDR-G4-Zertifikat):
+    ```bash
+    BC_P12_PASSWORD=… run wallet.py apple --profile profile.json --brand brand/brand.json --pass-type-id pass.<domain>.card \
+      --team-id <TEAMID> --org "<Firma>" --p12 <pfad.p12> --wwdr <AppleWWDRCAG4.cer> --valid-days 3 --out wallet/
+    ```
+  - **Google** (Wallet-Issuer-Konto plus Dienstkonto-JSON) gibt einen Link „Zu Google Wallet hinzufügen“ aus:
+    ```bash
+    run wallet.py google --profile profile.json --brand brand/brand.json --issuer-id <ID> --service-account <sa.json> --valid-days 3
+    ```
+    Neue Issuer-Konten laufen im Demo-Modus: Speichern geht nur für eingetragene Testkonten, der Pass trägt „[TEST ONLY]“.
+- **Online-Dienst** (in Arbeit) für die Nutzung aus den Apps: Anmeldung mit LinkedIn und Signatur auf dem Server. Bis er live ist, ehrlich sagen, dass Wallet-Pässe nur lokal entstehen.
+- Ein Wallet-Pass ist nicht die gestaltete Karte. Apple und Google erlauben nur feste Vorlagen: Name, Position, Farben, Logo und QR-Code. Pässe laufen nach `--valid-days` wirklich ab.
+
+### 8. Übergabe
 
 Kurz und konkret übergeben:
 
@@ -134,5 +175,8 @@ Kurz und konkret übergeben:
 | `scripts/extract_ci.py` | CI aus Website, lokalem HTML oder Firecrawl-Branding → `brand.json` |
 | `scripts/parse_profile.py` | Profil aus Datenexport, PDF oder Text → `profile.json` |
 | `scripts/native.py` | Anleitung für die native LinkedIn-Karte |
+| `scripts/extras.py` | Sperrbildschirm-Bilder, vCard, Kalender-Erinnerung |
+| `scripts/wallet.py` | Apple-Pass (.pkpass, signiert) und Google-Wallet-Link (signiertes JWT) |
+| `scripts/render.py` | SVG → PNG/PDF ohne Systemprogramme (resvg + mitgelieferte Schriften) |
 | `references/*.md` | Fakten, Gestaltungsregeln, Eingabewege |
 | `evals/evals.json` | Testanfragen für den Skill |

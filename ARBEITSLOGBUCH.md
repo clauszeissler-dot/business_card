@@ -23,3 +23,11 @@ Ziel: [ZIEL.md](ZIEL.md) · Anforderungen: [AENDERUNGEN.md](AENDERUNGEN.md) · A
 - Anforderungs-IDs: A-009
 - Ergebnis: Push nach https://github.com/clauszeissler-dot/business_card (Auftrag Claus); Skill-Name business-card; Beschreibung und Topics gesetzt; frischer Klon: 182 Tests grün, Evals offline 10/10.
 - Offen: Social Preview (hero.png) in GitHub-Einstellungen hochladen; LLM-Eval; echtes Profil-PDF testen.
+
+## 2026-11-20 – Phase 1: Handy, Wallet, Apps
+
+- Anforderungs-IDs: A-010, A-011, A-012, A-013, A-014
+- Ergebnis: extras.py, wallet.py, render.py, Sticker-Rückseite, ZIP-Builder; 204 Tests grün, Evals offline 13/13.
+- Red/Green: neue Tests zuerst rot (Importfehler/fehlende Funktionen), dann grün; resvg-Fehler „invalid size“ bei mm-Einheiten → dpi=96 gesetzt.
+- Entscheidung Claus: Dienst öffentlich für alle (A-015, A-016); LinkedIn-Login nur über Server (Client-Secret).
+- Offen: A-015/A-016 Dienst; Echttests Wallet und Apps.

@@ -27,6 +27,9 @@ Dieser Skill für KI-Agenten (Claude Code, Codex & Co.) schließt die Lücke:
 | `preview.html` | Beide Seiten im Browser ansehen |
 | `linkedin-native-card.md` | Klick-Anleitung für die LinkedIn-App (Info, Layout, Font, Colors, Pattern, Stickers) |
 | `report.json` | Prüfbericht: Kontraste, QR-Größe, gekürzte Felder, Hinweise |
+| `lockscreen-*.png` | Sperrbildschirm für iPhone und Android: großer QR-Code, „gültig bis“ und Event |
+| `*.vcf`, `erinnerung.ics` | Kontakt mit einem Tipp speichern; Kalender-Erinnerung zum Zurückstellen |
+| `business-card.pkpass`, Google-Link | Apple- und Google-Wallet-Pass mit Ablaufdatum (eigene Entwicklerkonten nötig) |
 
 ## Gestaltung: Formen, Farben, Muster
 
@@ -35,6 +38,8 @@ Dieser Skill für KI-Agenten (Claude Code, Codex & Co.) schließt die Lücke:
 - **Formen:** Ecken `sharp`, `soft`, `round`; Foto oder Monogramm als `circle`, `rounded`, `square`, `hexagon`
 - **3 Farbschemata:** `light`, `dark`, `brand`. Lesbarkeit ist garantiert: Text ≥ 7:1 bzw. ≥ 4,5:1. Der QR-Code ist immer dunkel auf hell.
 - **4 Formate:** Visitenkarte EU, Visitenkarte US, Scheckkarte (digital), Teilen-Bild 1200 × 627 px
+- **Rückseite:** Kontaktdaten oder bis zu 3 Begegnungsfotos als Sticker (wie bei LinkedIn)
+- **Fürs Handy:** Sperrbildschirm mit Ablaufdatum, vCard, Wallet-Pässe
 
 | Kanzlei · `centered` · `none` | Kreativstudio · `diagonal` · `waves` · `dark` |
 | --- | --- |
@@ -50,6 +55,8 @@ git clone https://github.com/clauszeissler-dot/business_card.git ~/.claude/skill
 cd ~/.claude/skills/business-card && uv sync           # oder: python3 -m pip install segno==1.6.6
 brew install librsvg                                            # für PNG/PDF (macOS); Linux: apt install librsvg2-bin
 ```
+
+**Claude-App oder ChatGPT:** `business-card.zip` aus den [Releases](https://github.com/clauszeissler-dot/business_card/releases) laden. Claude: *Customize → Skills → Upload*. ChatGPT: *Skills → Create → Upload from your computer*. Code-Ausführung muss aktiv sein.
 
 Danach im Agenten einfach schreiben:
 
@@ -69,13 +76,13 @@ Die ausführliche Anleitung steht in [docs/anleitung.md](docs/anleitung.md).
 
 - **Die native LinkedIn-Karte füllt der Skill nicht automatisch aus.** LinkedIn bietet dafür keine Schnittstelle (Stand 20.11.2026, nur Mobile-App, Englisch). Du bekommst eine genaue Klick-Anleitung.
 - **Kein Scraping von LinkedIn.** Profildaten kommen aus deinem Text, dem Profil-PDF („Als PDF speichern“) oder deinem Datenexport.
-- **Keine Wallet-Pässe.** Dafür braucht es Apple- bzw. Google-Konten. In die Wallet kommt die native LinkedIn-Karte.
+- **Wallet-Pässe nur mit eigenen Entwicklerkonten:** Apple Developer Program bzw. Google-Wallet-Issuer. Ohne Konten: Sperrbildschirm-Bild und vCard oder die native LinkedIn-Karte.
 - **Automatisch erkanntes CI ist ein Vorschlag.** Farben, Logo und Schrift vor dem Druck prüfen. Hausschriften sind oft nicht frei verfügbar; dann wird eine ähnliche Schrift genutzt.
 - Vor dem Druck den QR-Code mit zwei Handys testen. Es gibt keine Garantie für Druckergebnisse.
 
 ## Für Entwickler
 
-- Tests: `uv run pytest` (174 Tests: QR-Dekodierung, Kontraste, Textumbruch, Missbrauchsfälle)
+- Tests: `uv run pytest` (QR-Dekodierung, Kontraste, Textumbruch, Wallet-Signaturen, Missbrauchsfälle)
 - Sicherheit: [SECURITY.md](SECURITY.md) – Schutz gegen Abrufe ins interne Netz (SSRF), Markup-Injection und übergroße Dateien
 - Skill-Anweisungen für Agenten: [SKILL.md](SKILL.md) · Fakten zur LinkedIn-Karte: [references/linkedin-native-card.md](references/linkedin-native-card.md)
 - Lizenz: [MIT](LICENSE). Icons: [Lucide](https://lucide.dev) (ISC). QR: [segno](https://github.com/heuer/segno) (BSD-3). Siehe [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

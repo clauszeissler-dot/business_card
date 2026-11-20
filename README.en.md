@@ -27,6 +27,9 @@ This skill for AI agents (Claude Code, Codex and others) fills that gap:
 | `preview.html` | Both sides in the browser |
 | `linkedin-native-card.md` | Step-by-step settings for the LinkedIn app (Info, Layout, Font, Colors, Pattern, Stickers) |
 | `report.json` | Check report: contrast, QR size, shortened fields, notes |
+| `lockscreen-*.png` | Lock screen for iPhone and Android: large QR code, "valid until" and event |
+| `*.vcf`, `reminder.ics` | Save the contact with one tap; calendar reminder to switch back |
+| `business-card.pkpass`, Google link | Apple and Google Wallet pass with expiry (own developer accounts needed) |
 
 ## Design options
 
@@ -35,6 +38,8 @@ This skill for AI agents (Claude Code, Codex and others) fills that gap:
 - **Shapes:** corners `sharp`, `soft`, `round`; photo or monogram as `circle`, `rounded`, `square`, `hexagon`
 - **3 colour themes:** `light`, `dark`, `brand`. Readability is enforced: text ≥ 7:1 or ≥ 4.5:1. The QR code is always dark on light.
 - **4 formats:** EU card, US card, credit-card size (digital), share image 1200 × 627 px.
+- **Back side:** contact details or up to 3 meeting photos as stickers (like LinkedIn).
+- **For your phone:** lock screen with expiry date, vCard, wallet passes.
 - **Languages:** `--lang en` switches the card labels, the preview page and the LinkedIn app guide to English. Technical notes in `report.json` are in German.
 
 ## Quick start
@@ -45,6 +50,8 @@ cd ~/.claude/skills/business-card && uv sync           # or: python3 -m pip inst
 brew install librsvg                                            # PNG/PDF on macOS; Linux: apt install librsvg2-bin
 ```
 
+**Claude app or ChatGPT:** download `business-card.zip` from the [releases](https://github.com/clauszeissler-dot/business_card/releases). Claude: *Customize → Skills → Upload*. ChatGPT: *Skills → Create → Upload from your computer*. Code execution must be on.
+
 Then ask your agent:
 
 > Create a business card from my LinkedIn profile in the style of https://my-company.com. Profile URL: linkedin.com/in/…
@@ -53,7 +60,7 @@ Then ask your agent:
 
 - **The skill cannot fill in the native LinkedIn card for you.** LinkedIn offers no API for it (as of 20 Nov 2026: mobile app only, English only). You get exact step-by-step instructions instead.
 - **No LinkedIn scraping.** Profile data comes from your own text, your profile PDF ("Save to PDF") or your data export.
-- **No wallet passes.** These need Apple or Google issuer accounts. Use the native LinkedIn card for your wallet.
+- **Wallet passes need your own developer accounts** (Apple Developer Program or Google Wallet issuer). Without them: lock screen image and vCard, or the native LinkedIn card.
 - **Detected brand identity is a suggestion.** Check colours, logo and font before printing. Proprietary fonts are replaced by a similar font.
 - Test the QR code with two phones before printing. Print results are not guaranteed.
 

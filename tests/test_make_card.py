@@ -132,10 +132,13 @@ def test_photo_is_clipped_into_shape(tmp_path, profile, brand):
 
 def test_missing_font_is_reported(monkeypatch, tmp_path, profile, brand):
     import make_card
-    monkeypatch.setattr(make_card, "font_installed", lambda name: False if name == "Sora" else True)
+    monkeypatch.setattr(make_card, "font_installed", lambda name: False)
     res = render_card(profile, brand)
     make_card.write_outputs(res, profile, brand, tmp_path, png=False, pdf=False)
-    assert any("Sora" in w and "nicht installiert" in w for w in res["report"]["warnings"])
+    assert not any("Sora" in w for w in res["report"]["warnings"])  # Sora wird mitgeliefert
+    res = render_card(profile, dict(brand, fonts={"heading": "Hausschrift X", "body": "Inter"}))
+    make_card.write_outputs(res, profile, brand, tmp_path, png=False, pdf=False)
+    assert any("Hausschrift X" in w and "nicht installiert" in w for w in res["report"]["warnings"])
     assert (tmp_path / "linkedin-native-card.md").is_file()
 
 
@@ -164,9 +167,45 @@ def test_cli_rejects_bad_option(tmp_path, capsys):
 def test_missing_rsvg_warning_lands_in_report_file(monkeypatch, tmp_path, profile, brand):
     import json as _json
     import make_card
-    real = make_card.shutil.which
-    monkeypatch.setattr(make_card.shutil, "which", lambda n: None if n == "rsvg-convert" else real(n))
+    import render
+    real = render.shutil.which
+    monkeypatch.setattr(render.shutil, "which", lambda n: None if n == "rsvg-convert" else real(n))
     res = render_card(profile, brand)
     make_card.write_outputs(res, profile, brand, tmp_path)
     warnings = _json.loads((tmp_path / "report.json").read_text())["warnings"]
     assert any("rsvg-convert" in w for w in warnings)
+
+
+def _photos(tmp_path, n):
+    from PIL import Image
+    out = []
+    for i in range(n):
+        p = tmp_path / f"s{i}.jpg"
+        Image.new("RGB", (80, 80), (40 * i, 120, 200)).save(p)
+        out.append({"image": str(p), "caption": f"Messe {i + 1} – ein sehr langer Untertitel für den Test"})
+    return out
+
+
+@pytest.mark.parametrize("n", [1, 2, 3, 5])
+def test_sticker_back_shows_photos_and_keeps_qr(tmp_path, profile, brand, n):
+    res = render_card(dict(profile, stickers=_photos(tmp_path, n)), brand, back_style="stickers")
+    assert res["back"].count("data:image/jpeg;base64,") == min(n, 3)
+    assert "Messe 1" in res["back"]
+    assert res["report"]["text_fits"] is True
+    if n > 3:
+        assert any("Sticker" in w for w in res["report"]["warnings"])
+
+
+def test_sticker_back_without_stickers_falls_back(profile, brand):
+    res = render_card(profile, brand, back_style="stickers")
+    assert "mara@example.com" in res["back"]
+    assert any("Sticker" in w for w in res["report"]["warnings"])
+
+
+@pytest.mark.skipif(not HAS_RSVG, reason="rsvg-convert fehlt")
+def test_sticker_back_qr_still_decodes(tmp_path, profile, brand):
+    cv2 = pytest.importorskip("cv2")
+    from render import svg_to_png
+    res = render_card(dict(profile, stickers=_photos(tmp_path, 3)), brand, back_style="stickers")
+    png = svg_to_png(res["back"], tmp_path / "b.png", 1400)
+    assert cv2.QRCodeDetector().detectAndDecode(cv2.imread(str(png)))[0] == "https://www.linkedin.com/in/mara-beispiel/"

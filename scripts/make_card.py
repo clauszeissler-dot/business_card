@@ -655,6 +655,45 @@ def icon(c: Canvas, name, x, y, size, color):
     )
 
 
+def sticker_column(c: Canvas, ctx, x, y, w, h):
+    """Bis zu drei Begegnungsfotos als Polaroid-Sticker (wie die Sticker der LinkedIn-Karte)."""
+    s = c.s
+    items = ctx["stickers"][:3]
+    n = len(items)
+    size = min(w * (0.62 if n == 1 else 0.5 if n == 2 else 0.42), h * (0.62 if n < 3 else 0.46))
+    frame, cap_h = size * 0.07, 3.0 * s
+    # (x-Anteil, y-Anteil, Winkel); gezeichnet in Listenreihenfolge, spätere liegen oben.
+    # Bei drei Fotos liegt das untere zuerst, damit alle Bildunterschriften sichtbar bleiben.
+    spots = {1: [(0.5, 0.4, -4)], 2: [(0.0, 0.1, -6), (1.0, 0.75, 5)],
+             3: [(0.5, 1.0, 3), (0.0, 0.0, -6), (1.0, 0.08, 5)]}[n]
+    order = [0, 1, 2][:n] if n < 3 else [2, 0, 1]  # Foto-Index je Platz: 1. Foto oben links
+    angles = [a for _, _, a in spots]
+    for slot, i in enumerate(order):
+        st = items[i]
+        fxr, fyr, _ = spots[slot]
+        fx = x + (w - size - 2 * frame) * fxr
+        fy = y + (h - size - 2 * frame - cap_h) * fyr
+        cx, cy = fx + size / 2 + frame, fy + (size + 2 * frame + cap_h) / 2
+        fw, fh = size + 2 * frame, size + 2 * frame + cap_h
+        cid = c.id("st")
+        c.defs.append(f'<clipPath id="{cid}"><rect x="{_fmt(fx + frame)}" y="{_fmt(fy + frame)}" '
+                      f'width="{_fmt(size)}" height="{_fmt(size)}"/></clipPath>')
+        lines, fs, _ = fit_text(st.get("caption", ""), size, 2.1 * s, 2.0 * s, 1)
+        cap = (f'<text x="{_fmt(cx)}" y="{_fmt(fy + frame + size + cap_h * 0.72)}" font-family="{ctx["font_b"]}" '
+               f'font-size="{_fmt(fs)}" font-weight="600" fill="#1F2937" text-anchor="middle">{esc(lines[0])}</text>'
+               if lines else "")
+        if lines:
+            c.min_contrast = min(c.min_contrast, contrast_ratio("#1F2937", "#FFFFFF"))
+        c.add(
+            f'<g transform="rotate({angles[slot]} {_fmt(cx)} {_fmt(cy)})">'
+            f'<rect x="{_fmt(fx + 0.5 * s)}" y="{_fmt(fy + 0.7 * s)}" width="{_fmt(fw)}" height="{_fmt(fh)}" '
+            f'rx="{_fmt(0.6 * s)}" fill="#000000" opacity="0.18"/>'
+            f'<rect x="{_fmt(fx)}" y="{_fmt(fy)}" width="{_fmt(fw)}" height="{_fmt(fh)}" rx="{_fmt(0.6 * s)}" fill="#FFFFFF"/>'
+            f'<image href="{st["href"]}" x="{_fmt(fx + frame)}" y="{_fmt(fy + frame)}" width="{_fmt(size)}" '
+            f'height="{_fmt(size)}" preserveAspectRatio="xMidYMid slice" clip-path="url(#{cid})"/>{cap}</g>'
+        )
+
+
 def back(c: Canvas, ctx, pal):
     s = c.s
     p = ctx["profile"]
@@ -689,6 +728,9 @@ def back(c: Canvas, ctx, pal):
     ix1 = qx - 5 * s if qr_right else c.x1
     iw = ix1 - ix0
     on_dark = not is_light(surface)
+    if ctx.get("stickers"):
+        sticker_column(c, ctx, ix0, c.y0, iw, c.y1 - c.y0)
+        return qr_info
     contacts = []
     for key in ("email", "phone", "website", "location"):
         if p.get(key):
@@ -744,7 +786,7 @@ def back(c: Canvas, ctx, pal):
 
 def render_card(profile: dict, brand: dict, layout="classic", pattern="dots", theme="light", fmt="eu",
                 corners="soft", photo_shape="circle", intensity="normal", lang="de", qr_label=None,
-                photo_on_front=False):
+                photo_on_front=False, back_style="contact"):
     """Rendert Vorder- und Rückseite. Rückgabe: {'front': svg, 'back': svg, 'report': dict}."""
     for value, allowed, label in ((layout, LAYOUTS, "Layout"), (pattern, PATTERNS, "Muster"),
                                   (theme, THEMES, "Farbschema"), (fmt, FORMATS, "Format"),
@@ -762,7 +804,14 @@ def render_card(profile: dict, brand: dict, layout="classic", pattern="dots", th
     fonts = brand.get("fonts") or {}
     head = _safe_font(fonts.get("heading"), "Inter")
     body = _safe_font(fonts.get("body"), head)
-    stack = "'Helvetica Neue', Helvetica, Arial, sans-serif"
+    sans_stack = "'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+    serif_stack = "'Source Serif 4', Georgia, 'Times New Roman', serif"
+    try:
+        from extract_ci import classify_font
+    except ImportError:  # pragma: no cover
+        classify_font = lambda n: "sans"  # noqa: E731
+    stack_h = serif_stack if classify_font(head) == "serif" else sans_stack
+    stack_b = serif_stack if classify_font(body) == "serif" else sans_stack
     ctx = {
         "profile": profile,
         "layout": layout,
@@ -771,10 +820,11 @@ def render_card(profile: dict, brand: dict, layout="classic", pattern="dots", th
         "lang": lang,
         "photo_shape": photo_shape,
         "opacity": INTENSITY[intensity],
-        "font_h": f"'{head}', '{body}', {stack}",
-        "font_b": f"'{body}', {stack}",
+        "font_h": f"'{head}', {stack_h}",
+        "font_b": f"'{body}', {stack_b}",
         "photo": _load_image(profile.get("photo"), warnings, "Foto", allow_svg=False),
         "photo_on_front": photo_on_front,
+        "stickers": [],
         "logo": _load_image(brand.get("logo"), warnings, "Logo"),
         "logo_dark": _load_image(brand.get("logo_on_dark"), warnings, "Logo (dunkel)"),
         "linkedin_url": linkedin_url,
@@ -798,6 +848,18 @@ def render_card(profile: dict, brand: dict, layout="classic", pattern="dots", th
     front_c = Canvas(fmt, "front", uid)
     FRONTS[layout](front_c, ctx, pal)
     back_c = Canvas(fmt, "back", uid)
+    if back_style not in ("contact", "stickers"):
+        raise ValueError(f"Unbekannte Rückseite: {back_style!r}. Erlaubt: contact, stickers")
+    if back_style == "stickers":
+        raw = profile.get("stickers") or []
+        if len(raw) > 3:
+            warnings.append(f"Sticker: nur die ersten 3 von {len(raw)} Fotos passen auf die Rückseite.")
+        for st in raw[:3]:
+            href = _load_image(st.get("image") if isinstance(st, dict) else st, warnings, "Sticker-Foto", allow_svg=False)
+            if href:
+                ctx["stickers"].append({"href": href, "caption": (st.get("caption", "") if isinstance(st, dict) else "")})
+        if not ctx["stickers"]:
+            warnings.append("Sticker-Rückseite gewählt, aber keine Fotos unter profile.stickers – Kontaktrückseite genutzt.")
     qr_info = back(back_c, ctx, pal)
 
     if f["print"] and corner_r:
@@ -837,27 +899,7 @@ def render_card(profile: dict, brand: dict, layout="classic", pattern="dots", th
 # Dateien schreiben
 # ---------------------------------------------------------------------------
 
-def _rsvg(svg_path: Path, out: Path, fmt_key: str, kind="png"):
-    exe = shutil.which("rsvg-convert")
-    if not exe:
-        return False
-    f = FORMATS[fmt_key]
-    if kind == "png":
-        if f["unit"] == "mm":
-            px = round((f["w"] + 2 * f["bleed"]) / 25.4 * 300)
-            args = [exe, "-w", str(px)]
-        else:
-            args = [exe, "-z", "2"]
-        subprocess.run(args + ["-o", str(out), str(svg_path)], check=True)
-    return True
-
-
-def _pdf(svgs, out: Path):
-    exe = shutil.which("rsvg-convert")
-    if not exe:
-        return False
-    subprocess.run([exe, "-f", "pdf", "-o", str(out)] + [str(p) for p in svgs], check=True)
-    return True
+BUNDLED_FONTS = {"inter", "sora", "source serif 4"}
 
 
 def preview_html(result, profile, brand):
@@ -915,25 +957,31 @@ def font_installed(name):
 
 
 def write_outputs(result, profile, brand, out: Path, png=True, pdf=True):
+    from render import svg_to_png, svgs_to_pdf
+
     out.mkdir(parents=True, exist_ok=True)
-    if (png or pdf) and not shutil.which("rsvg-convert"):
-        result["report"]["warnings"].append("rsvg-convert fehlt: nur SVG erzeugt (PNG/PDF: brew install librsvg "
-                                            "bzw. apt install librsvg2-bin).")
     for fam in dict.fromkeys((result["report"]["fonts"] or {}).values()):
-        if font_installed(fam) is False:
+        if fam.lower() not in BUNDLED_FONTS and font_installed(fam) is not True:
             result["report"]["warnings"].append(
-                f"Schrift „{fam}“ ist nicht installiert: PNG/PDF nutzen eine Ersatzschrift. Schrift installieren "
-                "(z. B. von Google Fonts) oder eine ähnliche, installierte Schrift in brand.json eintragen.")
+                f"Schrift „{fam}“ ist hier nicht installiert: PNG/PDF nutzen die mitgelieferte Ersatzschrift "
+                "(Inter bzw. Source Serif 4). Schrift installieren oder eine freie Schrift in brand.json eintragen.")
     fmt = result["report"]["format"]
+    f = FORMATS[fmt]
     files = {}
     for side in ("front", "back"):
         p = out / f"{side}.svg"
         p.write_text(result[side], encoding="utf-8")
         files[f"{side}.svg"] = p
-        if png and _rsvg(p, out / f"{side}.png", fmt):
-            files[f"{side}.png"] = out / f"{side}.png"
-    if pdf and FORMATS[fmt]["print"] and _pdf([out / "front.svg", out / "back.svg"], out / "card-print.pdf"):
+        if png:
+            width = round((f["w"] + 2 * f["bleed"]) / 25.4 * 300) if f["unit"] == "mm" else int(f["w"] * 2)
+            files[f"{side}.png"] = svg_to_png(result[side], out / f"{side}.png", width)
+    if pdf and f["print"]:
+        kind = svgs_to_pdf([result["front"], result["back"]], out / "card-print.pdf", fmt)
         files["card-print.pdf"] = out / "card-print.pdf"
+        if kind == "raster":
+            result["report"]["warnings"].append(
+                "rsvg-convert fehlt: card-print.pdf ist ein Raster-PDF (600 dpi). Für ein Vektor-PDF "
+                "librsvg installieren (brew install librsvg bzw. apt install librsvg2-bin).")
     (out / "preview.html").write_text(preview_html(result, profile, brand), encoding="utf-8")
     (out / "report.json").write_text(json.dumps(result["report"], ensure_ascii=False, indent=2), encoding="utf-8")
     try:
@@ -978,6 +1026,8 @@ def main(argv=None):
     ap.add_argument("--intensity", default="normal", choices=INTENSITY)
     ap.add_argument("--lang", default="de", choices=["de", "en"])
     ap.add_argument("--qr-label", help="eigener Text unter dem QR-Code (max. 40 Zeichen)")
+    ap.add_argument("--back", default="contact", choices=["contact", "stickers"],
+                    help="Rückseite: Kontaktdaten oder Begegnungsfotos (profile.stickers)")
     ap.add_argument("--gallery", action="store_true", help="zusätzlich alle Layouts als gallery.html")
     ap.add_argument("--no-png", action="store_true")
     ap.add_argument("--no-pdf", action="store_true")
@@ -999,8 +1049,12 @@ def main(argv=None):
             brand[key] = str((base / brand[key]).resolve())
     if profile.get("photo") and not Path(profile["photo"]).is_absolute():
         profile["photo"] = str((Path(args.profile).parent / profile["photo"]).resolve())
+    for st in profile.get("stickers") or []:
+        if isinstance(st, dict) and st.get("image") and not Path(st["image"]).is_absolute():
+            st["image"] = str((Path(args.profile).parent / st["image"]).resolve())
     opts = dict(layout=args.layout, pattern=args.pattern, theme=args.theme, fmt=args.fmt, corners=args.corners,
-                photo_shape=args.photo_shape, intensity=args.intensity, lang=args.lang, qr_label=args.qr_label)
+                photo_shape=args.photo_shape, intensity=args.intensity, lang=args.lang, qr_label=args.qr_label,
+                back_style=args.back)
     try:
         result = render_card(profile, brand, **opts)
     except ValueError as e:

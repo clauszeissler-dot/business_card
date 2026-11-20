@@ -16,6 +16,10 @@ Stand: 2026-11-20
 | S4 | A-005 | scripts/parse_profile.py + Tests | erledigt | pytest |
 | S5 | A-006 | scripts/extract_ci.py + Tests | erledigt | pytest inkl. SSRF |
 | S6 | A-008 | SKILL.md, evals, Symlink | erledigt (LLM-Eval offen) | Eval-Durchlauf |
+| S8 | A-010, A-011, A-012 | scripts/extras.py, Sticker-Rückseite + Tests | erledigt | pytest, Sichtprüfung |
+| S9 | A-013 | scripts/wallet.py (Apple .pkpass, Google-Save-Link) + Tests mit Testschlüsseln | erledigt (Echttest offen) | pytest, Signaturprüfung |
+| S10 | A-014 | render.py (resvg + Schriften), App-Abschnitt in SKILL.md, ZIP-Builder | erledigt (App-Test offen) | pytest, ZIP-Inhalt |
+| S11 | A-015, A-016 | Dienst auf Vercel (Login, Wallet, Share, Rechtstexte) | offen | Deploy-Nachweis, Missbrauchstests |
 | S7 | A-009 | README DE/EN, Beispiele, CRA, Commit | lokal erledigt, Push offen | Repo-Standard-Check |
 
 ## Aktueller Zielabgleich

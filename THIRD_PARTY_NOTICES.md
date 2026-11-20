@@ -4,7 +4,11 @@
 | --- | --- | --- | --- |
 | [segno](https://github.com/heuer/segno) | 1.6.6 | BSD-3-Clause | QR-Code-Erzeugung (Laufzeit) |
 | [Lucide](https://lucide.dev) (`lucide-static`) | 0.460.0 | ISC | Icons mail, phone, globe, map-pin, building-2, scan-line; unverändert in `assets/icons/lucide/`, Lizenz in `assets/icons/lucide/LICENSE` |
-| pytest, opencv-python-headless, pillow | siehe `pyproject.toml` | MIT / Apache-2.0 / MIT-CMU | nur Tests und Repo-Bilder |
+| [resvg-py](https://pypi.org/project/resvg-py/) | 0.5.0 | MIT (resvg: Apache-2.0/MIT) | SVG → PNG ohne Systemprogramme |
+| [cryptography](https://cryptography.io) | 46.0.3 | Apache-2.0 / BSD-3-Clause | Signatur von Wallet-Pässen |
+| [Pillow](https://python-pillow.org) | 11.0.0 | MIT-CMU | Pass-Bilder, vCard-Foto, Raster-PDF |
+| Inter, Sora, Source Serif 4 (Google Fonts) | Stand 20.11.2026 | SIL OFL 1.1 | eingebettete Schriften in `assets/fonts/`, Lizenzen dort, Prüfsummen in `SHA256SUMS` |
+| pytest, opencv-python-headless | siehe `pyproject.toml` | MIT / Apache-2.0 | nur Tests |
 | librsvg (`rsvg-convert`), poppler (`pdftotext`) | Systemprogramme | LGPL / GPL | optional, nicht mitgeliefert |
 
 Icon-Herkunft (SHA-256, abgerufen 20.11.2026 von `unpkg.com/lucide-static@0.460.0/icons/`):

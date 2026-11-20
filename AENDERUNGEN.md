@@ -13,6 +13,13 @@ Zweck: [ZIEL.md](ZIEL.md) · Lösungen: [ENTSCHEIDUNGEN.md](ENTSCHEIDUNGEN.md) �
 | A-007 | 2026-11-20 Claus, Chat | Business Card im CI-Stil erstellen | SVG/PNG/PDF vorne+hinten, QR dekodiert zur Profil-URL | geprüft | S3 | QR-Decode je Layout (OpenCV) = Profil-URL; PDF/PNG erzeugt; evals/run_offline.py 13/13 |
 | A-008 | 2026-11-20 Claus, Chat | Als Skill nutzbar | SKILL.md, Evals, Einbindung unter ~/.claude/skills | umgesetzt | S6 | SKILL.md, evals.json, Symlink ~/.claude/skills; Agenten-Eval (LLM) noch nicht gelaufen |
 | A-009 | 2026-11-20 Claus, Chat | Repo zum Teilen über LinkedIn, „möglichst perfekt“ | README DE+EN, Banner, Lizenz, Beispielbilder, CRA-Doku, lokaler Commit | umgesetzt | S7 | Live: github.com/clauszeissler-dot/business_card (main 70e333b), frischer Klon 182 Tests grün; Social Preview offen (nur Web-Oberfläche) |
+| A-010 | 2026-11-20 Claus, Chat | Sperrbildschirm-Bild mit Gültigkeit in Tagen | PNG iPhone/Android, „gültig bis“, Erinnerung (.ics) und Kurzbefehl-Anleitung | geprüft | S8 | test_extras.py (Uhr-/Tastenzone, Datum, EN), QR-Decode am PNG, ICS; Sichtprüfung iPhone/Android |
+| A-011 | 2026-11-20 Claus, Chat | vCard | .vcf 3.0 mit Foto/Kontakt, optional QR mit vCard | geprüft | S8 | test_extras.py (Felder, Faltung, Foto, Injection) |
+| A-012 | 2026-11-20 Claus, Chat | Sticker/Begegnungsfotos auf der Rückseite (wie LinkedIn) | Rückseite „stickers“ mit bis zu 3 Fotos + Bildunterschrift | geprüft | S8 | test_make_card.py (1–5 Sticker, Fallback, QR-Decode); Sichtprüfung |
+| A-013 | 2026-11-20 Claus, Chat | Apple- und Google-Wallet-Pässe mit Ablauf in Tagen | pass.json/.pkpass (signiert, Testzertifikat) und Google-Save-Link (JWT, Testschlüssel) | umgesetzt | S9 | test_wallet.py: .pkpass signiert, OpenSSL-Verify inkl. Manipulation; Google-JWT verifiziert; echter Test mit Claus' Zertifikat/Issuer offen |
+| A-014 | 2026-11-20 Claus, Chat | Nutzung in Claude-App und ChatGPT | Rendering ohne Systemprogramme (resvg + eingebettete Schriften), App-Weg für CI, ZIP zum Hochladen | umgesetzt | S10 | render.py (resvg + Schriften), App-Abschnitt SKILL.md, ZIP + test_build_zip.py; Test in Claude-/ChatGPT-App offen |
+| A-015 | 2026-11-20 Claus, Chat | LinkedIn-Developer-App: Anmeldung für alle Nutzer, Karte posten | OIDC-Login (Name, Foto, E-Mail) und Share im öffentlichen Dienst | offen | S11 | wartet auf Dienst (A-016) |
+| A-016 | 2026-11-20 Claus, Chat | Öffentlicher Dienst auf Vercel/Netlify für Wallet-Signatur und LinkedIn | Deploy auf *.vercel.app, Geheimnisse nur in Vercel, DSGVO-Seiten, Missbrauchsschutz | offen | S11 | braucht Handgriffe Claus (Zertifikate, Issuer, LinkedIn-Produkte) |
 
 ## Statusregeln
 

@@ -14,7 +14,8 @@ Trust Boundaries:
   1. Website-URL der Nutzerin/des Nutzers -> HTTP-Abruf (SSRF-Risiko)
   2. Fremdes HTML/CSS/Logo der Website -> Parser und SVG-Ausgabe
   3. Profil-Eingaben (CSV, PDF-Text, JSON) -> SVG/HTML-Ausgabe (Injection)
-  4. Pfade aus JSON (Foto, Logo) -> Dateizugriff
+  4. Pfade aus JSON (Foto, Logo, Sticker) -> Dateizugriff
+  5. Signaturgeheimnisse (Apple-.p12, Google-Dienstkonto) -> wallet.py
 Invarianten:
   - Kein Abruf von Loopback, privaten, Link-Local-, Multicast- oder
     reservierten Adressen, auch nicht über Weiterleitungen oder DNS-Wechsel.
@@ -23,6 +24,9 @@ Invarianten:
   - Fremde Bilder werden nur als <image> mit data:-URI eingebunden, nie inline
     als SVG-Markup; nur PNG/JPEG/WebP/SVG/GIF mit Größenlimit.
   - LinkedIn-URL im QR-Code ist eine validierte https://www.linkedin.com/in/<slug>-Adresse.
+  - Signaturgeheimnisse nur aus Dateien/Umgebungsvariablen, nie als CLI-Wert, nie in Ausgaben,
+    nie im Chat einer KI-App; die Skill-Anleitung lehnt Schlüssel im Chat ab.
+  - vCard/ICS: Zeilenumbrüche und Trennzeichen in Werten werden maskiert (keine Feld-Injection).
 Gate: S1 (URL-Abruf, externe Inputs)
 Nachweise: tests/test_security.py (Missbrauch), tests/test_extract_ci.py (Kontrolle)
 ```
@@ -35,6 +39,8 @@ Nachweise: tests/test_security.py (Missbrauch), tests/test_extract_ci.py (Kontro
 | Ressourcenverbrauch | Timeout 10 s, max. 2 MB HTML/CSS, 1 MB Logo, max. 6 Stylesheets | `test_security.py` |
 | Markup-Injection | `xml.sax.saxutils.escape` für alle Texte; Attribute gequotet | `test_security.py` |
 | Aktive Inhalte in Logos | Logo nur als `<image href="data:...">`; Browser führen darin keine Skripte aus | `test_security.py` |
+| Fälschung von Wallet-Pässen | PKCS#7-Signatur (detached) über manifest.json; Manipulation bricht die Prüfung | `test_wallet.py` (OpenSSL-Verify inkl. Manipulation) |
+| vCard-Feld-Injection | Maskierung von CR/LF, `;`, `,` | `test_extras.py` |
 | Falsche QR-Ziele | URL-Validierung mit Regex auf LinkedIn-Profilpfad | `test_parse_profile.py`, `test_make_card.py` |
 
 ## Restgrenzen

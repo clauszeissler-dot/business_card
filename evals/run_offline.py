@@ -80,6 +80,17 @@ res = render_card({"name": "Maximiliane Alexandra von Hohenzollern-Sigmaringen",
                    "linkedin_url": "linkedin.com/in/max-hz"}, {})
 check(5, "Name nicht gekürzt", "Name" not in res["report"]["truncated"])
 
+# Fall 6
+import datetime as _dt  # noqa: E402
+from extras import lockscreen_svg, valid_until, vcard  # noqa: E402
+prof6 = {"name": "Mara Beispiel", "linkedin_url": "linkedin.com/in/mara-beispiel", "email": "mara@example.com"}
+until = valid_until(3)
+ls = lockscreen_svg(prof6, {}, "iphone", until, "Messe Essen")
+check(6, "Datum heute+2", until == _dt.date.today() + _dt.timedelta(days=2) and until.strftime("%d.%m.%Y") in ls["svg"])
+check(6, "Event", "Messe Essen" in ls["svg"])
+vc = vcard(prof6)
+check(6, "vCard", "FN:Mara Beispiel" in vc and "URL:https://www.linkedin.com/in/mara-beispiel/" in vc)
+
 failed = [r for r in results if not r[2]]
 for case, name, ok in results:
     print(f"{'PASS' if ok else 'FAIL'}  Fall {case}: {name}")

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:3154519c-ed00-c435-e7e7-c48e3c16ebb2",
+  "serialNumber": "urn:uuid:df51b357-e2c3-b5c2-aab5-e732fca229e4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-20T12:10:54Z",
+    "timestamp": "2026-11-20T13:05:43Z",
     "tools": {
       "components": [
         {
@@ -41,7 +41,7 @@
     ],
     "component": {
       "name": "business-card",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "Agent-Skill: Business Card im eigenen CI plus Einstellungsanleitung für die native LinkedIn Business Card",
       "properties": [
         {
@@ -70,8 +70,8 @@
         }
       ],
       "type": "application",
-      "bom-ref": "pkg:pypi/business-card@1.0.0",
-      "purl": "pkg:pypi/business-card@1.0.0",
+      "bom-ref": "pkg:pypi/business-card@1.1.0",
+      "purl": "pkg:pypi/business-card@1.1.0",
       "licenses": [
         {
           "license": {
@@ -99,7 +99,7 @@
       },
       {
         "name": "cdx:bom:componentSrcFiles",
-        "value": ".venv/lib/python3.12/site-packages/iniconfig-2.3.1.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/numpy-2.5.5.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/opencv_python_headless-4.10.0.84.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/packaging-26.3.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/pillow-11.0.0.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/pluggy-1.7.0.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/pytest-8.3.4.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/segno-1.6.6.dist-info/METADATA\\npyproject.toml\\nuv.lock"
+        "value": ".venv/lib/python3.12/site-packages/cffi-2.1.1.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/cryptography-46.0.3.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/iniconfig-2.3.1.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/numpy-2.5.5.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/opencv_python_headless-4.10.0.84.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/packaging-26.3.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/pillow-11.0.0.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/pluggy-1.7.0.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/pycparser-3.12.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/pytest-8.3.4.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/resvg_py-0.5.0.dist-info/METADATA\\n.venv/lib/python3.12/site-packages/segno-1.6.6.dist-info/METADATA\\npyproject.toml\\nuv.lock"
       }
     ],
     "manufacturer": {
@@ -116,6 +116,509 @@
     }
   },
   "components": [
+    {
+      "group": "",
+      "name": "cffi",
+      "version": "2.1.1",
+      "purl": "pkg:pypi/cffi@2.1.1",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/9e/ef/008a1939e372c06329a3fce4279c02f328488f3526744906eeec3da7ad5f/cffi-2.1.1.tar.gz",
+          "comment": "sdist"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/70/d2/16d99a0c4948febc0ebd133a13b2f688ff7f8cb04da971e1128872ce0c03/cffi-2.1.1-cp311-cp311-macosx_10_15_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/cd/95/31b535a9f0220ae9f357de4a08d57ce89cb417653c2fd9f075f50822a388/cffi-2.1.1-cp311-cp311-macosx_11_0_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/ad/5a/4707a0dc1f203f5dde5a907b0d4e3c25d71120241048bd5bc6f1bb9d4e71/cffi-2.1.1-cp311-cp311-manylinux1_i686.manylinux2014_i686.manylinux_2_17_i686.manylinux_2_5_i686.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/ad/66/c19feabb28485b6e0bbaaafa90837a1ef5d302e90f2178bd33f17a49879b/cffi-2.1.1-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/a7/92/500760486c8baab49a7a8a58ba7fc3355ec3974b454b8a09e528efde9e1d/cffi-2.1.1-cp311-cp311-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/a5/a7/a67c733254d6e7373f7822f8082d8d6beade791e0cf12a7611f376fa61c7/cffi-2.1.1-cp311-cp311-manylinux2014_s390x.manylinux_2_17_s390x.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/f7/a4/4399daaf8f7dfee9d7c3327fdb0426ee041cc63edc358b93911ceb2bfc7a/cffi-2.1.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/28/f7/dabe6da2466ecbd82dc62e7342dc6b1065dad990c06f00f0ede9ebf2a0ed/cffi-2.1.1-cp311-cp311-musllinux_1_2_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/ce/87/616202d8e51342c07d2534c510111c4cc37201775ce8f60802c9335d1edd/cffi-2.1.1-cp311-cp311-musllinux_1_2_i686.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/b4/c6/ab025d75d2c26c19b087c0124e75ee31cb65032f4fe345d356d8c507ab97/cffi-2.1.1-cp311-cp311-musllinux_1_2_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/db/e2/7e8109f65445bdc673a7b54f02c677de462db75674220fd1335efc8eb598/cffi-2.1.1-cp311-cp311-win32.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/73/c0/77ba02423c2f7d7091143c45cd49e0e6575c4c1967394bb542bd923a9b74/cffi-2.1.1-cp311-cp311-win_amd64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/7c/47/9f1f85f9672ceda4984dc6c4f8824e8558992a2972c3d3c81fb8eb28d4ba/cffi-2.1.1-cp311-cp311-win_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/10/69/43965eccfdead3b9220015fd1320e117be8c6ed01a62ffab76eeb752f5d5/cffi-2.1.1-cp312-cp312-macosx_10_15_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/54/7d/16e5a096677b5e313ca80cd5e5170efa3ea44624a82bb111925522da64b1/cffi-2.1.1-cp312-cp312-macosx_11_0_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/56/e6/8941622732edec876dd17d0453dce07317ae96db34f2ec1436c9d3785986/cffi-2.1.1-cp312-cp312-manylinux1_i686.manylinux2014_i686.manylinux_2_17_i686.manylinux_2_5_i686.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/44/de/f98430906df1545ffde0d543dd124a7a439bc2cd32b36b9c53f805df7333/cffi-2.1.1-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/6a/5b/717f1526b9957b34456313c31645c5b82b8fb5c3fe9e4752999be7128bfc/cffi-2.1.1-cp312-cp312-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/64/b3/f8aa4f3e34986c7e4ec45072d1b1b9dd295b6b18007b45518d79726dd725/cffi-2.1.1-cp312-cp312-manylinux2014_s390x.manylinux_2_17_s390x.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/b1/db/dceb9dd5b231e1da801793f8acc9f3c52a7e1afe40bb1aae37e02b0faad5/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/a0/d2/6cd24ae3be000a634109c247d1475d62e5616d0dc78c82770942ec384248/cffi-2.1.1-cp312-cp312-musllinux_1_2_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/cb/52/3fa190537004dd7f0ab860a6dc7c0175b8667f68d1e618a46f5498d30250/cffi-2.1.1-cp312-cp312-musllinux_1_2_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/80/fb/0bb75b7039588c074b37ae99f40d9bfddf990ecb2fbc346ebccd2e56b9be/cffi-2.1.1-cp312-cp312-win32.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/d9/79/615cc094e2fb508cade7de88d3b4f6c4ec2bab695c97bce9153dc65aadf5/cffi-2.1.1-cp312-cp312-win_amd64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/70/c6/d0ea84713fe46b243a436a18fcd47d639732747e21635c8a27191b06dc30/cffi-2.1.1-cp312-cp312-win_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/9d/f4/035513d4117049066b4779dc3b7c0c0fdad175fa13731c9f4003f1cd1478/cffi-2.1.1-cp313-cp313-ios_13_0_arm64_iphoneos.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/76/af/2aeb4dbb5fc41a04161ae9ff1518de7cec08e164f44a8ce6a4cf7fd2cd1d/cffi-2.1.1-cp313-cp313-ios_13_0_arm64_iphonesimulator.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/a7/46/2e5fdde8555706dd98139a910ca11be02809f3f605ce956f655d0214e100/cffi-2.1.1-cp313-cp313-macosx_10_15_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/55/41/4c7042f317b9217502988f0873af87e16ad606dc20f84e546e3e6ce9764c/cffi-2.1.1-cp313-cp313-macosx_11_0_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/43/1f/1c3d90d91811c8f86ced9ed637956c54bfe5b79ca98fe976d7f8c8979f6b/cffi-2.1.1-cp313-cp313-manylinux1_i686.manylinux2014_i686.manylinux_2_17_i686.manylinux_2_5_i686.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/37/6f/3b5ce4c3b2192d250f04908f2bfd91ef34552ec8f7716a5d4abdb8d67bb2/cffi-2.1.1-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/02/10/4b3c75dde3d9663c9e02ba05c2668b954f671d4bbe346413ca8c696b295a/cffi-2.1.1-cp313-cp313-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/df/62/14f74b9543e605d17701dc797b815958b8bb70b7624ce1b832ddad48ed6c/cffi-2.1.1-cp313-cp313-manylinux2014_s390x.manylinux_2_17_s390x.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/95/95/86342356ff5953b3fb06f7ef7c5bee212d45e770abc7218d451b9148313c/cffi-2.1.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/eb/ff/7b3429ff53aafe931ed8a5fc69f481bbef7ba6de87ddcbb63d08f483f613/cffi-2.1.1-cp313-cp313-musllinux_1_2_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/34/34/a95870b9221e09cf4f2ce3178b1a210abdfe63a1bd357da940418d7b8d15/cffi-2.1.1-cp313-cp313-musllinux_1_2_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/70/ea/839b50531021a647fb5e929f72cf97bc1ff702b5472166164b5b6e76b851/cffi-2.1.1-cp313-cp313-win32.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/60/a6/8b149b2c3f2e11aaa1618ef64500b45f50f22c57a977a4dff1aff1f91042/cffi-2.1.1-cp313-cp313-win_amd64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/01/9a/11f687cb39d6a3504060d5242f04f48c735afb4d3d533958a20594890cb2/cffi-2.1.1-cp313-cp313-win_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/d3/7b/d6bbf82b8b96e7391438898c42f5bd96dd02030fd5b64937d248220003e2/cffi-2.1.1-cp314-cp314-ios_13_0_arm64_iphoneos.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/94/e6/bcc91b283be94735e268487a054004f0aa19947b6348fa367db53230abc8/cffi-2.1.1-cp314-cp314-ios_13_0_arm64_iphonesimulator.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/d9/99/c4b0c17cacdc9c3b8f280026286a9826d6a208c0f047591a3c3ce99b91fd/cffi-2.1.1-cp314-cp314-macosx_10_15_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/b3/a9/9db617d05d7367c1ad0ab00b3aa6e6f9281edd689b4ee9ea0e5a84e89c97/cffi-2.1.1-cp314-cp314-macosx_11_0_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/67/b8/b42132ca113dc567d37684437b46ca1dafc885902b02a110a02d5b511857/cffi-2.1.1-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/80/10/c5c0cbf0a657aecf59ef511409734230bf556f05a0d6c9eed7aa5c0a0166/cffi-2.1.1-cp314-cp314-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/d5/6c/bfa0b87b03b9238148beca990292843c9396ba069b54496596594173de7b/cffi-2.1.1-cp314-cp314-manylinux2014_s390x.manylinux_2_17_s390x.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/e9/02/4e7d553a7ac4b4238b38b3c1b80d486e9d4436f8d2acbf87a0997fe3f402/cffi-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/82/1d/a4aaf9babd75acb4d5f223bff71533bee748dd770a382619a798960ee9ba/cffi-2.1.1-cp314-cp314-musllinux_1_2_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/81/10/5dc0e7bdd18e22107054288283380fc97a06ae3f1656a106908d666a3c88/cffi-2.1.1-cp314-cp314-musllinux_1_2_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/0b/e9/d0061c364cde06ee43168a0d076ac1da512cbc380d44767b844ba34fe2b6/cffi-2.1.1-cp314-cp314-win32.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/a7/06/1c3e01e3ba14c39f6d10bfbac52753b7e22259e38088e5cfe1d704918690/cffi-2.1.1-cp314-cp314-win_amd64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/87/5b/da4e39efe18eeb89cf580ea9cfc66b6a7c3eadb808fc0cc1d3a295cb5a5d/cffi-2.1.1-cp314-cp314-win_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/23/59/40338bf421c5accea1d45158170c87006ef1cd371b05c077e76476949728/cffi-2.1.1-cp314-cp314t-macosx_10_15_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/7d/47/5ecf1023850036e674c77ec4de86182d309ae344e39e7cba984b7df5d647/cffi-2.1.1-cp314-cp314t-macosx_11_0_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/2a/9c/92934c3bea9f785b23eba304538c0b4d37a2a96d2431eb3a1bc87a11aa19/cffi-2.1.1-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/4d/45/ba4c93527bc38616a8bd36488acb69a2212d60486794f0c1f318949bbb76/cffi-2.1.1-cp314-cp314t-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/80/e9/b6ef565e452acb932fb0cb5443f44a78efbd1233e566f02b5a83855e9115/cffi-2.1.1-cp314-cp314t-manylinux2014_s390x.manylinux_2_17_s390x.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/9a/95/eff5f0cee78d2eabc7eebffec40d3fc1876b5f3c95582e018bb4b99601f2/cffi-2.1.1-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/fa/01/579d39fb8bef00a335a23d83757b44feb24cd6345a2c451b64cb67b9c362/cffi-2.1.1-cp314-cp314t-musllinux_1_2_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/8d/b0/0b44f47c60b01b57b6e2bbd92343f13a85a1d93bc46ccf6e47e244acd99c/cffi-2.1.1-cp314-cp314t-musllinux_1_2_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/eb/d2/3b7176cb570a1d3e27faf67b72f591af508036e0d8b2be2ef9af9e8c84bb/cffi-2.1.1-cp314-cp314t-win32.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/56/78/31f00c1bcd97c9bbf55f1bfdf5bc809a5de8887473e90bb9960dca825e80/cffi-2.1.1-cp314-cp314t-win_amd64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/7b/1b/58496f2ed0a35de575250c02a43ab3cc2c04d494a88fed31c1cabc0fd176/cffi-2.1.1-cp314-cp314t-win_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/c1/8f/9ebe220eab48a093d1a5a5e339ab0dc7316eef3bb04d63c42f0251b61f50/cffi-2.1.1-cp315-cp315-ios_13_0_arm64_iphoneos.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/ff/69/844bad3ece306c4782c2ecb93597035b6690d48704b803914c199da1e8b3/cffi-2.1.1-cp315-cp315-ios_13_0_arm64_iphonesimulator.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/1b/8a/af668013284634733f02d683458a0728739c7d6ddb5e14cb0c20832266fe/cffi-2.1.1-cp315-cp315-macosx_10_15_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/0c/75/2f5207ff6d1a613133b23a5203cc0c2a628313b5eb3974d7956ae3c57950/cffi-2.1.1-cp315-cp315-macosx_11_0_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/e2/31/9e1313b0a6e30e91b3b3d3fff51ae99c857c07738e3afcce1f7334e1b7ab/cffi-2.1.1-cp315-cp315-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/50/e3/f6234a833e6e08c7007003074723c406559eecf9b48dfc97471e5a8eb7a0/cffi-2.1.1-cp315-cp315-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/0d/fc/5f74e293fced6edb51af3a46c4ccf6c23c9943774ecb375ddbd522c76add/cffi-2.1.1-cp315-cp315-manylinux2014_s390x.manylinux_2_17_s390x.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/44/16/29e6d01b388bef055ecd6ca8244b3f4d336bd09e92d5d892187b9601084e/cffi-2.1.1-cp315-cp315-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/a4/18/fa7f1f6857d5eb88a4ca99ffcbfb7c387a287ccc154c64a73e86314745d7/cffi-2.1.1-cp315-cp315-musllinux_1_2_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/e0/9f/e8e3dfa04a1b4c241f8c91faacad872b4d4efd051d49764ad4e2fd4b9fea/cffi-2.1.1-cp315-cp315-musllinux_1_2_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/f8/7e/8debeb04f1ab9fe2a6963964cd6f1aaf7192627b83926586a6a4e089c9fa/cffi-2.1.1-cp315-cp315-win32.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/e0/31/5158704cc474ab65c1647932e88be78dc0873f47130e253be38bcaf13d01/cffi-2.1.1-cp315-cp315-win_amd64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/cc/4b/b3a2da8570c704ffc0f9762cdc3ec0f02c8573798e0b5cf7f11c82bbb70f/cffi-2.1.1-cp315-cp315-win_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/d0/ef/5443574510a1207e6f6bc38ba6e1f1de36cb48fef07b2728bb896a21f430/cffi-2.1.1-cp315-cp315t-macosx_10_15_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/7e/ae/a56fa8c4686ad50e148fcbc8d3ae0d03915ff5c30d795058988c24118cef/cffi-2.1.1-cp315-cp315t-macosx_11_0_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/53/b2/6187f46f2912276a3ae284076109cc5c8680482f11f766ccf26db4a86427/cffi-2.1.1-cp315-cp315t-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/8a/f6/c3ad28bd19f77047a03084424fbd4cbe997303267c14423737324be0385d/cffi-2.1.1-cp315-cp315t-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/a0/cd/ccac9013a5bd9fd764de118674ab9c805b5ca10c19270d90ee273f8b2240/cffi-2.1.1-cp315-cp315t-manylinux2014_s390x.manylinux_2_17_s390x.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/52/86/2976131c639aead931c5bee5aba67e4b09fbeb8018b6f282f70803f923a7/cffi-2.1.1-cp315-cp315t-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/ac/0c/33a7aeab2f9c76918c52e084beb39c570db3588133412929e8ec06fab90b/cffi-2.1.1-cp315-cp315t-musllinux_1_2_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/e3/26/2cde30fdde421130bfc18f70395731a6e6b2053c6a1978a5258ff04e72fa/cffi-2.1.1-cp315-cp315t-musllinux_1_2_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/6d/cd/a361394c94b2129d604bb846f624a8e88255a3ee33129c434a00d715e64f/cffi-2.1.1-cp315-cp315t-win32.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/9b/b5/ba2b299993c26577d529b6ae29841f9e15b9fcf004d65f423f4fcf94ade9/cffi-2.1.1-cp315-cp315t-win_amd64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/aa/29/35e016098c814cd93de9cd320c66b5bfba14dc6ecedd3cb518fa7c408c69/cffi-2.1.1-cp315-cp315t-win_arm64.whl",
+          "comment": "wheel"
+        }
+      ],
+      "type": "library",
+      "bom-ref": "pkg:pypi/cffi@2.1.1",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": ".venv/lib/python3.12/site-packages/cffi-2.1.1.dist-info/METADATA"
+        },
+        {
+          "name": "SrcFile",
+          "value": "pyproject.toml"
+        },
+        {
+          "name": "cdx:python:requires_python",
+          "value": ">=3.10"
+        },
+        {
+          "name": "bsi:component:executable",
+          "value": "executable"
+        },
+        {
+          "name": "bsi:component:archive",
+          "value": "archive"
+        },
+        {
+          "name": "bsi:component:structured",
+          "value": "structured"
+        },
+        {
+          "name": "bsi:component:effectiveLicence",
+          "value": "NOASSERTION"
+        },
+        {
+          "name": "bsi:component:filename",
+          "value": "cffi-2.1.1-cp313-cp313-win_arm64.whl"
+        }
+      ],
+      "evidence": {
+        "identity": [
+          {
+            "field": "purl",
+            "confidence": 0.5,
+            "methods": [
+              {
+                "technique": "manifest-analysis",
+                "confidence": 0.5,
+                "value": ".venv/lib/python3.12/site-packages/cffi-2.1.1.dist-info/METADATA"
+              }
+            ],
+            "concludedValue": ".venv/lib/python3.12/site-packages/cffi-2.1.1.dist-info/METADATA"
+          }
+        ]
+      },
+      "tags": [
+        "native"
+      ]
+    },
     {
       "group": "",
       "name": "colorama",
@@ -174,6 +677,326 @@
               }
             ],
             "concludedValue": "uv.lock"
+          }
+        ]
+      }
+    },
+    {
+      "group": "",
+      "name": "cryptography",
+      "version": "46.0.3",
+      "purl": "pkg:pypi/cryptography@46.0.3",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/9f/33/c00162f49c0e2fe8064a62cb92b93e50c74a72bc370ab92f86112b33ff62/cryptography-46.0.3.tar.gz",
+          "comment": "sdist"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/1d/42/9c391dd801d6cf0d561b5890549d4b27bafcc53b39c31a817e69d87c625b/cryptography-46.0.3-cp311-abi3-macosx_10_9_universal2.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/1c/67/38769ca6b65f07461eb200e85fc1639b438bdc667be02cf7f2cd6a64601c/cryptography-46.0.3-cp311-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/5c/49/498c86566a1d80e978b42f0d702795f69887005548c041636df6ae1ca64c/cryptography-46.0.3-cp311-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/4b/0a/863a3604112174c8624a2ac3c038662d9e59970c7f926acdcfaed8d61142/cryptography-46.0.3-cp311-abi3-manylinux_2_28_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/64/02/b73a533f6b64a69f3cd3872acb6ebc12aef924d8d103133bb3ea750dc703/cryptography-46.0.3-cp311-abi3-manylinux_2_28_armv7l.manylinux_2_31_armv7l.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/25/d5/16e41afbfa450cde85a3b7ec599bebefaef16b5c6ba4ec49a3532336ed72/cryptography-46.0.3-cp311-abi3-manylinux_2_28_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/c9/56/e7e69b427c3878352c2fb9b450bd0e19ed552753491d39d7d0a2f5226d41/cryptography-46.0.3-cp311-abi3-manylinux_2_28_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/78/f6/50736d40d97e8483172f1bb6e698895b92a223dba513b0ca6f06b2365339/cryptography-46.0.3-cp311-abi3-manylinux_2_34_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/00/de/d8e26b1a855f19d9994a19c702fa2e93b0456beccbcfe437eda00e0701f2/cryptography-46.0.3-cp311-abi3-manylinux_2_34_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/8f/29/798fc4ec461a1c9e9f735f2fc58741b0daae30688f41b2497dcbc9ed1355/cryptography-46.0.3-cp311-abi3-manylinux_2_34_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/15/8d/03cd48b20a573adfff7652b76271078e3045b9f49387920e7f1f631d125e/cryptography-46.0.3-cp311-abi3-musllinux_1_2_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/fa/b1/ebacbfe53317d55cf33165bda24c86523497a6881f339f9aae5c2e13e57b/cryptography-46.0.3-cp311-abi3-musllinux_1_2_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/96/92/8a6a9525893325fc057a01f654d7efc2c64b9de90413adcf605a85744ff4/cryptography-46.0.3-cp311-abi3-win32.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/7e/bf/80fbf45253ea585a1e492a6a17efcb93467701fa79e71550a430c5e60df0/cryptography-46.0.3-cp311-abi3-win_amd64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/2e/af/9b302da4c87b0beb9db4e756386a7c6c5b8003cd0e742277888d352ae91d/cryptography-46.0.3-cp311-abi3-win_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/f5/e2/a510aa736755bffa9d2f75029c229111a1d02f8ecd5de03078f4c18d91a3/cryptography-46.0.3-cp314-cp314t-macosx_10_9_universal2.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/73/dc/9aa866fbdbb95b02e7f9d086f1fccfeebf8953509b87e3f28fff927ff8a0/cryptography-46.0.3-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/c5/fd/bc1daf8230eaa075184cbbf5f8cd00ba9db4fd32d63fb83da4671b72ed8a/cryptography-46.0.3-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/82/98/d3bd5407ce4c60017f8ff9e63ffee4200ab3e23fe05b765cab805a7db008/cryptography-46.0.3-cp314-cp314t-manylinux_2_28_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/26/e9/e23e7900983c2b8af7a08098db406cf989d7f09caea7897e347598d4cd5b/cryptography-46.0.3-cp314-cp314t-manylinux_2_28_armv7l.manylinux_2_31_armv7l.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/91/15/af68c509d4a138cfe299d0d7ddb14afba15233223ebd933b4bbdbc7155d3/cryptography-46.0.3-cp314-cp314t-manylinux_2_28_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/ca/e3/8643d077c53868b681af077edf6b3cb58288b5423610f21c62aadcbe99f4/cryptography-46.0.3-cp314-cp314t-manylinux_2_28_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/0e/43/c1e8726fa59c236ff477ff2b5dc071e54b21e5a1e51aa2cee1676f1c986f/cryptography-46.0.3-cp314-cp314t-manylinux_2_34_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/42/f9/2f8fefdb1aee8a8e3256a0568cffc4e6d517b256a2fe97a029b3f1b9fe7e/cryptography-46.0.3-cp314-cp314t-manylinux_2_34_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/79/30/9b54127a9a778ccd6d27c3da7563e9f2d341826075ceab89ae3b41bf5be2/cryptography-46.0.3-cp314-cp314t-manylinux_2_34_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/ac/68/b4f4a10928e26c941b1b6a179143af9f4d27d88fe84a6a3c53592d2e76bf/cryptography-46.0.3-cp314-cp314t-musllinux_1_2_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/a3/49/3746dab4c0d1979888f125226357d3262a6dd40e114ac29e3d2abdf1ec55/cryptography-46.0.3-cp314-cp314t-musllinux_1_2_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/fd/30/27654c1dbaf7e4a3531fa1fc77986d04aefa4d6d78259a62c9dc13d7ad36/cryptography-46.0.3-cp314-cp314t-win32.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/f6/30/640f34ccd4d2a1bc88367b54b926b781b5a018d65f404d409aba76a84b1c/cryptography-46.0.3-cp314-cp314t-win_amd64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/ba/8b/88cc7e3bd0a8e7b861f26981f7b820e1f46aa9d26cc482d0feba0ecb4919/cryptography-46.0.3-cp314-cp314t-win_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/fd/23/45fe7f376a7df8daf6da3556603b36f53475a99ce4faacb6ba2cf3d82021/cryptography-46.0.3-cp38-abi3-macosx_10_9_universal2.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/27/32/b68d27471372737054cbd34c84981f9edbc24fe67ca225d389799614e27f/cryptography-46.0.3-cp38-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/26/42/fa8389d4478368743e24e61eea78846a0006caffaf72ea24a15159215a14/cryptography-46.0.3-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/5f/eb/f483db0ec5ac040824f269e93dd2bd8a21ecd1027e77ad7bdf6914f2fd80/cryptography-46.0.3-cp38-abi3-manylinux_2_28_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/fd/cf/da9502c4e1912cb1da3807ea3618a6829bee8207456fbbeebc361ec38ba3/cryptography-46.0.3-cp38-abi3-manylinux_2_28_armv7l.manylinux_2_31_armv7l.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/6b/8f/9adb86b93330e0df8b3dcf03eae67c33ba89958fc2e03862ef1ac2b42465/cryptography-46.0.3-cp38-abi3-manylinux_2_28_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/d1/a0/5fa77988289c34bdb9f913f5606ecc9ada1adb5ae870bd0d1054a7021cc4/cryptography-46.0.3-cp38-abi3-manylinux_2_28_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/14/e5/fc82d72a58d41c393697aa18c9abe5ae1214ff6f2a5c18ac470f92777895/cryptography-46.0.3-cp38-abi3-manylinux_2_34_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/78/06/5663ed35438d0b09056973994f1aec467492b33bd31da36e468b01ec1097/cryptography-46.0.3-cp38-abi3-manylinux_2_34_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/fc/59/873633f3f2dcd8a053b8dd1d38f783043b5fce589c0f6988bf55ef57e43e/cryptography-46.0.3-cp38-abi3-manylinux_2_34_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/3d/39/8e71f3930e40f6877737d6f69248cf74d4e34b886a3967d32f919cc50d3b/cryptography-46.0.3-cp38-abi3-musllinux_1_2_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/cd/c7/f65027c2810e14c3e7268353b1681932b87e5a48e65505d8cc17c99e36ae/cryptography-46.0.3-cp38-abi3-musllinux_1_2_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/0a/6e/1c8331ddf91ca4730ab3086a0f1be19c65510a33b5a441cb334e7a2d2560/cryptography-46.0.3-cp38-abi3-win32.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/90/45/b0d691df20633eff80955a0fc7695ff9051ffce8b69741444bd9ed7bd0db/cryptography-46.0.3-cp38-abi3-win_amd64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/e8/cb/2da4cc83f5edb9c3257d09e1e7ab7b23f049c7962cae8d842bbef0a9cec9/cryptography-46.0.3-cp38-abi3-win_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/06/8a/e60e46adab4362a682cf142c7dcb5bf79b782ab2199b0dcb81f55970807f/cryptography-46.0.3-pp311-pypy311_pp73-macosx_10_9_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/da/38/f59940ec4ee91e93d3311f7532671a5cef5570eb04a144bf203b58552d11/cryptography-46.0.3-pp311-pypy311_pp73-manylinux_2_28_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/b0/0c/35b3d92ddebfdfda76bb485738306545817253d0a3ded0bfe80ef8e67aa5/cryptography-46.0.3-pp311-pypy311_pp73-manylinux_2_28_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/99/55/181022996c4063fc0e7666a47049a1ca705abb9c8a13830f074edb347495/cryptography-46.0.3-pp311-pypy311_pp73-manylinux_2_34_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/ba/af/72cd6ef29f9c5f731251acadaeb821559fe25f10852f44a63374c9ca08c1/cryptography-46.0.3-pp311-pypy311_pp73-manylinux_2_34_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/0d/c3/e90f4a4feae6410f914f8ebac129b9ae7a8c92eb60a638012dde42030a9d/cryptography-46.0.3-pp311-pypy311_pp73-win_amd64.whl",
+          "comment": "wheel"
+        }
+      ],
+      "type": "library",
+      "bom-ref": "pkg:pypi/cryptography@46.0.3",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": ".venv/lib/python3.12/site-packages/cryptography-46.0.3.dist-info/METADATA"
+        },
+        {
+          "name": "SrcFile",
+          "value": "pyproject.toml"
+        },
+        {
+          "name": "cdx:python:requires_python",
+          "value": ">=3.8, !=3.9.0, !=3.9.1"
+        },
+        {
+          "name": "bsi:component:executable",
+          "value": "executable"
+        },
+        {
+          "name": "bsi:component:archive",
+          "value": "archive"
+        },
+        {
+          "name": "bsi:component:structured",
+          "value": "structured"
+        },
+        {
+          "name": "bsi:component:effectiveLicence",
+          "value": "NOASSERTION"
+        },
+        {
+          "name": "bsi:component:filename",
+          "value": "cryptography-46.0.3-cp311-abi3-manylinux_2_34_ppc64le.whl"
+        }
+      ],
+      "evidence": {
+        "identity": [
+          {
+            "field": "purl",
+            "confidence": 0.5,
+            "methods": [
+              {
+                "technique": "manifest-analysis",
+                "confidence": 0.5,
+                "value": ".venv/lib/python3.12/site-packages/cryptography-46.0.3.dist-info/METADATA"
+              }
+            ],
+            "concludedValue": ".venv/lib/python3.12/site-packages/cryptography-46.0.3.dist-info/METADATA"
           }
         ]
       }
@@ -1233,7 +2056,6 @@
       "group": "",
       "name": "pillow",
       "version": "11.0.0",
-      "scope": "optional",
       "purl": "pkg:pypi/pillow@11.0.0",
       "externalReferences": [
         {
@@ -1459,10 +2281,6 @@
           "value": "pyproject.toml"
         },
         {
-          "name": "cdx:pyproject:group",
-          "value": "dev"
-        },
-        {
           "name": "cdx:python:requires_python",
           "value": ">=3.9"
         },
@@ -1576,6 +2394,79 @@
     },
     {
       "group": "",
+      "name": "pycparser",
+      "version": "3.12",
+      "purl": "pkg:pypi/pycparser@3.12",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/cb/27/eeb9f307bf07060f3d9f9aa0fb8c15b01bdfded0a941e4b2719c7f94cacd/pycparser-3.12.tar.gz",
+          "comment": "sdist"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/b6/ae/315bbeee126a769cbde43cf4908acb4b40408d8bf8bbf334dd7368d8dadf/pycparser-3.12-py3-none-any.whl",
+          "comment": "wheel"
+        }
+      ],
+      "type": "library",
+      "bom-ref": "pkg:pypi/pycparser@3.12",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": ".venv/lib/python3.12/site-packages/pycparser-3.12.dist-info/METADATA"
+        },
+        {
+          "name": "SrcFile",
+          "value": "pyproject.toml"
+        },
+        {
+          "name": "cdx:python:requires_python",
+          "value": ">=3.11"
+        },
+        {
+          "name": "bsi:component:executable",
+          "value": "executable"
+        },
+        {
+          "name": "bsi:component:archive",
+          "value": "archive"
+        },
+        {
+          "name": "bsi:component:structured",
+          "value": "structured"
+        },
+        {
+          "name": "bsi:component:effectiveLicence",
+          "value": "NOASSERTION"
+        },
+        {
+          "name": "bsi:component:filename",
+          "value": "pycparser-3.12-py3-none-any.whl"
+        }
+      ],
+      "evidence": {
+        "identity": [
+          {
+            "field": "purl",
+            "confidence": 0.5,
+            "methods": [
+              {
+                "technique": "manifest-analysis",
+                "confidence": 0.5,
+                "value": ".venv/lib/python3.12/site-packages/pycparser-3.12.dist-info/METADATA"
+              }
+            ],
+            "concludedValue": ".venv/lib/python3.12/site-packages/pycparser-3.12.dist-info/METADATA"
+          }
+        ]
+      },
+      "tags": [
+        "parse"
+      ]
+    },
+    {
+      "group": "",
       "name": "pytest",
       "version": "8.3.4",
       "scope": "optional",
@@ -1645,6 +2536,356 @@
               }
             ],
             "concludedValue": ".venv/lib/python3.12/site-packages/pytest-8.3.4.dist-info/METADATA"
+          }
+        ]
+      }
+    },
+    {
+      "group": "",
+      "name": "resvg-py",
+      "version": "0.5.0",
+      "purl": "pkg:pypi/resvg-py@0.5.0",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/2a/64/a24f8f29d8bf158e01f6ccad68a1366afd922dc0f0977cbd0c0aaa7a22f2/resvg_py-0.5.0.tar.gz",
+          "comment": "sdist"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/47/89/49f7c84a2a3fc3d2b9973134f72f95467a40acfbc7ca5d820aeb06af6e79/resvg_py-0.5.0-cp310-abi3-android_24_arm64_v8a.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/6b/d1/09ebd099134589225861e0668c9fdff103b0450df0e399689787a0d8962f/resvg_py-0.5.0-cp310-abi3-android_24_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/ed/36/3408156e9cba54d1ef5793377f39be4096660933cc6df155ba425315bf09/resvg_py-0.5.0-cp310-abi3-macosx_10_12_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/74/bf/4083b177388125e5ce2ab9fa4cd9efd881fa133dd97e5b2d4ca68e543256/resvg_py-0.5.0-cp310-abi3-macosx_11_0_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/52/92/1dfd0d7b5f8dbb16f9c889bba0d7477ab514d1f2a81a5f904662215103bc/resvg_py-0.5.0-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/13/99/a77f933e6cc355fd168f6eae2e23b5d361cb61531bfb83477f9816a62a49/resvg_py-0.5.0-cp310-abi3-manylinux_2_17_armv7l.manylinux2014_armv7l.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/8e/e0/a9d0cf6cee5fb1bf3abdba760821f76e1c979f81923c0bf54279dd1a285e/resvg_py-0.5.0-cp310-abi3-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/5e/f2/cf7390e196923a0f591981d3f2754f70825f0a8b206d0778866806ba1159/resvg_py-0.5.0-cp310-abi3-manylinux_2_17_s390x.manylinux2014_s390x.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/9e/08/217f2289ceb16a4eafd9c9c6f69aa3221ef047a6abe4ff1ce5c8d6be87d8/resvg_py-0.5.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/9b/d6/b3b9411b5b812799621ee43844552cbf7c0ddc2d5a552f5e91ba808ac67c/resvg_py-0.5.0-cp310-abi3-manylinux_2_5_i686.manylinux1_i686.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/d8/e6/5d8e0fac79e19ec95db6902ab03f3e681a69183a0a959fb081a7385c9e7e/resvg_py-0.5.0-cp310-abi3-musllinux_1_2_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/a4/81/db56ea6225d0294dfc5e96fa18d16231e33cd1812a75c4cf03e8e17586cc/resvg_py-0.5.0-cp310-abi3-musllinux_1_2_armv7l.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/24/66/43c32a28e5d19ada46c8589cb3eaef5db0dc151be1aec0e86a68b9534ba7/resvg_py-0.5.0-cp310-abi3-musllinux_1_2_i686.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/65/01/91794e3dedcfaf93b780ecd4cf0061262fd2665034756773f7e768812389/resvg_py-0.5.0-cp310-abi3-musllinux_1_2_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/dc/20/a7d7371a4104fd733702b942c396fd898510431ee3a1d2f7b4462da65117/resvg_py-0.5.0-cp310-abi3-win32.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/fe/53/aa8f92ce6eb2f97095d8b6359a1613c5a5ee0aa9b1a33434df9294362979/resvg_py-0.5.0-cp310-abi3-win_amd64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/56/64/e63614663df1404999802e82d462ffa534999c126067257bfba7d1de590c/resvg_py-0.5.0-cp310-abi3-win_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/c2/1e/4e24cdabab6c4f9b2d1175fe6b57f07f24625a6a8e1ff331a2a4a28da3a6/resvg_py-0.5.0-cp314-cp314t-macosx_10_12_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/d7/98/d4d0128dc2fd71eeaaa4e82d6c5a6213a89bcc96dd03b759fb7a5588c496/resvg_py-0.5.0-cp314-cp314t-macosx_11_0_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/4e/74/34fde2a05e81b6fd57445b18660fb7c3c2c988908cdf59f57f2481c98606/resvg_py-0.5.0-cp314-cp314t-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/f5/e0/0225387a65b51a9e2a5b6a11a517e777b82e887db4b67e6e44d44607cf18/resvg_py-0.5.0-cp314-cp314t-manylinux_2_17_armv7l.manylinux2014_armv7l.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/49/25/033b4ff263788ea10ae8e5ab2c445e8dcf0d78941b322781f8abe323dc73/resvg_py-0.5.0-cp314-cp314t-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/d5/5a/472629604d6d0fbae13648d3ef378727b533e71baeff3403367b5efa9ae2/resvg_py-0.5.0-cp314-cp314t-manylinux_2_17_s390x.manylinux2014_s390x.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/8c/50/9776c9a2181205a21f90c1a14cd1deeacccb66d19457cf9b9cc25ebba17d/resvg_py-0.5.0-cp314-cp314t-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/39/ec/78f53523b7c387312b0b790d33373d502eaf41310953baf2b17e18812d36/resvg_py-0.5.0-cp314-cp314t-manylinux_2_5_i686.manylinux1_i686.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/e8/4e/ac6077896efb94d8c7ebe08552da48c323c657554e715c80f4e8e8f30cca/resvg_py-0.5.0-cp314-cp314t-musllinux_1_2_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/3f/49/7dfe358ac7d52849b16ef98ad2cd4a41f77a87cff96122da095861fbb070/resvg_py-0.5.0-cp314-cp314t-musllinux_1_2_armv7l.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/d4/d2/f53350c3b2c512ae9d6ab4ae39db20bb573048bfcc60fdd5213ab7474d81/resvg_py-0.5.0-cp314-cp314t-musllinux_1_2_i686.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/ac/04/d958e02af538996ce963baa88d47667fc28c72b72aefea78546ab89a6288/resvg_py-0.5.0-cp314-cp314t-musllinux_1_2_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/10/9d/8dc520a62512f309bc74dddee8309d8a940ae1ee80317825b5ef705d3b4e/resvg_py-0.5.0-cp314-cp314t-win32.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/a2/0b/8edd6a94ed6c9d8306008c277c0e5f0d74df87cd2109eaff86ded437fcad/resvg_py-0.5.0-cp314-cp314t-win_amd64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/76/78/bdeb2fc44497c53c9f53e05acf58a571dc2589465031e37b9de8c0e57044/resvg_py-0.5.0-cp314-cp314t-win_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/0e/d1/2f85ce0ec44642a849a57a709e121dd2fa934ea1a54d77bb31e8f4aea7e8/resvg_py-0.5.0-cp315-abi3.abi3t-macosx_10_12_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/51/0c/b7af93cfd9bbcd83a4c8970e17dcf4917f12d3b88b695fa9a9b86913d375/resvg_py-0.5.0-cp315-abi3.abi3t-macosx_11_0_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/85/e8/2d6dbd6cf5be1871248d9e6307b4f42e916a16d83c13590ace9dccb8f49f/resvg_py-0.5.0-cp315-abi3.abi3t-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/2d/10/c10989f4eebd61242134a0bc1e26a2eaf618cf911115e447ea570bfd9bdb/resvg_py-0.5.0-cp315-abi3.abi3t-manylinux_2_17_armv7l.manylinux2014_armv7l.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/de/ae/b6416f0d984a445d2ba962dd39750dd0f79c16346517f8f98b595bbdb37c/resvg_py-0.5.0-cp315-abi3.abi3t-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/5a/f2/f44bc28c82e3f21065a0b721ddae31769420747f99b807df83560dc75697/resvg_py-0.5.0-cp315-abi3.abi3t-manylinux_2_17_s390x.manylinux2014_s390x.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/e8/c9/c4cbcbbe45d327a669c4c346cdef9253a50e052c102da4fc92576e407041/resvg_py-0.5.0-cp315-abi3.abi3t-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/60/03/7b7c89086cb7cbede4e21bcbbf2870d62564dcce71fc23fa97de67293ba5/resvg_py-0.5.0-cp315-abi3.abi3t-manylinux_2_5_i686.manylinux1_i686.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/99/07/4a9595a3c760c91006ac4753ced8daabd2c6d64024ca668e2867bb84a283/resvg_py-0.5.0-cp315-abi3.abi3t-musllinux_1_2_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/a2/7e/c2151824834b6df07083489a959cab2b37ba3b1834cc5e576aeb95e86e92/resvg_py-0.5.0-cp315-abi3.abi3t-musllinux_1_2_armv7l.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/cd/ef/573c43420a5c39758f9e2cf67e8834ad430935eaecfb71c7ba73457b65c5/resvg_py-0.5.0-cp315-abi3.abi3t-musllinux_1_2_i686.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/5e/76/68290af871f9347e1e8c7e14c8b09251362c74cff406b5f94c6711e8b6a2/resvg_py-0.5.0-cp315-abi3.abi3t-musllinux_1_2_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/bb/af/28e4758e087c6d3a3e691ecd67fd1304074b9bca4b5f1563ab6d1336a6a4/resvg_py-0.5.0-cp315-abi3.abi3t-win32.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/73/5c/5b0e68ce15bd87eaee64501427437f57bece008e15bf40dd759563f0038a/resvg_py-0.5.0-cp315-abi3.abi3t-win_amd64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/62/e6/25b6616cebbce1412bb5fe8b037545f382b4da875bc614a97ff1ecd7aa28/resvg_py-0.5.0-cp315-abi3.abi3t-win_arm64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/af/9b/fb611193ffdb8e4a84e2c43a6b06d27ad90287c06f115eaefab0a00555b6/resvg_py-0.5.0-pp311-pypy311_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/43/41/eac0a093095c591851f94c78d6ef28ea493e0509a3ad40ab22f35252ab51/resvg_py-0.5.0-pp311-pypy311_pp73-manylinux_2_17_armv7l.manylinux2014_armv7l.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/d8/6e/6ad270a3fb33779a21a2005704cfced4a246f2be3ac494ae7862de05cc90/resvg_py-0.5.0-pp311-pypy311_pp73-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/c9/fa/60a35163617fbbc0d4e59c290c1e85e4b0b1dc6c044033e58fb269e22215/resvg_py-0.5.0-pp311-pypy311_pp73-manylinux_2_17_s390x.manylinux2014_s390x.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/b0/fc/8e12645ac88089047ca701f41dfbb59a5746124141ce5b0932b9b8fd1b7f/resvg_py-0.5.0-pp311-pypy311_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/46/7b/6c2defb6c83442efaaf983d948c2339b2c65fa2a4a00028a1942d190c0f5/resvg_py-0.5.0-pp311-pypy311_pp73-manylinux_2_5_i686.manylinux1_i686.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/28/ff/b3d111c01b620f0319c7f9a0f84ca95a14edaf8a5d9816aa0584d3323785/resvg_py-0.5.0-pp311-pypy311_pp73-musllinux_1_2_aarch64.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/99/0d/652bc5ac43d1eb95fc4190c62a2442c7fe717446315d1b5dfb5fb1dafa38/resvg_py-0.5.0-pp311-pypy311_pp73-musllinux_1_2_armv7l.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/15/45/3ef71b7426b937e14dcebfb4f11f29f7d92f294e17bf1419ffcc817dd92e/resvg_py-0.5.0-pp311-pypy311_pp73-musllinux_1_2_i686.whl",
+          "comment": "wheel"
+        },
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/b6/56/fa3137277cb3b4e697b2d0625769105c7825cf61d8855cccfd1768c04726/resvg_py-0.5.0-pp311-pypy311_pp73-musllinux_1_2_x86_64.whl",
+          "comment": "wheel"
+        }
+      ],
+      "type": "library",
+      "bom-ref": "pkg:pypi/resvg-py@0.5.0",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": ".venv/lib/python3.12/site-packages/resvg_py-0.5.0.dist-info/METADATA"
+        },
+        {
+          "name": "SrcFile",
+          "value": "pyproject.toml"
+        },
+        {
+          "name": "cdx:python:requires_python",
+          "value": ">=3.10"
+        },
+        {
+          "name": "bsi:component:executable",
+          "value": "executable"
+        },
+        {
+          "name": "bsi:component:archive",
+          "value": "archive"
+        },
+        {
+          "name": "bsi:component:structured",
+          "value": "structured"
+        },
+        {
+          "name": "bsi:component:effectiveLicence",
+          "value": "NOASSERTION"
+        },
+        {
+          "name": "bsi:component:filename",
+          "value": "resvg_py-0.5.0-cp315-abi3.abi3t-macosx_10_12_x86_64.whl"
+        }
+      ],
+      "evidence": {
+        "identity": [
+          {
+            "field": "purl",
+            "confidence": 0.5,
+            "methods": [
+              {
+                "technique": "manifest-analysis",
+                "confidence": 0.5,
+                "value": ".venv/lib/python3.12/site-packages/resvg_py-0.5.0.dist-info/METADATA"
+              }
+            ],
+            "concludedValue": ".venv/lib/python3.12/site-packages/resvg_py-0.5.0.dist-info/METADATA"
           }
         ]
       }
@@ -1722,8 +2963,20 @@
   ],
   "dependencies": [
     {
+      "ref": "pkg:pypi/cffi@2.1.1",
+      "dependsOn": [
+        "pkg:pypi/pycparser@3.12"
+      ]
+    },
+    {
       "ref": "pkg:pypi/colorama@0.4.6",
       "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/cryptography@46.0.3",
+      "dependsOn": [
+        "pkg:pypi/cffi@2.1.1"
+      ]
     },
     {
       "ref": "pkg:pypi/iniconfig@2.3.1",
@@ -1756,6 +3009,10 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:pypi/pycparser@3.12",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:pypi/pytest@8.3.4",
       "dependsOn": [
         "pkg:pypi/colorama@0.4.6",
@@ -1763,6 +3020,10 @@
         "pkg:pypi/packaging@26.3",
         "pkg:pypi/pluggy@1.7.0"
       ]
+    },
+    {
+      "ref": "pkg:pypi/resvg-py@0.5.0",
+      "dependsOn": []
     },
     {
       "ref": "pkg:pypi/segno@1.6.6",

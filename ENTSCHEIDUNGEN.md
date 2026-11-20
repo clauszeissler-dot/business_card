@@ -96,3 +96,48 @@ E-NNN gehört zu A-NNN. Änderungen als datierter Nachtrag.
 - Entscheidung Claus 2026-11-20: Ziel-Repo https://github.com/clauszeissler-dot/business_card (öffentlich).
 - Skill-Name auf `business-card` geändert (Markenrichtlinien: „LinkedIn“ nur beschreibend); Symlink `~/.claude/skills/business-card`.
 - Vorhandenes Initial-README des Repos durch das vollständige README ersetzt (Merge der Historien).
+
+## E-010 – Sperrbildschirm mit Gültigkeit
+- Problem: Karte schnell auf dem Handy zeigen, zeitlich begrenzt (z. B. Messe).
+- Lösung: extras.py rendert Hochformat-Bilder (iPhone, iPhone Max, Android) mit freier Uhr- und Tastenzone, großem QR, „Gültig bis“ + Event; Kalender-Erinnerung (.ics) und Kurzbefehl-Hinweis zum Zurückstellen.
+- Verworfen: „automatisch ablaufendes“ Bild – technisch nicht möglich ohne App.
+- Entscheidung: Claus 2026-11-20 (Wunsch), Umsetzung Claude.
+- Live seit: noch nicht live
+- Beleg: test_extras.py
+- Offen: –
+
+## E-011 – vCard
+- Problem: Kontakt mit einem Tipp speichern.
+- Lösung: vCard 3.0 mit Foto, Feldmaskierung und Zeilenfaltung.
+- Verworfen: vCard 4.0 (schlechtere Unterstützung auf iOS/Android-Adressbüchern).
+- Entscheidung: Claude, 2026-11-20.
+- Live seit: noch nicht live
+- Beleg: test_extras.py
+- Offen: –
+
+## E-012 – Sticker/Begegnungsfotos
+- Problem: LinkedIn erlaubt Sticker auf der Rückseite; gewünscht als Funktion.
+- Lösung: Rückseite `--back stickers` mit bis zu 3 Polaroid-Fotos und Bildunterschrift, QR bleibt.
+- Verworfen: Emoji-Sticker (Icon-Standard), Hintergrund-Freistellung (schwere Abhängigkeit).
+- Entscheidung: Claude, 2026-11-20.
+- Live seit: noch nicht live
+- Beleg: test_make_card.py
+- Offen: –
+
+## E-013 – Wallet-Pässe
+- Problem: Karte in Apple/Google Wallet.
+- Lösung: wallet.py: Apple .pkpass (generic, PKCS#7 detached SHA-256, WWDR) und Google Generic Pass als signierter Save-Link; Ablauf in Tagen. Geheimnisse nur aus Dateien/Umgebungsvariablen.
+- Verworfen: Signatur in der KI-App-Sandbox (Geheimnisse würden in fremde Cloud gelangen); Drittanbieter-Passdienste (Datenschutz).
+- Entscheidung: Claus 2026-11-20 (Apple-Dev vorhanden, Google gewünscht), Umsetzung Claude.
+- Live seit: noch nicht live
+- Beleg: test_wallet.py
+- Offen: Echttest mit Claus' Pass-Type-Zertifikat und Google-Issuer-Konto; öffentlicher Dienst (A-016).
+
+## E-014 – Nutzung in Claude-App und ChatGPT
+- Problem: Sandbox ohne rsvg/fc-list, oft ohne freien Webzugriff.
+- Lösung: PNG über resvg-py mit eingebetteten OFL-Schriften, PDF-Raster-Fallback, App-Abschnitt in SKILL.md (CI über eigenes Web-Werkzeug), ZIP-Builder + GitHub-Release.
+- Verworfen: cairosvg (Systembibliothek nötig).
+- Entscheidung: Claus 2026-11-20 (Claude-App, ChatGPT), Umsetzung Claude.
+- Live seit: noch nicht live
+- Beleg: test_render.py, test_build_zip.py
+- Offen: Test in beiden Apps durch Claus.
