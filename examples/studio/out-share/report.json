@@ -1,0 +1,51 @@
+{
+  "format": "share",
+  "format_label": "Teilen-Bild 1200 × 627 px (LinkedIn-Link-Format)",
+  "trim_mm": null,
+  "trim_px": [
+    1200,
+    627
+  ],
+  "bleed_mm": 0,
+  "layout": "diagonal",
+  "pattern": "waves",
+  "theme": "dark",
+  "corners": "round",
+  "photo_shape": "circle",
+  "palette": {
+    "bg": "#0B0B12",
+    "text": "#F8FAFC",
+    "muted": "#94969A",
+    "primary": "#DB2777",
+    "primary_raw": "#DB2777",
+    "secondary": "#22D3EE",
+    "on_primary": "#FFFFFF",
+    "accent_text": "#DD347F",
+    "qr_dark": "#0B0F19",
+    "qr_light": "#FFFFFF",
+    "pattern": "#E97CAC"
+  },
+  "fonts": {
+    "heading": "Sora",
+    "body": "Inter"
+  },
+  "min_text_contrast": 4.55,
+  "qr": {
+    "modules": 33,
+    "version": "4-M",
+    "quiet_zone_modules": 4,
+    "size": 460.91,
+    "size_mm": null,
+    "module_size": 11.242,
+    "url": "https://www.linkedin.com/in/lea-sommer-beispiel/",
+    "error_correction": "M (boost)",
+    "colors": [
+      "#0B0F19",
+      "#FFFFFF"
+    ],
+    "contrast": 19.15
+  },
+  "text_fits": true,
+  "truncated": [],
+  "warnings": []
+}

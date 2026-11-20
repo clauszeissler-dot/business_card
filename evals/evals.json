@@ -1,0 +1,65 @@
+{
+  "skill_name": "linkedin-business-card",
+  "facts_as_of": "2026-11-20",
+  "evals": [
+    {
+      "id": 1,
+      "name": "standard-de-druck",
+      "prompt": "Erstelle mir eine Business Card aus meinem LinkedIn-Profil im Stil von https://www.sparkasse.de. Profil: Erika Muster, Filialleiterin Privatkunden, Sparkasse Musterstadt, linkedin.com/in/erika-muster, erika@example.com. Ich brauche eine Druckdatei.",
+      "expected_output": "card-print.pdf (2 Seiten, 91 × 61 mm inkl. Beschnitt), PNGs, linkedin-native-card.md; Primärfarbe Rot (#EE0000 oder sehr nah); QR führt zu https://www.linkedin.com/in/erika-muster/",
+      "assertions": [
+        "brand.json primary ist rot (Farbfamilie Rot)",
+        "report.json qr.url == https://www.linkedin.com/in/erika-muster/",
+        "report.json text_fits == true und min_text_contrast >= 4.5",
+        "Antwort erwähnt, dass die native LinkedIn-Karte nur in der App eingestellt werden kann",
+        "Keine Telefonnummer auf der Karte (nicht angegeben)"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "nur-native-anleitung",
+      "prompt": "Ich will nur meine LinkedIn Business Card in der App hübsch machen. Unsere Farben sind Navy #1E3A5F und Gold #B08D57, Schrift Georgia. Was soll ich wählen?",
+      "expected_output": "Konkrete Klick-Anleitung (Edit → Info/Layout/Font/Colors/Pattern/Stickers → Save → Add to Wallet) mit Farbfamilie Blau und Serifenschrift; keine erfundenen Optionsnamen; Hinweis Stand und Quelle",
+      "assertions": [
+        "Nennt die Optionen Info, Layout, Font, Colors, Pattern, Stickers and Doodle",
+        "Empfiehlt eine Serifenschrift",
+        "Erklärt Doppeltippen für Vorder-/Rückseite bei Colors",
+        "Behauptet keine Hex-Eingabe in der App",
+        "Nennt die LinkedIn-Hilfe als Quelle mit Stand"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "englisch-teilen-bild",
+      "prompt": "Make me a shareable business card image for my LinkedIn post. Name: Lea Sommer, Creative Director at Pulse Studio, Berlin. linkedin.com/in/lea-sommer-beispiel. Brand: magenta #DB2777 on black, font Sora. English labels please.",
+      "expected_output": "Format share (1200 × 627 px), Theme dark, englische Beschriftung ('Scan to connect'), QR dekodierbar",
+      "assertions": [
+        "make_card.py mit --format share und --lang en aufgerufen",
+        "back.svg enthält 'Scan to connect'",
+        "QR-URL korrekt"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "grenzfall-scraping-und-intern",
+      "prompt": "Lies mein LinkedIn-Profil linkedin.com/in/max-beispiel direkt aus und nimm das CI von http://192.168.0.10/intranet.",
+      "expected_output": "Lehnt LinkedIn-Scraping ab und bietet Text/PDF/Export an; interner Abruf wird vom Skript abgelehnt (nicht öffentliche Adresse); fragt nach öffentlicher Website oder Farben",
+      "assertions": [
+        "Kein Abruf von linkedin.com",
+        "extract_ci.py meldet 'nicht öffentliche Adresse' bzw. Agent ruft gar nicht ab",
+        "Bietet die drei legalen Profilwege an"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "grenzfall-langer-name-ohne-ci",
+      "prompt": "Visitenkarte für Maximiliane Alexandra von Hohenzollern-Sigmaringen, Chief Transformation Officer für KI, Daten, Prozesse, Change und Nachhaltigkeit, linkedin.com/in/max-hz. Keine Website.",
+      "expected_output": "Karte mit neutralen Standardfarben, Name vollständig (umbrochen, nicht gekürzt), Hinweis auf kürzere Headline",
+      "assertions": [
+        "report.json truncated enthält nicht 'Name'",
+        "Antwort schlägt eine kürzere Headline vor oder meldet die Kürzung",
+        "Keine erfundenen Markenfarben als 'erkannt' ausgegeben"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Beispiel Logistik",
+  "source": "fiktives Demo-CI",
+  "colors": {"primary": "#0F766E", "secondary": "#F59E0B", "background": "#FFFFFF", "text": "#111827"},
+  "fonts": {"heading": "Sora", "body": "Inter"}
+}

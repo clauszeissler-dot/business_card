@@ -1,0 +1,3 @@
+{"name": "Weber & Partner (fiktiv)", "source": "fiktives Demo-CI",
+ "colors": {"primary": "#1E3A5F", "secondary": "#B08D57", "background": "#FBFAF7", "text": "#14213D"},
+ "fonts": {"heading": "Georgia", "body": "Inter"}, "font_style": "serif", "suggest": {"corners": "sharp"}}

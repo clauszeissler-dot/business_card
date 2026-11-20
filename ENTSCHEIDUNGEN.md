@@ -1,0 +1,88 @@
+# Entscheidungen und Ergebnisse
+
+Anforderungen: [AENDERUNGEN.md](AENDERUNGEN.md) · Umsetzung: [PLAN.md](PLAN.md) · Nachweise: [ARBEITSLOGBUCH.md](ARBEITSLOGBUCH.md)
+
+E-NNN gehört zu A-NNN. Änderungen als datierter Nachtrag.
+
+<!-- Einträge ab hier, aufsteigend nach Nummer. -->
+
+## E-001 – Recherche LinkedIn Business Card
+- Problem: Funktionsumfang der neuen LinkedIn-Karte unklar, viele Drittquellen.
+- Lösung: Faktenseite references/linkedin-native-card.md, getrennt nach offiziell/Dritte, mit Stand 20.11.2026.
+- Verworfen: Aussagen aus Marketing-Seiten (ConnectMachine) als Fakten übernehmen.
+- Entscheidung: Claude, 2026-11-20, Auftrag Claus.
+- Live seit: noch nicht live (lokaler Commit)
+- Beleg: AENDERUNGEN A-001
+- Offen: Faktenstand bei Rollout-Änderungen nachziehen.
+
+## E-002 – Formen
+- Problem: Karten sollen in verschiedenen Formen gestaltbar sein.
+- Lösung: 6 Layouts, Ecken sharp/soft/round (Druck: Eckenabrundung als Hinweis), Foto/Monogramm circle/rounded/square/hexagon.
+- Verworfen: echte Stanzformen in der Druckdatei (Druckereien wollen Rechteck + Beschnitt).
+- Entscheidung: Claude, 2026-11-20.
+- Live seit: noch nicht live
+- Beleg: test_make_card.py
+- Offen: –
+
+## E-003 – Farben
+- Problem: CI-Farben müssen lesbar bleiben.
+- Lösung: Palette nur über Helligkeit anpassen (Farbton bleibt), Text ≥7:1 bzw. ≥4,5:1 auf Markenfläche, QR immer dunkel auf weiß.
+- Verworfen: feste Weiß/Schwarz-Schrift ohne Prüfung.
+- Entscheidung: Claude, 2026-11-20.
+- Live seit: noch nicht live
+- Beleg: test_colors.py
+- Offen: –
+
+## E-004 – Muster
+- Problem: Muster dürfen Text nicht schwächen.
+- Lösung: 8 SVG-Muster, Ton in Ton; auf mittelhellen Flächen mit weißer Schrift automatisch dunkler; Kontrast gegen Mustergrund geprüft.
+- Verworfen: Bildtexturen (Druckqualität, Dateigröße).
+- Entscheidung: Claude, 2026-11-20.
+- Live seit: noch nicht live
+- Beleg: test_make_card.py
+- Offen: –
+
+## E-005 – LinkedIn-Profil auslesen
+- Problem: Profildaten automatisch übernehmen, ohne Nutzungsbedingungen zu verletzen.
+- Lösung: parse_profile.py für Datenexport, Profil-PDF und Text; kein Scraping; Adresse/Geburtsdatum nie, Telefon nur auf Wunsch.
+- Verworfen: Scraping von linkedin.com (ToS, Firecrawl blockiert), Auslesen über eingeloggten Browser.
+- Entscheidung: Claude, 2026-11-20.
+- Live seit: noch nicht live
+- Beleg: test_parse_profile.py
+- Offen: PDF-Heuristik an echtem LinkedIn-PDF prüfen.
+
+## E-006 – Website-CI auslesen
+- Problem: Farben, Schriften, Logo, Rundungen einer Website ermitteln.
+- Lösung: extract_ci.py (stdlib, SSRF-geschützt, IP-Pinning) plus Firecrawl-Branding-Import; Ranking gegen Hover-/Tint-Farben.
+- Verworfen: nur Firecrawl (nicht für alle Nutzer verfügbar, Logo teils falsch).
+- Entscheidung: Claude, 2026-11-20.
+- Live seit: noch nicht live
+- Beleg: test_extract_ci.py, Realtests 20.11.2026
+- Offen: JS-only-Seiten und Bot-Schutz → manueller Weg über Ego Lite.
+
+## E-007 – Business Card im CI erstellen
+- Problem: Druckfähige und digitale Karte mit QR-Code.
+- Lösung: make_card.py: SVG-Master, PNG 300 dpi und 2-seitiges PDF über rsvg-convert, preview.html, report.json, Galerie.
+- Verworfen: Wallet-Pässe (Zertifikat/Issuer nötig).
+- Entscheidung: Claude, 2026-11-20.
+- Live seit: noch nicht live
+- Beleg: QR-Decode-Tests, evals/run_offline.py
+- Offen: –
+
+## E-008 – Als Skill nutzbar
+- Problem: Agenten sollen den Ablauf zuverlässig ausführen.
+- Lösung: SKILL.md mit 6-Schritt-Ablauf, Referenzen, evals.json (5 Fälle inkl. Grenzfälle), Symlink nach ~/.claude/skills.
+- Verworfen: –
+- Entscheidung: Claude, 2026-11-20.
+- Live seit: lokal eingebunden 2026-11-20
+- Beleg: evals/run_offline.py 13/13
+- Offen: LLM-Eval der Prompts.
+
+## E-009 – Repo zum Teilen
+- Problem: Öffentliches Repo, über LinkedIn teilbar.
+- Lösung: README DE (Hauptsprache) + EN, Anleitungen, Banner, Hero-Bild, MIT, Drittlizenzen, CRA-Doku, Disclaimer „nicht mit LinkedIn verbunden“.
+- Verworfen: LinkedIn-Logo in Bildern.
+- Entscheidung: Claude, 2026-11-20.
+- Live seit: noch nicht live (Push wartet auf Auftrag)
+- Beleg: lokaler Commit
+- Offen: Ziel (GitHub vs. Forgejo), Push, Social Preview, Repo-Beschreibung/Topics.

@@ -1,0 +1,68 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:6c206a99-795c-ecaf-a73b-378a3abc85e2",
+  "version": 1,
+  "metadata": {
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "cra-dokumentation",
+          "version": "1.0.0",
+          "bom-ref": "urn:cra-dokumentation:1.0.0"
+        }
+      ]
+    },
+    "authors": [
+      {
+        "name": "KI AffAIrs"
+      }
+    ],
+    "manufacturer": {
+      "name": "KI AffAIrs",
+      "url": [
+        "https://affairs-consulting.de"
+      ],
+      "contact": [
+        {
+          "name": "KI AffAIrs",
+          "email": "info@affairs-consulting.de"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "bom-ref": "pkg:pypi/linkedin-business-card@1.0.0",
+      "name": "linkedin-business-card",
+      "version": "1.0.0",
+      "purl": "pkg:pypi/linkedin-business-card@1.0.0",
+      "manufacturer": {
+        "name": "KI AffAIrs",
+        "url": [
+          "https://affairs-consulting.de"
+        ],
+        "contact": [
+          {
+            "name": "KI AffAIrs",
+            "email": "info@affairs-consulting.de"
+          }
+        ]
+      }
+    },
+    "properties": [
+      {
+        "name": "kiaffairs:cbom:methode",
+        "value": "statische Mustererkennung im Quelltext (ohne Tests, Abhängigkeiten und Build-Ordner)"
+      }
+    ],
+    "timestamp": "2026-11-20T11:54:20Z"
+  },
+  "components": [],
+  "dependencies": [
+    {
+      "ref": "pkg:pypi/linkedin-business-card@1.0.0",
+      "dependsOn": []
+    }
+  ]
+}

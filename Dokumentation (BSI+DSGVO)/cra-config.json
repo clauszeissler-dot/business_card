@@ -1,0 +1,16 @@
+{
+  "hersteller": {
+    "name": "KI AffAIrs",
+    "url": "https://affairs-consulting.de",
+    "email": "info@affairs-consulting.de"
+  },
+  "support": {
+    "id": "standard",
+    "beschreibung": "Sicherheitsupdates für die gesetzliche Mindestfrist von 5 Jahren ab Übergabe (CRA Art. 13 Abs. 8).",
+    "url": ""
+  },
+  "supportzeitraum_jahre": 5,
+  "uebergabe": "",
+  "lebenszyklus_ereignisse": [],
+  "_hinweis": "Diese Datei gehört Ihnen und wird nie überschrieben. uebergabe: Datum der Übergabe (JJJJ-MM-TT), daraus folgt das Support-Ende = Übergabe + supportzeitraum_jahre. Weitere Ereignisse unter lebenszyklus_ereignisse."
+}

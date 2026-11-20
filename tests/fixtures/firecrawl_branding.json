@@ -1,0 +1,7 @@
+{"colorScheme":"light","fonts":[{"family":"Sparkasse","role":"body"},{"family":"sparkasseHead","role":"heading"}],
+ "colors":{"primary":"#EE0000","accent":"#EE0000","background":"#FFFFFF","textPrimary":"#444444","link":"#EE0000"},
+ "typography":{"fontFamilies":{"primary":"Sparkasse","heading":"sparkasseHead"}},
+ "spacing":{"baseUnit":4,"borderRadius":"90px"},
+ "images":{"logo":"data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M1%201h22v22H1z%22%2F%3E%3C%2Fsvg%3E"},
+ "personality":{"tone":"professional","energy":"high","targetAudience":"general consumers"},
+ "brandName":"Sparkasse_de"}
