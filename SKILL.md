@@ -1,5 +1,5 @@
 ---
-name: linkedin-business-card
+name: business-card
 description: >-
   Erstellt Business Cards (Visitenkarten) im Corporate Design einer Website aus LinkedIn-Profildaten und
   übersetzt das CI in konkrete Einstellungen für die native LinkedIn Business Card (Layout, Font, Colors,

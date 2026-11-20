@@ -22,4 +22,4 @@ Stand: 2026-11-20
 
 - Arbeitsbeginn: 2026-11-20 (Recherche abgeschlossen)
 - Zum sichtbaren Ergebnis fehlt: Push (Auftrag nötig)
-- Kürzester nächster Schritt: Claus entscheidet GitHub oder Forgejo, dann Push + Social Preview
+- Kürzester nächster Schritt: Push nach github.com/clauszeissler-dot/business_card, danach Metadaten und Social Preview

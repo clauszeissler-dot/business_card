@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:cb2ecf1c-a52e-a5a3-3680-2c1f7afd2587",
+  "serialNumber": "urn:uuid:3154519c-ed00-c435-e7e7-c48e3c16ebb2",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-20T11:54:20Z",
+    "timestamp": "2026-11-20T12:10:54Z",
     "tools": {
       "components": [
         {
@@ -40,7 +40,7 @@
       }
     ],
     "component": {
-      "name": "linkedin-business-card",
+      "name": "business-card",
       "version": "1.0.0",
       "description": "Agent-Skill: Business Card im eigenen CI plus Einstellungsanleitung für die native LinkedIn Business Card",
       "properties": [
@@ -70,8 +70,8 @@
         }
       ],
       "type": "application",
-      "bom-ref": "pkg:pypi/linkedin-business-card@1.0.0",
-      "purl": "pkg:pypi/linkedin-business-card@1.0.0",
+      "bom-ref": "pkg:pypi/business-card@1.0.0",
+      "purl": "pkg:pypi/business-card@1.0.0",
       "licenses": [
         {
           "license": {

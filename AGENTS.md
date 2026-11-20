@@ -1,4 +1,4 @@
-# AGENTS.md – linkedin-business-card
+# AGENTS.md – business-card
 
 Es gilt der Standard aus `KI-Arbeit/AGENTS.md`.
 

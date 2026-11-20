@@ -40,8 +40,8 @@ This skill for AI agents (Claude Code, Codex and others) fills that gap:
 ## Quick start
 
 ```bash
-git clone <repo-url> ~/.claude/skills/linkedin-business-card   # Claude Code; Codex: ~/.codex/skills/
-cd ~/.claude/skills/linkedin-business-card && uv sync           # or: python3 -m pip install segno==1.6.6
+git clone https://github.com/clauszeissler-dot/business_card.git ~/.claude/skills/business-card   # Claude Code; Codex: ~/.codex/skills/
+cd ~/.claude/skills/business-card && uv sync           # or: python3 -m pip install segno==1.6.6
 brew install librsvg                                            # PNG/PDF on macOS; Linux: apt install librsvg2-bin
 ```
 

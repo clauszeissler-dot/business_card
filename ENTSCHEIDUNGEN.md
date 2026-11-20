@@ -91,3 +91,8 @@ E-NNN gehört zu A-NNN. Änderungen als datierter Nachtrag.
 - Markenrichtlinien (brand.linkedin.com/policies, /business-books-and-media-usage) gelesen: Marke nur beschreibend, mit ®, kein Logo, kein Anschein von Sponsoring; Domains/Handles mit „LinkedIn“ verboten, Repo-Namen nicht geregelt.
 - Umgesetzt: offizieller Attributionshinweis in README DE/EN und App-Anleitung.
 - Offen (Entscheidung Claus): Repo-Name ohne führendes „linkedin“, Vorschlag `business-card-skill`.
+
+### Nachtrag E-009 – 2026-11-20 (Veröffentlichung)
+- Entscheidung Claus 2026-11-20: Ziel-Repo https://github.com/clauszeissler-dot/business_card (öffentlich).
+- Skill-Name auf `business-card` geändert (Markenrichtlinien: „LinkedIn“ nur beschreibend); Symlink `~/.claude/skills/business-card`.
+- Vorhandenes Initial-README des Repos durch das vollständige README ersetzt (Merge der Historien).

@@ -1,9 +1,9 @@
-# Dokumentation (BSI+DSGVO): linkedin-business-card
+# Dokumentation (BSI+DSGVO): business-card
 
 Automatisch gepflegt vom Skill `cra-dokumentation` (Commit-Gate und Sitzungsende). Diese Übersicht wird überschrieben;
 eigene Notizen gehören in `BSI-CRA/` oder `DSGVO/`.
 
-**Status:** 🟡 gelb · **Version:** 1.0.0 · **Stand SBOM:** 2026-11-20T11:54:20Z
+**Status:** 🟡 gelb · **Version:** 1.0.0 · **Stand SBOM:** 2026-11-20T12:10:54Z
 
 | Dokument | Inhalt | Standard |
 | --- | --- | --- |

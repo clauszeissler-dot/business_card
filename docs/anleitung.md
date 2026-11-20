@@ -7,8 +7,8 @@ Diese Anleitung erklärt Schritt für Schritt, wie du mit dem Skill eine Visiten
 ## 1. Einmal einrichten
 
 1. Ordner herunterladen und in den Skill-Ordner deines Agenten legen:
-   - Claude Code: `~/.claude/skills/linkedin-business-card`
-   - Codex: `~/.codex/skills/linkedin-business-card`
+   - Claude Code: `~/.claude/skills/business-card`
+   - Codex: `~/.codex/skills/business-card`
 2. Im Ordner `uv sync` ausführen. Ohne `uv` geht auch `python3 -m pip install segno==1.6.6`.
 3. Für PNG und PDF `rsvg-convert` installieren:
    - macOS: `brew install librsvg`

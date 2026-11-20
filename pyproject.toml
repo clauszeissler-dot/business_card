@@ -1,5 +1,5 @@
 [project]
-name = "linkedin-business-card"
+name = "business-card"
 version = "1.0.0"
 description = "Agent-Skill: Business Card im eigenen CI plus Einstellungsanleitung für die native LinkedIn Business Card"
 readme = "README.md"

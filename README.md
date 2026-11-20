@@ -46,8 +46,8 @@ Alle Personen und Firmen in den Beispielen sind erfunden.
 ## Schnellstart
 
 ```bash
-git clone <repo-url> ~/.claude/skills/linkedin-business-card   # Claude Code; für Codex: ~/.codex/skills/
-cd ~/.claude/skills/linkedin-business-card && uv sync           # oder: python3 -m pip install segno==1.6.6
+git clone https://github.com/clauszeissler-dot/business_card.git ~/.claude/skills/business-card   # Claude Code; für Codex: ~/.codex/skills/
+cd ~/.claude/skills/business-card && uv sync           # oder: python3 -m pip install segno==1.6.6
 brew install librsvg                                            # für PNG/PDF (macOS); Linux: apt install librsvg2-bin
 ```
 

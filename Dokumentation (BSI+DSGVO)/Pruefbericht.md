@@ -1,6 +1,6 @@
-# Prüfbericht CRA-Dokumentation: linkedin-business-card 1.0.0
+# Prüfbericht CRA-Dokumentation: business-card 1.0.0
 
-Generiert von cra-dokumentation 1.0.0. Stand der SBOM: 2026-11-20T11:54:20Z. Diese Datei wird automatisch überschrieben.
+Generiert von cra-dokumentation 1.0.0. Stand der SBOM: 2026-11-20T12:10:54Z. Diese Datei wird automatisch überschrieben.
 
 **Gesamtstatus:** 🟡 gelb
 

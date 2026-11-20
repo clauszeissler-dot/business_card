@@ -7,8 +7,8 @@ This guide shows you step by step how to create a business card with the skill. 
 ## 1. One-time setup
 
 1. Put the folder into your agent's skill folder:
-   - Claude Code: `~/.claude/skills/linkedin-business-card`
-   - Codex: `~/.codex/skills/linkedin-business-card`
+   - Claude Code: `~/.claude/skills/business-card`
+   - Codex: `~/.codex/skills/business-card`
 2. Run `uv sync` in that folder. Without `uv`, use `python3 -m pip install segno==1.6.6`.
 3. For PNG and PDF, install `rsvg-convert`:
    - macOS: `brew install librsvg`
