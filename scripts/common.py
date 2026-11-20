@@ -320,8 +320,20 @@ def esc(text) -> str:
     return _xml_escape(str(text), {'"': "&quot;", "'": "&apos;"})
 
 
+_TITLES = {"dr", "prof", "dipl", "ing", "mag", "med", "rer", "nat", "phil", "jur", "mba", "msc", "bsc", "ma", "ba",
+           "llm", "phd", "mr", "mrs", "ms", "frau", "herr"}
+
+
 def initials(name: str) -> str:
-    parts = [p for p in re.split(r"[\s\-]+", name or "") if p and p[0].isalpha()]
+    """Initialen aus Vor- und Nachname; Titel (Dr., Prof., Dipl.-Ing., Mag. …) werden übersprungen."""
+    parts = []
+    for token in (name or "").split():
+        core = token.strip(".,")
+        if token.endswith(".") or core.lower().replace(".", "").replace("-", "") in _TITLES \
+                or all(x.lower().rstrip(".") in _TITLES for x in core.split("-") if x):
+            continue
+        if core and core[0].isalpha():
+            parts.append(core)
     if not parts:
         return "?"
     if len(parts) == 1:

@@ -159,3 +159,14 @@ def test_cli_rejects_bad_option(tmp_path, capsys):
     from conftest import ROOT
     with pytest.raises(SystemExit):
         main(["--profile", str(ROOT / "examples/demo/profile.json"), "--out", str(tmp_path), "--layout", "nope"])
+
+
+def test_missing_rsvg_warning_lands_in_report_file(monkeypatch, tmp_path, profile, brand):
+    import json as _json
+    import make_card
+    real = make_card.shutil.which
+    monkeypatch.setattr(make_card.shutil, "which", lambda n: None if n == "rsvg-convert" else real(n))
+    res = render_card(profile, brand)
+    make_card.write_outputs(res, profile, brand, tmp_path)
+    warnings = _json.loads((tmp_path / "report.json").read_text())["warnings"]
+    assert any("rsvg-convert" in w for w in warnings)

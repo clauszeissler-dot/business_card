@@ -810,6 +810,7 @@ def render_card(profile: dict, brand: dict, layout="classic", pattern="dots", th
         warnings.append("Gekürzt oder weggelassen: " + ", ".join(dict.fromkeys(truncated)))
     report = {
         "format": fmt,
+        "lang": lang,
         "format_label": f["label"],
         "trim_mm": [f["w"], f["h"]] if f["unit"] == "mm" else None,
         "trim_px": [int(f["w"]), int(f["h"])] if f["unit"] == "px" else None,
@@ -868,9 +869,18 @@ def preview_html(result, profile, brand):
         link = f'<link rel="stylesheet" href="https://fonts.googleapis.com/css2?{q}&display=swap">'
     name = esc(profile.get("name", ""))
     rep = result["report"]
-    warn = "".join(f"<li>{esc(w)}</li>" for w in rep["warnings"]) or "<li>Keine Hinweise.</li>"
+    en = rep.get("lang") == "en"
+    L = {"front": "Front" if en else "Vorderseite", "back": "Back" if en else "Rückseite",
+         "notes": "Notes" if en else "Hinweise", "none": "No notes." if en else "Keine Hinweise.",
+         "pattern": "pattern" if en else "Muster", "theme": "theme" if en else "Schema",
+         "bleed": "The preview includes the bleed area." if en else "Die Vorschau zeigt den Beschnitt mit.",
+         "qr": "QR code links to" if en else "QR-Code führt zu",
+         "alt_f": "Front of the business card" if en else "Vorderseite der Business Card",
+         "alt_b": "Back of the business card with QR code to the LinkedIn profile" if en
+         else "Rückseite der Business Card mit QR-Code zum LinkedIn-Profil"}
+    warn = "".join(f"<li>{esc(w)}</li>" for w in rep["warnings"]) or f"<li>{L['none']}</li>"
     return f"""<!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="{'en' if en else 'de'}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Business Card – {name}</title>{link}
 <style>
 :root{{--bg:#F3F4F6;--fg:#111827;--muted:#4B5563;--card-shadow:0 18px 40px rgba(0,0,0,.18)}}
@@ -884,12 +894,12 @@ figcaption{{margin-top:10px;color:var(--muted);font-size:.9rem}}
 ul{{color:var(--muted);padding-left:20px}}
 </style></head><body><main>
 <h1>Business Card – {name}</h1>
-<p>{esc(rep['format_label'])} · Layout {esc(rep['layout'])} · Muster {esc(rep['pattern'])} · Schema {esc(rep['theme'])}. Die Vorschau zeigt den Beschnitt mit.</p>
+<p>{esc(rep['format_label'])} · Layout {esc(rep['layout'])} · {L['pattern']} {esc(rep['pattern'])} · {L['theme']} {esc(rep['theme'])}. {L['bleed']}</p>
 <div class="cards">
-<figure><img src="front.svg" alt="Vorderseite der Business Card"><figcaption>Vorderseite</figcaption></figure>
-<figure><img src="back.svg" alt="Rückseite der Business Card mit QR-Code zum LinkedIn-Profil"><figcaption>Rückseite – QR-Code führt zu {esc(rep['qr']['url'])}</figcaption></figure>
+<figure><img src="front.svg" alt="{L['alt_f']}"><figcaption>{L['front']}</figcaption></figure>
+<figure><img src="back.svg" alt="{L['alt_b']}"><figcaption>{L['back']} – {L['qr']} {esc(rep['qr']['url'])}</figcaption></figure>
 </div>
-<h2 style="font-size:1rem;margin-top:28px">Hinweise</h2><ul>{warn}</ul>
+<h2 style="font-size:1rem;margin-top:28px">{L['notes']}</h2><ul>{warn}</ul>
 </main></body></html>
 """
 
@@ -906,6 +916,9 @@ def font_installed(name):
 
 def write_outputs(result, profile, brand, out: Path, png=True, pdf=True):
     out.mkdir(parents=True, exist_ok=True)
+    if (png or pdf) and not shutil.which("rsvg-convert"):
+        result["report"]["warnings"].append("rsvg-convert fehlt: nur SVG erzeugt (PNG/PDF: brew install librsvg "
+                                            "bzw. apt install librsvg2-bin).")
     for fam in dict.fromkeys((result["report"]["fonts"] or {}).values()):
         if font_installed(fam) is False:
             result["report"]["warnings"].append(
@@ -930,8 +943,6 @@ def write_outputs(result, profile, brand, out: Path, png=True, pdf=True):
             recommend_native(profile, brand, result["report"]), encoding="utf-8")
     except ImportError:
         pass
-    if not shutil.which("rsvg-convert"):
-        result["report"]["warnings"].append("rsvg-convert fehlt: nur SVG erzeugt (PNG/PDF: brew install librsvg).")
     return files
 
 

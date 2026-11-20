@@ -63,6 +63,9 @@ res = render_card({"name": "Lea Sommer", "headline": "Creative Director", "compa
                   fmt="share", lang="en", theme="dark", layout="diagonal")
 check(3, "Scan to connect", "Scan to connect" in res["back"])
 check(3, "Format share", res["report"]["trim_px"] == [1200, 627])
+md3 = recommend_native({"name": "Lea Sommer", "linkedin_url": "linkedin.com/in/lea-sommer-beispiel"},
+                       {"colors": {"primary": "#DB2777"}}, res["report"])
+check(3, "App-Anleitung englisch", "Tap your" in md3 and "Pink" in md3 and "Stand der Fakten" not in md3)
 
 # Fall 4
 try:

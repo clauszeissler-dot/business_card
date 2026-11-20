@@ -36,7 +36,8 @@
       "assertions": [
         "make_card.py mit --format share und --lang en aufgerufen",
         "back.svg enthält 'Scan to connect'",
-        "QR-URL korrekt"
+        "QR-URL korrekt",
+        "linkedin-native-card.md ist englisch (lang=en)"
       ]
     },
     {

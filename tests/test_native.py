@@ -22,3 +22,10 @@ def test_long_headline_gets_shortening_hint(profile, brand):
 def test_no_brand_colors_gives_neutral_advice(profile):
     md = recommend_native(profile, {}, render_card(profile, {})["report"])
     assert "Markenfarbe" in md
+
+
+def test_native_recommendation_in_english(profile, brand):
+    rep = render_card(profile, brand, lang="en")["report"]
+    assert rep["lang"] == "en"
+    md = recommend_native(profile, brand, rep)
+    assert "Tap your" in md and "Teal" in md and "Türkis" not in md and "Stand der Fakten" not in md

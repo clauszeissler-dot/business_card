@@ -30,3 +30,11 @@ def test_palette_always_readable(primary, theme):
     # QR: dunkel auf hell, starker Kontrast
     assert contrast_ratio(pal["qr_dark"], pal["qr_light"]) >= 7.0
     assert contrast_ratio(pal["qr_light"], "#000000") > contrast_ratio(pal["qr_dark"], "#000000")
+
+
+@pytest.mark.parametrize("name,expected", [("Dr. Jonas Weber", "JW"), ("Prof. Dr. Anna Schmidt", "AS"),
+                                           ("Dipl.-Ing. Max Müller-Lüdenscheidt", "MM"), ("Ada", "AD"),
+                                           ("Mag. Eva Berger", "EB"), ("Lea Sommer", "LS")])
+def test_initials_skip_titles(name, expected):
+    from common import initials
+    assert initials(name) == expected

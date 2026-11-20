@@ -34,7 +34,8 @@ This skill for AI agents (Claude Code, Codex and others) fills that gap:
 - **8 patterns:** `none`, `dots`, `grid`, `diagonal`, `waves`, `rings`, `circuit`, `chevron`. Tone on tone, so they never reduce contrast.
 - **Shapes:** corners `sharp`, `soft`, `round`; photo or monogram as `circle`, `rounded`, `square`, `hexagon`
 - **3 colour themes:** `light`, `dark`, `brand`. Readability is enforced: text ≥ 7:1 or ≥ 4.5:1. The QR code is always dark on light.
-- **4 formats:** EU card, US card, credit-card size (digital), share image 1200 × 627 px. Use `--lang en` for English labels.
+- **4 formats:** EU card, US card, credit-card size (digital), share image 1200 × 627 px.
+- **Languages:** `--lang en` switches the card labels, the preview page and the LinkedIn app guide to English. Technical notes in `report.json` are in German.
 
 ## Quick start
 

@@ -36,9 +36,9 @@ def place(im, x, y):
     bg.paste(im, (x, y), im)
 
 
-place(card(D / "kanzlei-front.png", 520, 8), 860, 70)
-place(card(D / "studio-front.png", 520, -6), 1020, 420)
-place(card(D / "demo-back.png", 520, 3), 600, 470)
+place(card(D / "kanzlei-front.png", 500, 7), 1010, 40)
+place(card(D / "demo-back.png", 500, -4), 720, 320)
+place(card(D / "studio-front.png", 440, 5), 1110, 530)
 
 f1 = ImageFont.truetype(bold, 68)
 f2 = ImageFont.truetype(regular, 30)

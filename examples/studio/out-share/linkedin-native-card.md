@@ -1,37 +1,37 @@
-# LinkedIn Business Card einstellen – Lea Sommer
+# Set up your LinkedIn Business Card – Lea Sommer
 
-Stand der Fakten: 20.11.2026. Die Funktion gibt es laut LinkedIn-Hilfe nur in der LinkedIn-App (englische Oberfläche) und sie wird schrittweise ausgerollt. Falls dir Menüs fehlen: App aktualisieren oder später erneut prüfen. Quelle: https://www.linkedin.com/help/linkedin/answer/a16648713
+Facts as of 20 November 2026. According to LinkedIn Help, the feature is only available in the LinkedIn mobile app (in English) and is rolling out gradually. If menus are missing, update the app or check again later. Source: https://www.linkedin.com/help/linkedin/answer/a16648713
 
-Die Karte lässt sich nicht automatisch befüllen – LinkedIn bietet dafür keine Schnittstelle. Diese Anleitung sagt dir, was du in der App antippst, damit sie zu deinem CI passt.
+The card cannot be filled in automatically – LinkedIn offers no interface for it. This guide tells you what to tap in the app so the card matches your brand.
 
-## 1. Karte öffnen
+## 1. Open your card
 
-1. In der LinkedIn-App oben links auf dein **Profilfoto** tippen.
-2. Oben im Profil auf den **QR-Code** tippen. Die Karte erscheint; wischen zeigt Vorder- und Rückseite.
-3. Auf das **Edit**-Symbol tippen. Unten erscheinen die Optionen.
+1. Tap your **profile photo** in the upper-left corner of the LinkedIn app.
+2. Tap the **QR code** at the top of your profile. Your card opens; swipe to see front and back.
+3. Tap the **Edit** icon. The options appear at the bottom of the screen.
 
-## 2. Optionen wählen
+## 2. Choose the options
 
-- **Info:** Headline prüfen („Creative Director · Marken, die man fühlt“ passt). Häkchen bei **Company or school** (Pulse Studio) und **Location** setzen, wenn beides auf die Karte soll.
-- **Layout:** ein dynamisches Layout mit Foto auf der Farbfläche. Fotostil passend zu deiner Karte: **circle** (circle = Kreis, rounded = abgerundet, square = eckig, hexagon = Sechseck – das nächstliegende wählen).
-- **Font:** eine schlichte, serifenlose Schrift (Sans). Deine Markenschrift ist „Sora“ (Sans). LinkedIn bietet eine feste Auswahl; nimm die ähnlichste.
-- **Colors:** Vorderseite das Farbfeld aus der Familie **Pink**, das #DB2777 am nächsten kommt. Dann **doppelt auf die Farbauswahl tippen**, um zur Rückseite zu wechseln, und dort **Türkis** (nah an #22D3EE) wählen – oder dieselbe Farbe für einen ruhigen Auftritt. Eigene Hex-Werte sind laut Hilfe nicht vorgesehen.
-- **Pattern:** ein Muster mit Wellen oder weichen, runden Formen. Im Zweifel dezent: Name und QR-Code müssen gut lesbar bleiben.
-- **Stickers and Doodle** (nur Rückseite): Tipp fürs CI – ein Foto deines **Logos** als *cutout* einfügen; optional die **Unterschrift** als Doodle. Sparsam einsetzen: höchstens ein bis zwei Elemente.
+- **Info:** Check your headline (“Creative Director · Marken, die man fühlt” works). Tick **Company or school** (Pulse Studio) and **Location** if you want both on the card.
+- **Layout:** a dynamic layout with the photo on the colour area. Photo style to match your card: **circle** (circle, rounded, square, hexagon – pick the closest one).
+- **Font:** a clean sans-serif font (Sans). Your brand font is “Sora” (Sans). LinkedIn offers a fixed set; pick the closest one.
+- **Colors:** For the front, pick the swatch from the **Pink** family that is closest to #DB2777. Then **double-tap the colour options** to switch to the back and pick **Teal** (close to #22D3EE) – or the same colour for a calm look. According to LinkedIn Help, custom hex values are not offered.
+- **Pattern:** a pattern with waves or soft, round shapes. When in doubt, keep it subtle: your name and the QR code must stay easy to read.
+- **Stickers and Doodle** (back only): brand tip – add a photo of your **logo** as a *cutout*; optionally add your **signature** as a doodle. Use one or two elements at most.
 
-Wischen, um beide Seiten zu prüfen, dann **Save** tippen.
+Swipe to check both sides, then tap **Save**.
 
-## 3. Ins Wallet legen und teilen
+## 3. Add to your wallet and share
 
-- **Add to Wallet** antippen und den Anweisungen folgen (Apple Wallet oder Google Wallet).
-- Auf Events: Karte zeigen, Gegenüber scannt den QR-Code. Optional in den Share settings **Auto-swap when you scan** aktivieren – dann tauscht ihr beim Scannen gegenseitig die Karten.
-- Wichtig: Ein Kartentausch schickt **keine** Kontaktanfrage. Danach gezielt vernetzen und kurz nachfassen.
-- Gesammelte Karten: My Network → Manage My Network → Business Cards.
+- Tap **Add to Wallet** and follow the on-screen steps (Apple Wallet or Google Wallet).
+- At events: show your card and let the other person scan the QR code. Optionally turn on **Auto-swap when you scan** in Share settings so you swap cards both ways.
+- Important: swapping cards does **not** send a connection request. Connect afterwards and follow up.
+- Collected cards: My Network → Manage My Network → Business Cards.
 
-## 4. Passend zur gedruckten Karte
+## 4. Matching your printed card
 
-Die gedruckte bzw. digitale Karte aus diesem Skill nutzt Layout **diagonal**, Muster **waves** und Farbschema **dark**. Ihr QR-Code führt direkt zu https://www.linkedin.com/in/lea-sommer-beispiel/ – so passen Papier, Bild und App zusammen.
+The printed or digital card from this skill uses layout **diagonal**, pattern **waves** and colour theme **dark**. Its QR code links straight to https://www.linkedin.com/in/lea-sommer-beispiel/ – so paper, image and app work together.
 
-Quellen: LinkedIn-Hilfe https://www.linkedin.com/help/linkedin/answer/a16648713 · LinkedIn-Newsroom vom 15.10.2026 https://news.linkedin.com/2026/new-ways-to-build-meaningful-connections
+Sources: LinkedIn Help https://www.linkedin.com/help/linkedin/answer/a16648713 · LinkedIn Newsroom, 15 Oct 2026 https://news.linkedin.com/2026/new-ways-to-build-meaningful-connections
 
-Hinweis: Dieses Projekt ist nicht mit LinkedIn verbunden. LinkedIn ist eine Marke der LinkedIn Corporation.
+Note: This project is not affiliated with LinkedIn. LinkedIn is a trademark of LinkedIn Corporation.
