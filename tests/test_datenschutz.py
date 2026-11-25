@@ -1,7 +1,11 @@
 """Die Datenschutzseite muss zum tatsächlichen Verhalten des Dienstes passen."""
+import sys
 from pathlib import Path
 
-from service import core
+from conftest import ROOT
+
+sys.path.insert(0, str(ROOT))
+from service import core  # noqa: E402
 
 PAGE = (Path(__file__).resolve().parents[1] / "public" / "datenschutz.html").read_text(encoding="utf-8")
 
