@@ -355,7 +355,9 @@ def validate_linkedin_url(url) -> str:
     """Normalisiert eine öffentliche Profil-URL auf https://www.linkedin.com/in/<slug>/."""
     if not isinstance(url, str) or not url.strip():
         raise ValueError("LinkedIn-Profil-URL fehlt (Format: https://www.linkedin.com/in/<name>/).")
-    m = _LI_RE.match(url.strip())
+    from urllib.parse import quote
+    # Profiladressen dürfen Umlaute enthalten (z. B. /in/clauszeißler); nur Nicht-ASCII wird kodiert.
+    m = _LI_RE.match(re.sub(r"[^\x00-\x7f]", lambda c: quote(c.group()), url.strip()))
     if not m:
         raise ValueError(f"Keine gültige LinkedIn-Profil-URL: {url!r} (erwartet: https://www.linkedin.com/in/<name>/)")
     return f"https://www.linkedin.com/in/{m.group(1)}/"

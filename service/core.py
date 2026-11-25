@@ -287,10 +287,14 @@ def _parse_hit(name, hit):
         return None
     title = re.sub(r"\s*\|\s*LinkedIn\s*$", "", _clean(hit.get("title"), 300))
     parts = [p.strip() for p in re.split(r"\s+[-–—]\s+", title) if p.strip()]
-    if not parts or _fold_name(parts[0]) != _fold_name(name):
-        return None
-    desc = _clean(hit.get("description"), 400)
     out = {"linkedin_url": url, "headline": "", "company": "", "location": ""}
+    if not parts or _fold_name(parts[0]) != _fold_name(name):
+        # Titel ohne Namen (z. B. „LinkedIn: Einloggen“): nur zulassen, wenn die Adresse selbst den Namen trägt.
+        slug = urllib.parse.unquote(url.rstrip("/").rsplit("/", 1)[-1])
+        letters = re.sub(r"[^a-z]", "", _fold_name(slug))
+        wanted = re.sub(r"[^a-z]", "", _fold_name(name))
+        return out if wanted and letters.startswith(wanted) else None
+    desc = _clean(hit.get("description"), 400)
     if len(parts) >= 3:
         out["headline"], out["company"] = parts[1][:120], parts[2][:80]
     elif len(parts) == 2:

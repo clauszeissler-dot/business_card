@@ -119,3 +119,27 @@ def test_find_route_needs_session_and_origin():
         assert post({"Origin": "https://evil.example", "Cookie": f"{core.SESSION_COOKIE}={sess}"}) == 403
     finally:
         srv.shutdown()
+
+
+def test_umlaut_slugs_are_accepted_and_percent_encoded():
+    from common import validate_linkedin_url
+    assert validate_linkedin_url("https://de.linkedin.com/in/clauszeißler") == \
+        "https://www.linkedin.com/in/clausz%C3%A9i%C3%9Fler/".replace("%C3%A9", "e")
+    assert validate_linkedin_url("https://de.linkedin.com/in/claus-zei%C3%9Fler-2019") == \
+        "https://www.linkedin.com/in/claus-zei%C3%9Fler-2019/"
+    with pytest.raises(ValueError):
+        validate_linkedin_url("https://de.linkedin.com/in/claus<script>")
+
+
+def test_hit_with_generic_title_counts_when_slug_matches_name():
+    payload = {"web": {"results": [
+        {"url": "https://de.linkedin.com/in/claus-zei%C3%9Fler-2019", "title": "LinkedIn: Einloggen oder anmelden",
+         "description": ""},
+        {"url": "https://de.linkedin.com/in/clauszeißler", "title": "Claus Zeißler – HR Business Partner – DB Netz AG | LinkedIn",
+         "description": ""},
+        {"url": "https://www.linkedin.com/in/klaus-geissler-859764a3/", "title": "LinkedIn: Einloggen oder anmelden",
+         "description": ""}]}}
+    hits = core.find_profiles(_session(name="Claus Zeißler"), {}, http=_fake([], payload))["matches"]
+    assert [h["linkedin_url"] for h in hits] == ["https://www.linkedin.com/in/claus-zei%C3%9Fler-2019/",
+                                                  "https://www.linkedin.com/in/clausz%C3%A9i%C3%9Fler/".replace("%C3%A9", "e")]
+    assert hits[0]["headline"] == "" and hits[1]["company"] == "DB Netz AG"
