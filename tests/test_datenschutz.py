@@ -7,7 +7,12 @@ from conftest import ROOT
 sys.path.insert(0, str(ROOT))
 from service import core  # noqa: E402
 
-PAGE = (Path(__file__).resolve().parents[1] / "public" / "datenschutz.html").read_text(encoding="utf-8")
+PAGE_PATH = Path(__file__).resolve().parents[1] / "public" / "datenschutz.html"
+PAGE = PAGE_PATH.read_text(encoding="utf-8")
+
+
+def _html():
+    return PAGE_PATH.read_text(encoding="utf-8")
 
 
 def test_verantwortlicher_und_aufsicht_genannt():
@@ -47,3 +52,18 @@ def test_datenschutz_nennt_tatsaechliche_dienstadresse():
     # business-card-wallet.vercel.app gehört einem fremden Projekt (geprüft 25.11.2026)
     assert "business-card-wallet-three.vercel.app" in PAGE
     assert "unter business-card-wallet.vercel.app" not in PAGE
+
+
+def test_datenschutz_nennt_lokale_speicherung_im_browser():
+    """A-018: Die Merkfunktion speichert Formularangaben im Browser; die Seite muss das nennen."""
+    html = _html()
+    app = (ROOT / "public" / "app.js").read_text(encoding="utf-8")
+    assert "localStorage" in app and "bc_saved" in app
+    assert "bc_saved" in html and "Auf diesem Gerät merken" in html
+
+
+def test_datenschutz_nennt_freie_email_und_downloads():
+    """A-019/A-020: E-Mail ist frei wählbar; vCard und Sperrbildschirm entstehen ohne Speicherung."""
+    html = _html()
+    assert "frei eintragen" in html
+    assert "vCard" in html and "Sperrbildschirm" in html

@@ -31,12 +31,19 @@
 <li>deine E-Mail-Adresse,</li>
 <li>eine pseudonyme LinkedIn-Kennung.</li>
 </ul>
-<p>Mit der Berechtigung <code>w_member_social</code> erhält der Dienst außerdem ein Zugriffstoken. Es wird ausschließlich genutzt, um einen Beitrag mit deiner Karte zu veröffentlichen, wenn du das auslöst (siehe „Teilen auf LinkedIn“). Name und E-Mail im Wallet-Pass stammen immer aus der Anmeldung, damit niemand Karten unter fremdem Namen erstellen kann.</p>
+<p>Mit der Berechtigung <code>w_member_social</code> erhält der Dienst außerdem ein Zugriffstoken. Es wird ausschließlich genutzt, um einen Beitrag mit deiner Karte zu veröffentlichen, wenn du das auslöst (siehe „Teilen auf LinkedIn“). Der Name auf der Karte stammt immer aus der Anmeldung, damit niemand Karten unter fremdem Namen erstellen kann. Deine LinkedIn-E-Mail-Adresse nutzen wir nur als Vorschlag: Ist sie eine geschäftliche Adresse, füllen wir sie und deine Website vor; eine private Adresse (zum Beispiel bei GMX, Web.de oder Gmail) füllen wir nicht vor.</p>
 <p>Dein Profilfoto lädt dein Browser direkt von LinkedIn (<code>media.licdn.com</code>). Dabei erhält LinkedIn deine IP-Adresse.</p>
 <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO: die Nutzung des Dienstes, die du angefragt hast.</p>
 
 <h3>Formularangaben</h3>
-<p>Für deine Karte gibst du ein: LinkedIn-Profiladresse sowie optional Position, Firma, Ort, Website, Telefonnummer, Farben und Gültigkeit in Tagen. Ob deine E-Mail-Adresse auf der Karte steht, entscheidest du selbst. Die Angaben werden nur für die gerade angeforderte Karte verarbeitet und nicht gespeichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.</p>
+<p>Für deine Karte gibst du ein: LinkedIn-Profiladresse sowie optional Position, Firma, Ort, Website, E-Mail-Adresse, Telefonnummer, Farben und Gültigkeit in Tagen. Die E-Mail-Adresse kannst du frei eintragen oder leer lassen; leer heißt: keine E-Mail auf der Karte. Der Dienst verarbeitet die Angaben nur für die gerade angeforderte Karte und speichert sie nicht. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.</p>
+
+<h3>Speicherung in deinem Browser</h3>
+<p>Damit deine Eingaben eine Anmeldung überstehen, hält dein Browser sie in diesem Tab zwischen (<code>sessionStorage</code>, Eintrag <code>bc_prefill</code>). Das endet, wenn du den Tab schließt oder dich abmeldest.</p>
+<p>Setzt du den Haken „Auf diesem Gerät merken“, speichert dein Browser deine Formularangaben dauerhaft auf deinem Gerät (<code>localStorage</code>, Eintrag <code>bc_saved</code>), damit du beim nächsten Besuch nichts neu eintippen musst. Die Daten bleiben auf deinem Gerät und werden nicht an uns übertragen, solange du keine Karte anforderst. Entfernst du den Haken oder klickst auf „Abmelden“, wird der Eintrag gelöscht. Rechtsgrundlage ist § 25 Abs. 2 Nr. 2 TDDDG (von dir ausdrücklich gewünschte Funktion) in Verbindung mit Art. 6 Abs. 1 lit. b DSGVO.</p>
+
+<h3>vCard, Sperrbildschirm und Erinnerung</h3>
+<p>Auf deinen Klick erzeugt der Dienst aus deinen Kartendaten eine vCard (.vcf), ein Bild für den Sperrbildschirm (.png) oder einen Kalendereintrag als Erinnerung (.ics) und gibt die Datei direkt an deinen Browser zurück. Gespeichert wird dabei nichts. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.</p>
 
 <h3>Apple Wallet</h3>
 <p>Der Dienst erzeugt einen signierten Pass (.pkpass) mit deinen Kartendaten und gibt ihn direkt an deinen Browser zurück. Der Pass wird auf deinem Gerät in Apple Wallet gespeichert. Der Dienst sendet dabei keine Daten an Apple und kann den Pass später nicht ändern oder abrufen. Ob Apple Wallet den Pass über iCloud synchronisiert, richtet sich nach deinen Apple-Einstellungen.</p>
@@ -70,7 +77,7 @@
 <p>Darüber hinaus geben wir keine Daten weiter, außer wir sind gesetzlich dazu verpflichtet.</p>
 
 <h2>6. Speicherdauer</h2>
-<p>Der Dienst speichert keine Karten, Formularangaben oder Beiträge. Deine Sitzung endet nach spätestens 1 Stunde. Was du in Apple Wallet, Google Wallet oder als LinkedIn-Beitrag gespeichert hast, verwaltest du dort selbst. Kontaktierst du uns per E-Mail, gilt die <a href="https://www.affairs-consulting.de/datenschutz" rel="noopener">Datenschutzerklärung von KI AffAIrs</a>.</p>
+<p>Der Dienst speichert auf seinen Servern keine Karten, Formularangaben oder Beiträge. Was dein Browser auf deinem Gerät speichert, steht unter „Speicherung in deinem Browser“. Deine Sitzung endet nach spätestens 1 Stunde. Was du in Apple Wallet, Google Wallet oder als LinkedIn-Beitrag gespeichert hast, verwaltest du dort selbst. Kontaktierst du uns per E-Mail, gilt die <a href="https://www.affairs-consulting.de/datenschutz" rel="noopener">Datenschutzerklärung von KI AffAIrs</a>.</p>
 
 <h2>7. Zugriff widerrufen</h2>
 <p>Du kannst den Zugriff dieser App auf dein LinkedIn-Konto jederzeit entziehen: in LinkedIn unter „Einstellungen“ → „Datenschutz“ → „Berechtigte Dienste“ bei „Business Card by KI AffAIrs“ auf „Entfernen“. Danach kann der Dienst nichts mehr in deinem Namen tun, auch nicht mit einem noch gültigen Token.</p>

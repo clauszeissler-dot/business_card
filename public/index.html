@@ -11,7 +11,7 @@
 <main>
   <header>
     <h1>Business Card ins Wallet</h1>
-    <p class="lead">Melde dich mit LinkedIn an, ergänze Position und Profil-URL und speichere deine Karte mit QR-Code in Apple Wallet oder Google Wallet.</p>
+    <p class="lead">Melde dich mit LinkedIn an, ergänze Profil-URL und Position und speichere deine Karte mit QR-Code in Apple Wallet, Google Wallet, als vCard oder als Sperrbildschirm.</p>
   </header>
 
   <section id="signed-out" class="card" hidden>
@@ -31,7 +31,7 @@
     <form id="card" novalidate>
       <label>LinkedIn-Profil-URL <span class="req">(Pflicht)</span>
         <input name="linkedin_url" required placeholder="linkedin.com/in/dein-name" autocomplete="url">
-        <small>Steht in deinem Profil unter „Kontaktinfo“. LinkedIn gibt sie bei der Anmeldung nicht weiter.</small>
+        <small>LinkedIn gibt bei der Anmeldung nur Name, Foto und E-Mail weiter, keine Profiladresse und keine Position. <a href="https://www.linkedin.com/in/me/" target="_blank" rel="noopener">Eigenes Profil öffnen</a> und die Adresse aus der Adresszeile kopieren. Mit „Auf diesem Gerät merken“ tippst du das nur einmal.</small>
       </label>
       <label>Position / Headline <input name="headline" maxlength="120" placeholder="z. B. Gründerin & Strategin"></label>
       <div class="row">
@@ -39,20 +39,39 @@
         <label>Ort <input name="location" maxlength="60"></label>
       </div>
       <div class="row">
-        <label>Website <input name="website" maxlength="80" placeholder="example.com"></label>
+        <label>E-Mail auf der Karte <input name="email" type="email" maxlength="120" placeholder="name@firma.de" autocomplete="email">
+          <small id="email-hint">Leer lassen = keine E-Mail auf der Karte.</small></label>
         <label>Telefon <input name="phone" maxlength="40" autocomplete="tel"></label>
       </div>
+      <label>Website <input name="website" maxlength="80" placeholder="example.com"></label>
       <div class="row">
         <label>Markenfarbe <input name="primary" type="color" value="#0F766E"></label>
         <label>Gültig (Tage, 0 = unbegrenzt) <input name="valid_days" type="number" min="0" max="366" value="0"></label>
       </div>
-      <label class="check"><input name="show_email" type="checkbox" checked> E-Mail auf dem Pass zeigen</label>
+      <input name="lang" type="hidden" value="de">
+      <label class="check"><input id="remember" type="checkbox"> Auf diesem Gerät merken</label>
+      <small class="indent">Speichert deine Angaben nur in diesem Browser, damit du beim nächsten Mal nichts neu eintippen musst. „Abmelden“ löscht sie.</small>
 
       <h2>3. Speichern</h2>
       <div class="actions">
         <button id="apple" class="button primary" type="button"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" /> <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" /> </svg>Zu Apple Wallet</button>
         <button id="google" class="button primary" type="button"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" /> <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" /> </svg>Zu Google Wallet</button>
       </div>
+
+      <h2>4. Kontakt und Sperrbildschirm</h2>
+      <div class="actions">
+        <button class="button" type="button" data-download="/api/vcard"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M16 2v2" /> <path d="M7 22v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" /> <path d="M8 2v2" /> <circle cx="12" cy="11" r="3" /> <rect x="3" y="4" width="18" height="18" rx="2" /> </svg>vCard (.vcf)</button>
+        <button class="button" type="button" data-download="/api/lockscreen" data-device="iphone"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" /> </svg>Sperrbildschirm iPhone</button>
+        <button class="button" type="button" data-download="/api/lockscreen" data-device="android"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" /> </svg>Sperrbildschirm Android</button>
+        <button class="button" type="button" data-download="/api/reminder" data-needs-days><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /> <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /> </svg>Erinnerung (.ics)</button>
+      </div>
+      <p class="small muted">Für einen begrenzten Zeitraum, etwa eine Messe: oben „Gültig (Tage)“ setzen. Das Bild zeigt dann „Gültig bis …“, und die Erinnerung meldet sich am letzten Tag, damit du dein altes Hintergrundbild zurückstellst. iPhone und Android können das Bild nicht von selbst wieder entfernen.</p>
+      <details class="guide">
+        <summary>So stellst du das Bild als Sperrbildschirm ein</summary>
+        <p><strong>iPhone:</strong> Bild in „Fotos“ sichern. Sperrbildschirm lange drücken, auf „+“ tippen, „Fotos“ wählen und das Bild nehmen. Nicht verschieben, oben ist Platz für die Uhr frei.</p>
+        <p><strong>Android:</strong> Bild in der Galerie öffnen, „Als Hintergrund festlegen“ und dann „Sperrbildschirm“ wählen.</p>
+        <p><strong>Zurückstellen:</strong> Die Erinnerung (.ics) in den Kalender übernehmen. Am letzten Tag wieder das gewohnte Bild wählen.</p>
+      </details>
 
       <details>
         <summary><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="18" cy="5" r="3" /> <circle cx="6" cy="12" r="3" /> <circle cx="18" cy="19" r="3" /> <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" /> <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" /> </svg>Karte auf LinkedIn teilen</summary>
@@ -65,6 +84,7 @@
   </section>
 
   <form id="apple-form" method="post" action="/api/pass/apple" hidden><input type="hidden" name="payload"></form>
+  <form id="download-form" method="post" action="/api/vcard" hidden><input type="hidden" name="payload"></form>
 
   <footer>
     <a href="/datenschutz.html">Datenschutz</a> · <a href="https://affairs-consulting.de/impressum" rel="noopener">Impressum</a> ·

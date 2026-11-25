@@ -22,10 +22,10 @@ Nicht erfunden, sondern offen ausgewiesen. Ursache meist: Das Lockfile enthält 
 
 | Verfahren | Bewertung | Fundstellen |
 | --- | --- | --- |
-| AES-GCM | ✅ ok | service/core.py:72, service/core.py:75, service/core.py:81, service/core.py:85 |
-| CSPRNG | ℹ️ Zufall | service/core.py:74, service/core.py:116 |
+| AES-GCM | ✅ ok | service/core.py:73, service/core.py:76, service/core.py:82, service/core.py:86 |
+| CSPRNG | ℹ️ Zufall | service/core.py:75, service/core.py:117 |
 | SHA-1 | ⚠️ schwach | scripts/wallet.py:160 |
-| SHA-256 | ✅ ok | service/core.py:68 |
+| SHA-256 | ✅ ok | service/core.py:69 |
 
 Ohne Standard-OID (keine erfunden; cdx-validate meldet das als Hinweis): AES-GCM, CSPRNG.
 

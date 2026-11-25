@@ -56,7 +56,7 @@ Sicherheitsprobleme bitte als vertrauliche Meldung über die Repository-Plattfor
 
 | Bedrohung | Gegenmaßnahme | Test |
 | --- | --- | --- |
-| Fremder erzeugt einen von KI AffAIrs signierten Pass unter fremdem Namen | Name und E-Mail kommen nur aus der LinkedIn-Anmeldung; Formularfelder `name`/`email` werden ignoriert | `test_service.py::test_card_input_requires_session_and_ignores_foreign_name` |
+| Fremder erzeugt einen von KI AffAIrs signierten Pass unter fremdem Namen | Der Name kommt nur aus der LinkedIn-Anmeldung, das Formularfeld `name` wird ignoriert. Die E-Mail ist seit A-019 frei wählbar wie Telefon und Website und wird auf Format, Länge und Zeilenumbrüche geprüft (`test_service_extras.py::test_invalid_email_is_rejected`) | `test_service.py::test_card_input_requires_session_and_ignores_foreign_name` |
 | Login-CSRF / OAuth-State-Fälschung | zufälliger State, verschlüsselt im Cookie (AES-GCM), 10 Min. gültig, zeitkonstanter Vergleich | `test_callback_rejects_wrong_state` |
 | Cross-Site-POST mit Sitzungscookie | `SameSite=Lax` plus Origin-Prüfung gegen `PUBLIC_BASE_URL` | `test_http_post_from_foreign_origin_is_rejected` |
 | Sitzungsdiebstahl/-fälschung | Cookie `HttpOnly; Secure`, AES-GCM mit Schlüssel aus `SESSION_SECRET`, 1 h Laufzeit | `test_seal_roundtrip_and_tamper`, `test_other_secret_cannot_read_session` |

@@ -20,6 +20,7 @@ Stand: 2026-11-20
 | S9 | A-013 | scripts/wallet.py (Apple .pkpass, Google-Save-Link) + Tests mit Testschlüsseln | erledigt (Echttest offen) | pytest, Signaturprüfung |
 | S10 | A-014 | render.py (resvg + Schriften), App-Abschnitt in SKILL.md, ZIP-Builder | erledigt (App-Test offen) | pytest, ZIP-Inhalt |
 | S11 | A-015, A-016, A-017 | Dienst auf Vercel (Login, Wallet, Share, Rechtstexte) | offen | Deploy-Nachweis, Missbrauchstests |
+| S12 | A-018, A-019, A-020 | Vorbelegung, freie E-Mail, vCard/Sperrbildschirm/Erinnerung im Dienst + Datenschutz | erledigt (Live-Test offen) | pytest 259, Live-Test nach Deploy |
 | S7 | A-009 | README DE/EN, Beispiele, CRA, Commit | lokal erledigt, Push offen | Repo-Standard-Check |
 
 ## Aktueller Zielabgleich

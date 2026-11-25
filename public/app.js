@@ -32,7 +32,31 @@ function payload() {
   }
   d.valid_days = Number(d.valid_days || 0);
   try { sessionStorage.setItem("bc_prefill", JSON.stringify(d)); } catch (e) { /* egal */ }
+  remember(d);
   return d;
+}
+
+// Merkfunktion (Opt-in): Formular dauerhaft nur im Browser speichern. Nie Beitragstext oder Bestätigung.
+const SAVED = "bc_saved";
+function remember(d) {
+  try {
+    if (!$("#remember").checked) { localStorage.removeItem(SAVED); return; }
+    const { text, confirm, ...keep } = d;
+    localStorage.setItem(SAVED, JSON.stringify(keep));
+  } catch (e) { /* Speicher gesperrt: dann eben nicht */ }
+}
+function loadSaved() {
+  try { return JSON.parse(localStorage.getItem(SAVED) || "null"); } catch (e) { return null; }
+}
+
+function download(path, extra) {
+  const d = payload(); if (!needUrl(d)) return;
+  if (extra.needsDays && !(d.valid_days > 0)) { status("Für die Erinnerung bitte oben „Gültig (Tage)“ auf mindestens 1 setzen.", true); form.elements.valid_days.focus(); return; }
+  const f = $("#download-form");
+  f.action = path;
+  f.elements.payload.value = JSON.stringify({ ...d, device: extra.device || "iphone" });
+  f.submit();
+  status("Datei wird erstellt …");
 }
 
 async function post(path, body) {
@@ -55,7 +79,21 @@ async function init() {
   $("#me-name").textContent = me.name;
   $("#me-email").textContent = me.email || "";
   if (me.picture && me.picture.startsWith("https://media.licdn.com/")) { $("#me-picture").src = me.picture; $("#me-picture").hidden = false; }
+  form.elements.lang.value = me.lang === "en" ? "en" : "de";
+  // Vorschläge aus der Anmeldung: Geschäftsadresse und Website nur, wenn die E-Mail keine Freemail-Adresse ist.
+  if (me.email_domain) {
+    form.elements.email.value = me.email;
+    form.elements.website.value = me.email_domain;
+  } else if (me.email) {
+    $("#email-hint").textContent = "Deine LinkedIn-Adresse ist privat und wird deshalb nicht übernommen. Trag hier deine geschäftliche Adresse ein oder lass das Feld leer.";
+  }
+  const saved = loadSaved();
+  if (saved) { $("#remember").checked = true; fill(saved); }
   fill(prefill);
+  $("#remember").addEventListener("change", () => remember(payload()));
+  for (const b of document.querySelectorAll("[data-download]")) {
+    b.addEventListener("click", () => download(b.dataset.download, { device: b.dataset.device, needsDays: "needsDays" in b.dataset }));
+  }
 
   $("#apple").addEventListener("click", () => {
     const d = payload(); if (!needUrl(d)) return;
@@ -74,7 +112,7 @@ async function init() {
     catch (e) { status(e.message, true); }
   });
   $("#logout").addEventListener("click", async () => {
-    await post("/api/logout", {}).catch(() => {}); sessionStorage.removeItem("bc_prefill"); location.reload();
+    await post("/api/logout", {}).catch(() => {}); sessionStorage.removeItem("bc_prefill"); try { localStorage.removeItem(SAVED); } catch (e) { /* egal */ } location.reload();
   });
 }
 init();

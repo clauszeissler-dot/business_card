@@ -41,6 +41,10 @@ class Handler(BaseHTTPRequestHandler):
     def _redirect(self, location, cookies=()):
         self._send(302, b"", ctype="", cookies=cookies, extra={"Location": location})
 
+    def _download(self, data, ctype, filename):
+        safe = "".join(ch for ch in filename if ch.isalnum() or ch in "-_.") or "download"
+        self._send(200, data, ctype, extra={"Content-Disposition": f'attachment; filename="{safe}"'})
+
     # -- Eingaben ----------------------------------------------------------
     def _body(self):
         length = int(self.headers.get("Content-Length") or 0)
@@ -100,6 +104,15 @@ class Handler(BaseHTTPRequestHandler):
                                   extra={"Content-Disposition": 'attachment; filename="business-card.pkpass"'})
             if path == "/api/pass/google":
                 return self._json(200, {"url": core.google_link(session, body)})
+            if path == "/api/vcard":
+                data, name = core.vcard_file(session, body)
+                return self._download(data, "text/vcard; charset=utf-8", name)
+            if path == "/api/lockscreen":
+                png, _ = core.lockscreen(session, body)
+                return self._download(png, "image/png", f"sperrbildschirm-{body.get('device', 'iphone')}.png")
+            if path == "/api/reminder":
+                return self._download(core.reminder_file(session, body), "text/calendar; charset=utf-8",
+                                      "erinnerung-sperrbildschirm.ics")
             if path == "/api/share":
                 return self._json(200, core.share(session, body))
             return self._json(404, {"error": "Nicht gefunden."})

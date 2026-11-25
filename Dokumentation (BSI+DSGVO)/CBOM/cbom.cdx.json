@@ -1,7 +1,7 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:911c9ea6-7f19-c3e6-b74a-296f15dee765",
+  "serialNumber": "urn:uuid:bd6f9ac6-df22-44d5-0f38-5cd2cbfe54ed",
   "version": 1,
   "metadata": {
     "tools": {
@@ -56,7 +56,7 @@
         "value": "statische Mustererkennung im Quelltext (ohne Tests, Abhängigkeiten und Build-Ordner)"
       }
     ],
-    "timestamp": "2026-11-20T13:22:11Z"
+    "timestamp": "2026-11-25T19:00:38Z"
   },
   "components": [
     {
@@ -79,22 +79,22 @@
         "occurrences": [
           {
             "location": "service/core.py",
-            "line": 72,
+            "line": 73,
             "symbol": "AESGCM"
           },
           {
             "location": "service/core.py",
-            "line": 75,
+            "line": 76,
             "symbol": "AESGCM"
           },
           {
             "location": "service/core.py",
-            "line": 81,
+            "line": 82,
             "symbol": "AESGCM"
           },
           {
             "location": "service/core.py",
-            "line": 85,
+            "line": 86,
             "symbol": "AESGCM"
           }
         ]
@@ -123,12 +123,12 @@
         "occurrences": [
           {
             "location": "service/core.py",
-            "line": 74,
+            "line": 75,
             "symbol": "secrets.token_bytes("
           },
           {
             "location": "service/core.py",
-            "line": 116,
+            "line": 117,
             "symbol": "secrets.token_urlsafe("
           }
         ]
@@ -190,7 +190,7 @@
         "occurrences": [
           {
             "location": "service/core.py",
-            "line": 68,
+            "line": 69,
             "symbol": "hashlib.sha256("
           }
         ]

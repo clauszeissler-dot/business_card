@@ -79,3 +79,9 @@ Ziel: [ZIEL.md](ZIEL.md) · Anforderungen: [AENDERUNGEN.md](AENDERUNGEN.md) · A
 - Sicherheit: Org-Richtlinie iam.disableServiceAccountKeyCreation nur kurz für das Projekt ausgesetzt und wieder erzwungen, temporäre Rolle entfernt.
 - push_vercel_env --dry-run: alle 11 Werte vorhanden.
 - Offen: Vercel-Deploy, Echttests, Veröffentlichungszugriff Google.
+
+## 2026-11-25 – Rückmeldung nach erstem Live-Login (A-018 bis A-020)
+- Live-Login mit LinkedIn funktioniert (Name, Foto, E-Mail angezeigt; Screenshot von Claus) – Beleg für A-015.
+- Claus: zu viel Tippen, private E-Mail auf der Karte, vCard/Sperrbildschirm fehlen im Dienst.
+- Umgesetzt mit TDD (17 + 6 Tests erst rot, dann grün; 2 Datenschutztests rot → grün); Gesamtsuite 259 grün.
+- Offen: Push/Deploy (Vercel baut aus GitHub), Live-Test Downloads und Rendering-Zeit.

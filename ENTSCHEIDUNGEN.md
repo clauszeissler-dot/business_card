@@ -183,3 +183,24 @@ E-NNN gehört zu A-NNN. Änderungen als datierter Nachtrag.
 - Deploy auf Vercel (Team ki-aff-ai-rs, Hobby zum Testen nach Entscheidung Claus; Pro vor öffentlicher Bewerbung), Projekt business-card-wallet, Region fra1 bestätigt (x-vercel-id fra1).
 - Befund: business-card-wallet.vercel.app gehört einem fremden Projekt (Next.js-404). Tatsächliche Adresse: business-card-wallet-three.vercel.app. PUBLIC_BASE_URL, LinkedIn-Redirect- und Datenschutz-URL sowie Datenschutzseite umgestellt; falscher Redirect bei LinkedIn entfernt. Test test_datenschutz_nennt_tatsaechliche_dienstadresse rot → grün.
 - Offen: eigene Domain (z. B. Subdomain von affairs-consulting.de) als stabile Adresse; Pro-Tarif.
+
+
+## E-018 – Weniger Tippen nach der Anmeldung
+- Problem: Nach dem LinkedIn-Login musste Claus fast alles von Hand eintragen.
+- Grenze: „Sign In with LinkedIn using OpenID Connect“ liefert nur sub, Name, Foto, E-Mail und Sprache. Profiladresse, Position und Firma gibt LinkedIn nur Partnerprogrammen frei; Scraping ist ausgeschlossen (Scope im PersonalOS-Record).
+- Lösung: Geschäftliche E-Mail-Domain (keine Freemail-Liste) füllt E-Mail und Website vor, LinkedIn-Sprache wählt de/en, Link „Eigenes Profil öffnen“ (linkedin.com/in/me/) für die Profiladresse, Opt-in „Auf diesem Gerät merken“ (localStorage bc_saved, ohne Beitragstext, „Abmelden“ löscht).
+- Verworfen: Profil-PDF-Upload auf den Server (Bodylimit 64 KB, Personendaten auf dem Server) – später prüfbar.
+- Entscheidung: Claude, 25.11.2026, nach Rückmeldung von Claus im Chat.
+- Live seit: offen (Deploy nach Push). Beleg: tests/test_service_extras.py, tests/test_datenschutz.py.
+
+## E-019 – E-Mail frei wählbar
+- Problem: Die LinkedIn-E-Mail (privat) landete zwingend auf der Karte.
+- Lösung: Formularfeld „E-Mail auf der Karte“, leer = keine E-Mail. Prüfung: Format, ≤ 120 Zeichen, keine Zeilenumbrüche/Steuerzeichen. Der Name bleibt ausschließlich aus der LinkedIn-Anmeldung.
+- Sicherheitsabwägung (DevSecurity develop, S1): Die frühere Invariante „E-Mail nur aus der Anmeldung“ entfällt bewusst. Die E-Mail ist jetzt Selbstauskunft wie Telefon und Website; Schutz vor Karten unter fremdem Namen bleibt über den Namen. Missbrauchstests: 6 ungültige Eingaben, Namensüberschreibung ignoriert.
+- Entscheidung: Claus (Wunsch), umgesetzt von Claude, 25.11.2026. Live seit: offen. Beleg: test_service_extras.py, SECURITY.md.
+
+## E-020 – vCard, Sperrbildschirm und Erinnerung im Dienst
+- Problem: Diese Funktionen gab es nur im Skill (A-010/A-011), nicht im Online-Dienst.
+- Lösung: POST /api/vcard, /api/lockscreen (iphone/android), /api/reminder; gleiche Sitzungs- und Herkunftsprüfung wie die Pässe, Formular-POST für Downloads auf dem Handy, Dateiname bereinigt. 0 Tage = Bild ohne Datum, Erinnerung nur mit Tagen. Anleitung auf der Seite; iOS/Android entfernen das Bild nicht selbst, daher Kalender-Erinnerung.
+- Verworfen: Profilfoto im Sperrbildschirm (wäre serverseitiger Abruf einer URL; vorerst Initialen).
+- Entscheidung: Claude, 25.11.2026, auf Rückmeldung von Claus. Live seit: offen (Rendering-Zeit auf Vercel zu prüfen). Beleg: test_service_extras.py.

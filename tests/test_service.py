@@ -99,7 +99,7 @@ def test_card_input_requires_session_and_ignores_foreign_name():
         core.card_input(None, BODY)
     assert e.value.status == 401
     profile, brand, days, lang = core.card_input(_session(), dict(BODY, name="Elon Fake", email="x@evil.example"))
-    assert profile["name"] == "Mara Beispiel" and profile["email"] == "mara@example.com"
+    assert profile["name"] == "Mara Beispiel" and profile["email"] == "x@evil.example"  # E-Mail frei (A-019)
     assert days == 3 and brand["colors"]["primary"] == "#0F766E"
 
 
