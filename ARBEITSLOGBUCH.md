@@ -89,3 +89,4 @@ Ziel: [ZIEL.md](ZIEL.md) · Anforderungen: [AENDERUNGEN.md](AENDERUNGEN.md) · A
 
 ## 2026-11-25 – Profilsuche (A-021)
 - Claus: URL-Eintippen nicht kundenfreundlich; Entscheidung „Brave ja“. TDD: 8 Tests + 1 Datenschutztest rot → grün, Suite 268 grün.
+- Anmeldefehler nach Redeploy (Screenshot Claus): kanonische Login-Adresse + freundlicher Hinweis (A-022), 3 Tests rot → grün, Suite 273.

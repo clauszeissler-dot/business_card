@@ -165,3 +165,33 @@ def test_download_routes(server, path, ctype, ext):
 def test_download_routes_need_session_and_origin(server, path):
     assert _post_form(server, path, BODY, cookie=False)[0] == 401
     assert _post_form(server, path, BODY, origin="https://evil.example")[0] == 403
+
+
+# --- Anmeldung robust gegen falsche Adresse und alte Rückleitungen ---------------------------------
+
+def _get(port, path, host=None):
+    import http.client
+    c = http.client.HTTPConnection("127.0.0.1", port, timeout=5)
+    c.request("GET", path, headers={"Host": host} if host else {})
+    r = c.getresponse()
+    return r.status, dict(r.getheaders()), r.read()
+
+
+def test_login_on_other_host_redirects_to_canonical_address(server, monkeypatch):
+    monkeypatch.setenv("LINKEDIN_CLIENT_ID", "cid")
+    status, headers, _ = _get(server, "/api/login", host="business-card-wallet-abc123-team.vercel.app")
+    assert status == 302 and headers["Location"] == BASE + "/api/login?canonical=1"
+    assert "Set-Cookie" not in headers
+    status, headers, _ = _get(server, "/api/login?canonical=1", host="intern.example")
+    assert headers["Location"].startswith("https://www.linkedin.com/")  # keine Schleife
+
+
+def test_login_on_canonical_host_goes_to_linkedin(server, monkeypatch):
+    monkeypatch.setenv("LINKEDIN_CLIENT_ID", "cid")
+    status, headers, _ = _get(server, "/api/login", host="bc.example.test")
+    assert status == 302 and headers["Location"].startswith("https://www.linkedin.com/oauth/v2/authorization?")
+
+
+def test_callback_error_returns_to_page_with_hint(server):
+    status, headers, _ = _get(server, "/api/callback?code=x&state=y", host="bc.example.test")
+    assert status == 302 and headers["Location"] == "/?anmeldung=fehler"

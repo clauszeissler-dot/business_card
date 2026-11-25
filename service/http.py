@@ -74,11 +74,23 @@ class Handler(BaseHTTPRequestHandler):
         try:
             path = self._route()
             if path == "/api/login":
+                canonical = urllib.parse.urlsplit(core.base_url()).netloc
+                host = (self.headers.get("X-Forwarded-Host") or self.headers.get("Host") or "").lower()
+                already = "canonical=1" in urllib.parse.urlsplit(self.path).query
+                if host != canonical.lower() and not already:
+                    # Deploy-Adressen (…-hash.vercel.app) bekämen das State-Cookie, LinkedIn leitet aber zur
+                    # Hauptadresse zurück. Deshalb immer dort starten.
+                    return self._redirect(core.base_url() + "/api/login?canonical=1")
                 url, c = core.login_redirect()
                 return self._redirect(url, [c])
             if path == "/api/callback":
                 q = {k: v[0] for k, v in urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).items()}
-                cookies = core.handle_callback(q, self.headers)
+                try:
+                    cookies = core.handle_callback(q, self.headers)
+                except core.ServiceError as e:
+                    if e.status >= 500:
+                        raise
+                    return self._redirect("/?anmeldung=fehler", [core.cookie(core.STATE_COOKIE, "", 0)])
                 return self._redirect("/#angemeldet", cookies)
             if path == "/api/me":
                 return self._json(200, core.public_me(core.session_from(self.headers)))

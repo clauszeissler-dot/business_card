@@ -105,7 +105,14 @@ async function findProfile() {
 async function init() {
   const prefill = readPrefill();
   const me = await fetch("/api/me", { credentials: "same-origin" }).then((r) => r.json()).catch(() => ({}));
-  if (!me.signed_in) { $("#signed-out").hidden = false; return; }
+  if (!me.signed_in) {
+    $("#signed-out").hidden = false;
+    if (new URLSearchParams(location.search).get("anmeldung") === "fehler") {
+      $("#login-hint").hidden = false;
+      history.replaceState(null, "", location.pathname);
+    }
+    return;
+  }
   $("#signed-in").hidden = false;
   $("#me-name").textContent = me.name;
   $("#me-email").textContent = me.email || "";

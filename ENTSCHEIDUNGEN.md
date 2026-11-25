@@ -215,3 +215,8 @@ E-NNN gehört zu A-NNN. Änderungen als datierter Nachtrag.
 - Sicherheit: Formulardaten fließen nie in die Suche (kein offener Suchproxy); Fehler von Brave ohne Details (502); Schlüssel nur als Vercel-Secret BRAVE_API_KEY.
 - Entscheidung: Claus („Brave ja“), 25.11.2026. Live seit: offen. Beleg: tests/test_find_profile.py.
 - Offen: Brave-Konto und Schlüssel, Datenschutzvereinbarung/Übermittlungsgrundlage von Brave prüfen und Datenschutzseite ggf. präzisieren.
+
+## E-022 – Anmeldung robust gegen Deploy-Adressen
+- Problem: Nach dem Redeploy kam bei Claus `{"error": "Ungültige oder abgelaufene Anmeldung."}`. Vermutete Ursache: Start auf einer Deploy-Adresse (…-hash.vercel.app); das State-Cookie liegt dort, LinkedIn leitet aber zur Hauptadresse zurück. Andere mögliche Auslöser: Callback neu geladen, mehr als 10 Minuten vergangen.
+- Lösung: /api/login vergleicht X-Forwarded-Host/Host mit PUBLIC_BASE_URL und leitet einmalig (`?canonical=1`, keine Schleife) zur Hauptadresse um. Callback-Fehler unter 500 führen zu `/?anmeldung=fehler` mit Hinweis und gelöschtem State-Cookie.
+- Entscheidung: Claude, 25.11.2026. Live seit: offen (Push). Beleg: test_service_extras.py.
