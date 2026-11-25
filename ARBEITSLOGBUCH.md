@@ -64,3 +64,9 @@ Ziel: [ZIEL.md](ZIEL.md) · Anforderungen: [AENDERUNGEN.md](AENDERUNGEN.md) · A
 - Anforderungs-IDs: A-017
 - Red/Green: test_datenschutz.py 4 rot (fehlende Cookies, Scopes, Empfänger) → Seite neu → grün; Gesamtsuite 232 grün.
 - Sichtprüfung Ego Lite: Links vorher dunkelblau auf dunklem Grund, nach CSS-Fix #2DD4BF.
+
+## 2026-11-25 – Apple Wallet eingerichtet
+
+- Anforderungs-IDs: A-013, A-016
+- Ergebnis: Apple-Lizenzvereinbarung LYL262 nach Freigabe Claus akzeptiert; Pass Type ID pass.de.affairs-consulting.card, Zertifikat aus lokal erzeugter CSR, pass.p12 mit Zufallspasswort in ~/Desktop/business-card-secrets; Team ID, Pass Type ID, Passwort in secrets.env (nicht ausgegeben). Echter Test-Pass über service.core.apple_pkpass signiert, `openssl smime -verify` erfolgreich, Kette WWDR G4.
+- Offen: Google Wallet, Deploy, Test auf iPhone.
