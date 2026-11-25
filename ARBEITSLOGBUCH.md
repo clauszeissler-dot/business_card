@@ -70,3 +70,12 @@ Ziel: [ZIEL.md](ZIEL.md) · Anforderungen: [AENDERUNGEN.md](AENDERUNGEN.md) · A
 - Anforderungs-IDs: A-013, A-016
 - Ergebnis: Apple-Lizenzvereinbarung LYL262 nach Freigabe Claus akzeptiert; Pass Type ID pass.de.affairs-consulting.card, Zertifikat aus lokal erzeugter CSR, pass.p12 mit Zufallspasswort in ~/Desktop/business-card-secrets; Team ID, Pass Type ID, Passwort in secrets.env (nicht ausgegeben). Echter Test-Pass über service.core.apple_pkpass signiert, `openssl smime -verify` erfolgreich, Kette WWDR G4.
 - Offen: Google Wallet, Deploy, Test auf iPhone.
+
+## 2026-11-25 – Google Wallet eingerichtet
+
+- Anforderungs-IDs: A-013, A-016
+- Ergebnis: Issuer-Konto KI AffAIrs (Workspace-Konto), Wallet-API-Bedingungen nach Freigabe akzeptiert, Cloud-Projekt business-card-wallet-515810, Wallet-API aktiv, Dienstkonto als Entwickler eingeladen, JSON-Schlüssel 0600 im Secrets-Ordner. Live-Test: OAuth-Token und GET issuer erfolgreich; google_link signiert.
+- Kurskorrektur: Downloads in der Agentensitzung kamen verzögert in ~/Downloads an; zwei als verloren angenommene Schlüssel gelöscht, ein dritter nachträglich gefundener gehörte zu einem gelöschten Schlüssel. Endgültiger Schlüssel per Abgleich Key-ID geprüft.
+- Sicherheit: Org-Richtlinie iam.disableServiceAccountKeyCreation nur kurz für das Projekt ausgesetzt und wieder erzwungen, temporäre Rolle entfernt.
+- push_vercel_env --dry-run: alle 11 Werte vorhanden.
+- Offen: Vercel-Deploy, Echttests, Veröffentlichungszugriff Google.
