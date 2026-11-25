@@ -46,3 +46,9 @@ Ziel: [ZIEL.md](ZIEL.md) · Anforderungen: [AENDERUNGEN.md](AENDERUNGEN.md) · A
 - Ergebnis: Abschlussabgleich; Claus hat `push_vercel_env.py --write-env` ausgeführt, 8 Werte fehlen noch (LinkedIn, Apple, Google) → vercel-import.env noch nicht verwenden.
 - Prüfung: `arbeitsstandard.py verify .` grün (Evals 13/13, Tests grün).
 - Offen: Secrets eintragen, Deploy, Echttests, Rate-Limit, Vercel-Tarif.
+
+## 2026-11-25 – Wiederaufnahme
+
+- Anforderungs-IDs: A-013, A-015, A-016
+- Ergebnis: Stand geprüft; in secrets.env fehlen weiter LINKEDIN_CLIENT_ID/SECRET, APPLE_PASS_TYPE_ID, APPLE_TEAM_ID, GOOGLE_ISSUER_ID (nur Namen geprüft, keine Werte gelesen). Entscheidung Claus: alles auf einmal eintragen, dann ein Deploy.
+- Offen: Secrets durch Claus, Deploy, Echttests.

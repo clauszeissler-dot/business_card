@@ -26,5 +26,6 @@ Stand: 2026-11-20
 
 - Arbeitsbeginn: 2026-11-20 (Recherche abgeschlossen)
 - Zum sichtbaren Ergebnis fehlt: Social Preview; Vercel-Deploy mit vollständigen Secrets; Echttests Login/Apple/Google/Share
-- Kürzester nächster Schritt: Claus trägt LinkedIn Client ID/Secret in ~/Desktop/business-card-secrets/secrets.env ein (danach Apple, Google, `push_vercel_env.py --write-env`, Deploy)
+- 2026-11-25: Entscheidung Claus: alle Zugangsdaten (LinkedIn, Apple, Google) auf einmal, dann ein Deploy.
+- Kürzester nächster Schritt: Claus füllt secrets.env komplett nach ANLEITUNG.md (Schritte 1–5), meldet „Deploy fertig“
 - Nächster konkreter Schritt: nach Meldung „Deploy fertig“ /api/health prüfen, Echttests in Ego Lite, Rate-Limit-Regel
