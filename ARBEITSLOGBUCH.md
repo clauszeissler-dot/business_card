@@ -86,3 +86,6 @@ Ziel: [ZIEL.md](ZIEL.md) · Anforderungen: [AENDERUNGEN.md](AENDERUNGEN.md) · A
 - Umgesetzt mit TDD (17 + 6 Tests erst rot, dann grün; 2 Datenschutztests rot → grün); Gesamtsuite 259 grün.
 - Offen: Push/Deploy (Vercel baut aus GitHub), Live-Test Downloads und Rendering-Zeit.
 - Push 20e0bbf nach Freigabe Claus; live geprüft: alle vier Downloads 200, Rendering ≤ 1,1 s, QR dekodiert.
+
+## 2026-11-25 – Profilsuche (A-021)
+- Claus: URL-Eintippen nicht kundenfreundlich; Entscheidung „Brave ja“. TDD: 8 Tests + 1 Datenschutztest rot → grün, Suite 268 grün.

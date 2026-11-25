@@ -261,6 +261,76 @@ def google_link(session, body):
 
 
 # ---------------------------------------------------------------------------
+# Profil finden über Brave Search (A-021)
+# ---------------------------------------------------------------------------
+
+BRAVE_URL = "https://api.search.brave.com/res/v1/web/search"
+FIND_LIMIT = 5
+_TAG_RE = re.compile(r"<[^>]*>")
+
+
+def _clean(text, n=120):
+    import html
+    return " ".join(html.unescape(_TAG_RE.sub("", str(text or ""))).split())[:n]
+
+
+def _fold_name(text):
+    import unicodedata
+    text = unicodedata.normalize("NFKD", text.casefold().replace("ß", "ss"))
+    return " ".join("".join(ch for ch in text if not unicodedata.combining(ch)).split())
+
+
+def _parse_hit(name, hit):
+    try:
+        url = validate_linkedin_url(hit.get("url"))
+    except ValueError:
+        return None
+    title = re.sub(r"\s*\|\s*LinkedIn\s*$", "", _clean(hit.get("title"), 300))
+    parts = [p.strip() for p in re.split(r"\s+[-–—]\s+", title) if p.strip()]
+    if not parts or _fold_name(parts[0]) != _fold_name(name):
+        return None
+    desc = _clean(hit.get("description"), 400)
+    out = {"linkedin_url": url, "headline": "", "company": "", "location": ""}
+    if len(parts) >= 3:
+        out["headline"], out["company"] = parts[1][:120], parts[2][:80]
+    elif len(parts) == 2:
+        out["headline"] = parts[1][:120]
+    for key, labels in (("company", ("Berufserfahrung", "Experience")), ("location", ("Ort", "Location"))):
+        m = re.search(r"(?:%s):\s*([^·|]+)" % "|".join(labels), desc)
+        if m and not out[key]:
+            out[key] = m.group(1).strip()[:80]
+    return out
+
+
+def find_profiles(session, body, http=_http):
+    """Sucht Profil-Kandidaten zum Namen aus der Sitzung. Formularangaben fließen nie in die Suche."""
+    if not session:
+        raise ServiceError(401, "Bitte zuerst mit LinkedIn anmelden.")
+    key = env("BRAVE_API_KEY")
+    used = int(session.get("finds", 0))
+    if used >= FIND_LIMIT:
+        raise ServiceError(429, "Suchlimit für diese Sitzung erreicht. Bitte die Profil-URL eintragen.")
+    name = session["name"]
+    q = f'"{name}" site:linkedin.com/in'
+    url = BRAVE_URL + "?" + urllib.parse.urlencode({"q": q, "count": 10, "safesearch": "strict"})
+    try:
+        _, _, raw = http(url, None, {"Accept": "application/json", "X-Subscription-Token": key}, "GET")
+        results = (json.loads(raw).get("web") or {}).get("results") or []
+    except Exception as e:  # noqa: BLE001 - keine Details nach außen
+        raise ServiceError(502, "Die Profilsuche ist gerade nicht erreichbar. Bitte die URL eintragen.") from e
+    matches, seen = [], set()
+    for hit in results:
+        m = _parse_hit(name, hit) if isinstance(hit, dict) else None
+        if m and m["linkedin_url"] not in seen:
+            seen.add(m["linkedin_url"])
+            matches.append(m)
+        if len(matches) == 3:
+            break
+    session = dict(session, finds=used + 1)
+    return {"matches": matches, "cookie": cookie(SESSION_COOKIE, seal(session), max(1, int(session["exp"] - time.time())))}
+
+
+# ---------------------------------------------------------------------------
 # vCard, Sperrbildschirm, Erinnerung (A-020)
 # ---------------------------------------------------------------------------
 

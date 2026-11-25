@@ -71,6 +71,37 @@ function needUrl(d) {
   return true;
 }
 
+// Profilsuche (A-021): Treffer anzeigen, erst „Das bin ich“ übernimmt die Angaben.
+async function findProfile() {
+  const list = $("#matches");
+  list.replaceChildren(); list.hidden = true;
+  try {
+    status("Suche dein Profil …");
+    const r = await post("/api/find-profile", {});
+    if (!r.matches.length) { status("Kein passendes Profil gefunden. Bitte die Adresse eintragen.", true); return; }
+    for (const m of r.matches) {
+      const li = document.createElement("li");
+      const info = document.createElement("div");
+      const strong = document.createElement("strong");
+      strong.textContent = m.linkedin_url.replace("https://www.", "");
+      const detail = document.createElement("span");
+      detail.textContent = [m.headline, m.company, m.location].filter(Boolean).join(" · ");
+      info.append(strong, document.createElement("br"), detail);
+      const pick = document.createElement("button");
+      pick.type = "button"; pick.className = "button"; pick.textContent = "Das bin ich";
+      pick.addEventListener("click", () => {
+        for (const k of ["linkedin_url", "headline", "company", "location"]) {
+          if (m[k] && (k === "linkedin_url" || !form.elements[k].value)) form.elements[k].value = m[k];
+        }
+        list.hidden = true; payload(); status("Übernommen. Prüf kurz Position und Firma.");
+      });
+      li.append(info, pick); list.append(li);
+    }
+    list.hidden = false;
+    status(r.matches.length === 1 ? "Ein Treffer. Bist du das?" : r.matches.length + " Treffer. Welcher bist du?");
+  } catch (e) { status(e.message, true); }
+}
+
 async function init() {
   const prefill = readPrefill();
   const me = await fetch("/api/me", { credentials: "same-origin" }).then((r) => r.json()).catch(() => ({}));
@@ -91,6 +122,7 @@ async function init() {
   if (saved) { $("#remember").checked = true; fill(saved); }
   fill(prefill);
   $("#remember").addEventListener("change", () => remember(payload()));
+  $("#find").addEventListener("click", findProfile);
   for (const b of document.querySelectorAll("[data-download]")) {
     b.addEventListener("click", () => download(b.dataset.download, { device: b.dataset.device, needsDays: "needsDays" in b.dataset }));
   }

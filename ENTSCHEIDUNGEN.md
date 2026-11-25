@@ -207,3 +207,11 @@ E-NNN gehört zu A-NNN. Änderungen als datierter Nachtrag.
 
 ### Nachtrag E-018 bis E-020 – 2026-11-25 (live)
 - Live seit 25.11.2026 (Commit 20e0bbf, Vercel-Build aus GitHub). Live-Test mit Testsitzung und Testdaten: vCard 0,4 s, Sperrbildschirm iPhone/Android je ~1 s (1179×2556, QR dekodiert zur Profil-URL, „Gültig bis 27.11.2026“ bei 3 Tagen), Erinnerung .ics 0,2 s. Test im Browser mit echtem Login und auf dem Handy durch Claus offen.
+
+## E-021 – Profil per Suche finden
+- Problem: LinkedIn-OIDC liefert keine Profil-URL; Eintippen ist für Kundschaft zu mühsam (Claus, 25.11.2026).
+- Lösung: Brave Search API (`/res/v1/web/search`), Anfrage `"<Name aus Sitzung>" site:linkedin.com/in`. Treffer nur, wenn der Titel mit dem Namen beginnt (Umlaute/ß gefaltet); URL über validate_linkedin_url normalisiert; Position/Firma aus Titel, Firma/Ort aus „Berufserfahrung/Ort“ der Beschreibung; HTML entfernt; höchstens 3 Treffer; 5 Suchen je Sitzung (Zähler im versiegelten Cookie). Übernahme erst nach Klick „Das bin ich“.
+- Verworfen: Abruf bei LinkedIn selbst (Nutzungsbedingungen, App-Sperre), Gesichtsabgleich per Foto (Art. 9 DSGVO), Google Custom Search JSON API (keine Neukunden, Ende 01.01.2027), Auslesen von Google-Ergebnisseiten (AGB, Blockade).
+- Sicherheit: Formulardaten fließen nie in die Suche (kein offener Suchproxy); Fehler von Brave ohne Details (502); Schlüssel nur als Vercel-Secret BRAVE_API_KEY.
+- Entscheidung: Claus („Brave ja“), 25.11.2026. Live seit: offen. Beleg: tests/test_find_profile.py.
+- Offen: Brave-Konto und Schlüssel, Datenschutzvereinbarung/Übermittlungsgrundlage von Brave prüfen und Datenschutzseite ggf. präzisieren.

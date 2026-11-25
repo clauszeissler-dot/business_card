@@ -104,6 +104,9 @@ class Handler(BaseHTTPRequestHandler):
                                   extra={"Content-Disposition": 'attachment; filename="business-card.pkpass"'})
             if path == "/api/pass/google":
                 return self._json(200, {"url": core.google_link(session, body)})
+            if path == "/api/find-profile":
+                res = core.find_profiles(session, body)
+                return self._json(200, {"matches": res["matches"]}, [res["cookie"]])
             if path == "/api/vcard":
                 data, name = core.vcard_file(session, body)
                 return self._download(data, "text/vcard; charset=utf-8", name)
@@ -129,5 +132,6 @@ def _configured():
     groups = {"linkedin": ["LINKEDIN_CLIENT_ID", "LINKEDIN_CLIENT_SECRET"],
               "apple": ["APPLE_PASS_TYPE_ID", "APPLE_TEAM_ID", "APPLE_P12_BASE64", "APPLE_P12_PASSWORD"],
               "google": ["GOOGLE_ISSUER_ID", "GOOGLE_SA_JSON_BASE64"],
+              "search": ["BRAVE_API_KEY"],
               "base": ["PUBLIC_BASE_URL", "SESSION_SECRET", "PASS_ORG_NAME"]}
     return {g: all(os.environ.get(k) for k in keys) for g, keys in groups.items()}

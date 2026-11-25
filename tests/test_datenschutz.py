@@ -67,3 +67,10 @@ def test_datenschutz_nennt_freie_email_und_downloads():
     html = _html()
     assert "frei eintragen" in html
     assert "vCard" in html and "Sperrbildschirm" in html
+
+
+def test_datenschutz_nennt_profilsuche_bei_brave():
+    """A-021: Der Name geht nur auf Klick an Brave Search."""
+    html = _html()
+    assert "Brave Software" in html and "Mein Profil finden" in html
+    assert core.BRAVE_URL.startswith("https://api.search.brave.com/")
