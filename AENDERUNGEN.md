@@ -20,6 +20,7 @@ Zweck: [ZIEL.md](ZIEL.md) · Lösungen: [ENTSCHEIDUNGEN.md](ENTSCHEIDUNGEN.md) �
 | A-014 | 2026-11-20 Claus, Chat | Nutzung in Claude-App und ChatGPT | Rendering ohne Systemprogramme (resvg + eingebettete Schriften), App-Weg für CI, ZIP zum Hochladen | umgesetzt | S10 | render.py (resvg + Schriften), App-Abschnitt SKILL.md, ZIP + test_build_zip.py; Test in Claude-/ChatGPT-App offen |
 | A-015 | 2026-11-20 Claus, Chat | LinkedIn-Developer-App: Anmeldung für alle Nutzer, Karte posten | OIDC-Login (Name, Foto, E-Mail) und Share im öffentlichen Dienst | umgesetzt | S11 | service/core.py OIDC + Share; test_service.py; 25.11.: eigene App „Business Card by KI AffAIrs“ (ID 265146809), Produkte OIDC + Share aktiv, Redirect gesetzt, Secrets in secrets.env; Echttest nach Deploy offen |
 | A-016 | 2026-11-20 Claus, Chat | Öffentlicher Dienst auf Vercel/Netlify für Wallet-Signatur und LinkedIn | Deploy auf *.vercel.app, Geheimnisse nur in Vercel, DSGVO-Seiten, Missbrauchsschutz | in Arbeit | S11 | Code + 22 Sicherheitstests grün; Vercel-MCP 403 beim Anlegen → CLI-Login durch Claus nötig; Secrets-Ordner ~/Desktop/business-card-secrets vorbereitet |
+| A-017 | 2026-11-25 Claus, Chat | Eigene Datenschutzhinweise für den Dienst, abgestimmt auf DSE von KI AffAIrs, Vercel und LinkedIn | Seite nennt Verantwortlichen, Cookies/Laufzeiten/Scopes passend zum Code, Empfänger, Widerruf, Aufsicht | geprüft | S11 | tests/test_datenschutz.py (4 Tests, erst rot, dann grün); 232 Tests grün; Sichtprüfung Ego Lite |
 
 ## Statusregeln
 

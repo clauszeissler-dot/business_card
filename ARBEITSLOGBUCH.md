@@ -58,3 +58,9 @@ Ziel: [ZIEL.md](ZIEL.md) · Anforderungen: [AENDERUNGEN.md](AENDERUNGEN.md) · A
 - Anforderungs-IDs: A-015, A-016
 - Ergebnis: Neue LinkedIn-App mit OIDC + Share, Redirect-URL, Client ID/Secret in secrets.env (Abgleich Datei = aktives Secret: ja). Altes, im Protokoll sichtbares Secret entfernt.
 - Offen: Apple, Google, Deploy, Echttests.
+
+## 2026-11-25 – Datenschutzhinweise
+
+- Anforderungs-IDs: A-017
+- Red/Green: test_datenschutz.py 4 rot (fehlende Cookies, Scopes, Empfänger) → Seite neu → grün; Gesamtsuite 232 grün.
+- Sichtprüfung Ego Lite: Links vorher dunkelblau auf dunklem Grund, nach CSS-Fix #2DD4BF.

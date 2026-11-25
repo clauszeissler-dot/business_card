@@ -166,3 +166,12 @@ E-NNN gehört zu A-NNN. Änderungen als datierter Nachtrag.
 - Sicherheit: Erstes Client Secret war im Sitzungsprotokoll sichtbar → rotiert, altes entfernt; neues Secret nur in ~/Desktop/business-card-secrets/secrets.env (0600), nie ausgegeben.
 - Entscheidung: Claude im Auftrag Claus (Chat 25.11.2026: „LinkedIn selbst machen“), Ego Lite.
 - Offen: Echttest Login/Share nach Deploy.
+
+## E-017 – Datenschutzhinweise des Dienstes
+- Problem: Alte Hinweise (20.11.) knapp, ohne Verantwortlichen, Cookies, Scopes, Profilfoto-CDN und Widerrufsweg.
+- Lösung: public/datenschutz.html neu: Verantwortlicher und Aufsicht (LDI NRW) aus affairs-consulting.de/datenschutz (gelesen 25.11.2026 in Ego Lite), Datenflüsse je Schritt (Aufruf, LinkedIn-Login, Formular, Apple, Google, Teilen), Cookies bc_state 10 Min. / bc_session 1 Std. nach § 25 Abs. 2 Nr. 2 TDDDG, Vercel als Auftragsverarbeiter (DPF-zertifiziert), Serverfunktion in den USA (Standardregion iad1), LinkedIn/Google eigene Verantwortung, Widerruf über „Berechtigte Dienste“. Anrede „du“ wie die App. Linkfarbe in style.css auf Akzentfarbe (Kontrast).
+- Verworfen: Verweis nur auf die Haupt-DSE (deckt Vercel und LinkedIn-Login nicht ab); Angabe „Server in Frankfurt“ (stimmt ohne regions-Einstellung nicht).
+- Entscheidung: Claude im Auftrag Claus, 2026-11-25.
+- Live seit: noch nicht live (Deploy offen)
+- Beleg: tests/test_datenschutz.py
+- Offen: Vercel-DPA gilt laut Drittquelle nur für Pro/Enterprise → Tarif klären; optional Region fra1; Impressum-E-Mail (kiaffairs-podcast.de) weicht von DSE-E-Mail ab; keine Rechtsberatung, Prüfung durch Claus.
