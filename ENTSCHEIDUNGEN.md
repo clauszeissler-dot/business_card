@@ -159,3 +159,10 @@ E-NNN gehört zu A-NNN. Änderungen als datierter Nachtrag.
 - Live seit: noch nicht live
 - Beleg: test_service.py
 - Offen: Vercel-Login/Projekt, Secrets, Redirect-URL bei LinkedIn, Rate-Limit-Regel, Prüfung Vercel-Tarif (Hobby schließt gewerbliche Nutzung aus), rechtliche Prüfung der Datenschutzhinweise.
+
+### Nachtrag E-015 – 2026-11-25 (LinkedIn-App eingerichtet)
+- Problem: Bestehende App „KI Affairs“ hat die Community Management API; diese muss laut LinkedIn das einzige Produkt einer App sein, OIDC/Share dort nicht anforderbar.
+- Lösung: Neue App „Business Card by KI AffAIrs“ (ID 265146809, Client ID 7721qg9o4leqg2) an Unternehmensseite KI AffAIrs; Produkte „Sign In with LinkedIn using OpenID Connect“ und „Share on LinkedIn“ hinzugefügt; Scopes openid, profile, email, w_member_social; Redirect https://business-card-wallet.vercel.app/api/callback; Datenschutz-URL /datenschutz.html.
+- Sicherheit: Erstes Client Secret war im Sitzungsprotokoll sichtbar → rotiert, altes entfernt; neues Secret nur in ~/Desktop/business-card-secrets/secrets.env (0600), nie ausgegeben.
+- Entscheidung: Claude im Auftrag Claus (Chat 25.11.2026: „LinkedIn selbst machen“), Ego Lite.
+- Offen: Echttest Login/Share nach Deploy.

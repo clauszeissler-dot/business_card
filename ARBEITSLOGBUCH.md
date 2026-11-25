@@ -52,3 +52,9 @@ Ziel: [ZIEL.md](ZIEL.md) · Anforderungen: [AENDERUNGEN.md](AENDERUNGEN.md) · A
 - Anforderungs-IDs: A-013, A-015, A-016
 - Ergebnis: Stand geprüft; in secrets.env fehlen weiter LINKEDIN_CLIENT_ID/SECRET, APPLE_PASS_TYPE_ID, APPLE_TEAM_ID, GOOGLE_ISSUER_ID (nur Namen geprüft, keine Werte gelesen). Entscheidung Claus: alles auf einmal eintragen, dann ein Deploy.
 - Offen: Secrets durch Claus, Deploy, Echttests.
+
+## 2026-11-25 – LinkedIn-App eingerichtet
+
+- Anforderungs-IDs: A-015, A-016
+- Ergebnis: Neue LinkedIn-App mit OIDC + Share, Redirect-URL, Client ID/Secret in secrets.env (Abgleich Datei = aktives Secret: ja). Altes, im Protokoll sichtbares Secret entfernt.
+- Offen: Apple, Google, Deploy, Echttests.
