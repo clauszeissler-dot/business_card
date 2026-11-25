@@ -33,3 +33,11 @@ def test_empfaenger_genannt():
     for name in ("Vercel Inc.", "LinkedIn Ireland Unlimited Company", "Google", "Apple",
                  "Data Privacy Framework", "media.licdn.com"):
         assert name in PAGE
+
+
+def test_serverfunktion_in_frankfurt_und_so_beschrieben():
+    import json
+    cfg = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
+    assert cfg.get("regions") == ["fra1"]
+    assert "Frankfurt am Main" in PAGE
+    assert "in den USA." not in PAGE.split("<h2>4.")[1].split("<h2>5.")[0].split("Unsere Zugangsdaten")[0].split("Für die Übermittlung")[0]

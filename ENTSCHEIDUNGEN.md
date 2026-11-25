@@ -175,3 +175,6 @@ E-NNN gehört zu A-NNN. Änderungen als datierter Nachtrag.
 - Live seit: noch nicht live (Deploy offen)
 - Beleg: tests/test_datenschutz.py
 - Offen: Vercel-DPA gilt laut Drittquelle nur für Pro/Enterprise → Tarif klären; optional Region fra1; Impressum-E-Mail (kiaffairs-podcast.de) weicht von DSE-E-Mail ab; keine Rechtsberatung, Prüfung durch Claus.
+
+### Nachtrag E-017 – 2026-11-25 (Region)
+- Entscheidung Claus (Chat 25.11.2026): Serverfunktion in Frankfurt. vercel.json `regions: ["fra1"]`, Datenschutztext angepasst (Zugriff aus den USA nicht ausgeschlossen). Test test_serverfunktion_in_frankfurt_und_so_beschrieben rot → grün, 233 Tests grün.
