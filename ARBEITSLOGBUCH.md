@@ -85,3 +85,4 @@ Ziel: [ZIEL.md](ZIEL.md) · Anforderungen: [AENDERUNGEN.md](AENDERUNGEN.md) · A
 - Claus: zu viel Tippen, private E-Mail auf der Karte, vCard/Sperrbildschirm fehlen im Dienst.
 - Umgesetzt mit TDD (17 + 6 Tests erst rot, dann grün; 2 Datenschutztests rot → grün); Gesamtsuite 259 grün.
 - Offen: Push/Deploy (Vercel baut aus GitHub), Live-Test Downloads und Rendering-Zeit.
+- Push 20e0bbf nach Freigabe Claus; live geprüft: alle vier Downloads 200, Rendering ≤ 1,1 s, QR dekodiert.

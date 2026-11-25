@@ -204,3 +204,6 @@ E-NNN gehört zu A-NNN. Änderungen als datierter Nachtrag.
 - Lösung: POST /api/vcard, /api/lockscreen (iphone/android), /api/reminder; gleiche Sitzungs- und Herkunftsprüfung wie die Pässe, Formular-POST für Downloads auf dem Handy, Dateiname bereinigt. 0 Tage = Bild ohne Datum, Erinnerung nur mit Tagen. Anleitung auf der Seite; iOS/Android entfernen das Bild nicht selbst, daher Kalender-Erinnerung.
 - Verworfen: Profilfoto im Sperrbildschirm (wäre serverseitiger Abruf einer URL; vorerst Initialen).
 - Entscheidung: Claude, 25.11.2026, auf Rückmeldung von Claus. Live seit: offen (Rendering-Zeit auf Vercel zu prüfen). Beleg: test_service_extras.py.
+
+### Nachtrag E-018 bis E-020 – 2026-11-25 (live)
+- Live seit 25.11.2026 (Commit 20e0bbf, Vercel-Build aus GitHub). Live-Test mit Testsitzung und Testdaten: vCard 0,4 s, Sperrbildschirm iPhone/Android je ~1 s (1179×2556, QR dekodiert zur Profil-URL, „Gültig bis 27.11.2026“ bei 3 Tagen), Erinnerung .ics 0,2 s. Test im Browser mit echtem Login und auf dem Handy durch Claus offen.
