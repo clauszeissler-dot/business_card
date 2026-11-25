@@ -1,0 +1,105 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:ab2871bf-1a29-dfad-49ef-3e644c6978d4",
+  "version": 1,
+  "metadata": {
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "cra-dokumentation",
+          "version": "1.0.0",
+          "bom-ref": "urn:cra-dokumentation:1.0.0"
+        }
+      ]
+    },
+    "authors": [
+      {
+        "name": "KI AffAIrs"
+      }
+    ],
+    "manufacturer": {
+      "name": "KI AffAIrs",
+      "url": [
+        "https://affairs-consulting.de"
+      ],
+      "contact": [
+        {
+          "name": "KI AffAIrs",
+          "email": "info@affairs-consulting.de"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "bom-ref": "pkg:pypi/business-card@1.1.0",
+      "name": "business-card",
+      "version": "1.1.0",
+      "purl": "pkg:pypi/business-card@1.1.0",
+      "manufacturer": {
+        "name": "KI AffAIrs",
+        "url": [
+          "https://affairs-consulting.de"
+        ],
+        "contact": [
+          {
+            "name": "KI AffAIrs",
+            "email": "info@affairs-consulting.de"
+          }
+        ]
+      }
+    },
+    "properties": [
+      {
+        "name": "kiaffairs:cbom:methode",
+        "value": "statische Mustererkennung im Quelltext (ohne Tests, Abhängigkeiten und Build-Ordner)"
+      }
+    ],
+    "timestamp": "2026-11-25T13:08:21Z"
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto:sha-1",
+      "name": "SHA-1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "algorithmFamily": "SHA-1",
+          "cryptoFunctions": [
+            "digest"
+          ]
+        },
+        "oid": "1.3.14.3.2.26"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "scripts/wallet.py",
+            "line": 160,
+            "symbol": "hashlib.sha1("
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "kiaffairs:crypto:bewertung",
+          "value": "schwach"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:pypi/business-card@1.1.0",
+      "dependsOn": [
+        "crypto:sha-1"
+      ]
+    },
+    {
+      "ref": "crypto:sha-1"
+    }
+  ]
+}

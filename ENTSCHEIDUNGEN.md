@@ -178,3 +178,8 @@ E-NNN gehört zu A-NNN. Änderungen als datierter Nachtrag.
 
 ### Nachtrag E-017 – 2026-11-25 (Region)
 - Entscheidung Claus (Chat 25.11.2026): Serverfunktion in Frankfurt. vercel.json `regions: ["fra1"]`, Datenschutztext angepasst (Zugriff aus den USA nicht ausgeschlossen). Test test_serverfunktion_in_frankfurt_und_so_beschrieben rot → grün, 233 Tests grün.
+
+### Nachtrag E-016 – 2026-11-25 (Deploy und Adresse)
+- Deploy auf Vercel (Team ki-aff-ai-rs, Hobby zum Testen nach Entscheidung Claus; Pro vor öffentlicher Bewerbung), Projekt business-card-wallet, Region fra1 bestätigt (x-vercel-id fra1).
+- Befund: business-card-wallet.vercel.app gehört einem fremden Projekt (Next.js-404). Tatsächliche Adresse: business-card-wallet-three.vercel.app. PUBLIC_BASE_URL, LinkedIn-Redirect- und Datenschutz-URL sowie Datenschutzseite umgestellt; falscher Redirect bei LinkedIn entfernt. Test test_datenschutz_nennt_tatsaechliche_dienstadresse rot → grün.
+- Offen: eigene Domain (z. B. Subdomain von affairs-consulting.de) als stabile Adresse; Pro-Tarif.

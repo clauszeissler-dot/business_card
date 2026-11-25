@@ -33,7 +33,9 @@ Methode: statische Mustererkennung. Kein Beweis für Vollständigkeit; dynamisch
 
 ## Lebenszyklus (OWASP CLE 1.0 / ECMA-428)
 
-- [OFFEN] Noch kein Release (Git-Tag wie v1.0.0) und kein Übergabedatum. Die CLE-Datei entsteht beim ersten Tag bzw. mit der Übergabe.
+- Releases erfasst: 1 (neuestes: 1.1.0) ✅
+- Support-Ende: [OFFEN] Übergabedatum fehlt. Claus fragen, dann in cra-config.json unter uebergabe eintragen; Support-Ende = Übergabe + 5 Jahre (CRA Art. 13 Abs. 8)
+- Versionierte SBOM/CBOM: 1.1.0
 
 ## Nicht automatisch abgedeckt
 

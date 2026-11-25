@@ -41,3 +41,9 @@ def test_serverfunktion_in_frankfurt_und_so_beschrieben():
     assert cfg.get("regions") == ["fra1"]
     assert "Frankfurt am Main" in PAGE
     assert "in den USA." not in PAGE.split("<h2>4.")[1].split("<h2>5.")[0].split("Unsere Zugangsdaten")[0].split("Für die Übermittlung")[0]
+
+
+def test_datenschutz_nennt_tatsaechliche_dienstadresse():
+    # business-card-wallet.vercel.app gehört einem fremden Projekt (geprüft 25.11.2026)
+    assert "business-card-wallet-three.vercel.app" in PAGE
+    assert "unter business-card-wallet.vercel.app" not in PAGE
